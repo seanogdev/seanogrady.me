@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { data: items } = await useAsyncData('navigation', () => queryCollectionNavigation('blog'));
-const blogPosts = computed(() => items?.[0]?.children ?? []);
+const blogPosts = computed(() => items.value?.[0]?.children ?? []);
 </script>
 <template>
   <div>Blog</div>
