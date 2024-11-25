@@ -10,6 +10,6 @@ export default defineNuxtConfig({
   modules: ['@nuxt/content'],
   css: ['~/app.css'],
   vite: {
-    plugins: [tailwindcss() satisfies PluginOptions],
+    plugins: [tailwindcss()],
   },
 });
