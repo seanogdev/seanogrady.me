@@ -1,10 +1,6 @@
-<script></script>
-
 <template>
   <div class="container mx-auto">
-    <header>
-      <Nav />
-    </header>
+    <AppHeader />
     <slot />
   </div>
 </template>
