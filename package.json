@@ -18,7 +18,10 @@
     "@tailwindcss/vite": "4.0.0-beta.2",
     "@vueuse/core": "^11.3.0",
     "es-toolkit": "^1.27.0",
+    "fuse.js": "^7.0.0",
     "nuxt": "^3.14.1592",
+    "reka-ui": "1.0.0-alpha.5",
+    "tailwindcss-animate": "^1.0.7",
     "tailwindcss-radix-colors": "^1.4.1",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"

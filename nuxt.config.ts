@@ -14,7 +14,7 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4,
   },
-  modules: ['@nuxt/content'],
+  modules: ['@nuxt/content', 'reka-ui/nuxt'],
   vite: {
     plugins: [tailwindcss()],
   },

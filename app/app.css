@@ -2,6 +2,7 @@
 @theme {
   --color-*: initial;
 }
+@plugin 'tailwindcss-animate';
 @plugin 'tailwindcss-radix-colors';
 @layer base {
   html {
