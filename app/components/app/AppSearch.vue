@@ -33,7 +33,7 @@ const open = ref(false);
           <span class="sr-only">Close</span>
         </DialogClose>
         <ComboboxRoot>
-          <ComboboxInput autoFocus v-model="search" class="h-12 w-full px-6" placeholder="Search" />
+          <ComboboxInput autoFocus v-model="search" class="w-ful lpx-6 h-12" placeholder="Search" />
           <ComboboxContent class="px-6">
             <div role="presentation" class="flex flex-col items-stretch gap-2">
               <ComboboxItem

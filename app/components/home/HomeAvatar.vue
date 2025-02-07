@@ -37,16 +37,16 @@ const circleStyles = computed(() => {
 <template>
   <div class="group relative" :style="circleStyles">
     <div
-      class="absolute inset-0 rotate-45 rounded-[var(--circle-1)] bg-amber-10 mix-blend-screen transition-all duration-500 ease-in group-hover:scale-105"
+      class="absolute inset-0 rotate-45 rounded-[var(--circle-1)] bg-amber-10 mix-blend-screen transition-all duration-3000 ease-in group-hover:scale-105"
     ></div>
     <div
-      class="absolute inset-0 rotate-90 rounded-[var(--circle-2)] bg-blue-10 mix-blend-screen transition-all duration-500 ease-in group-hover:scale-105"
+      class="absolute inset-0 rotate-90 rounded-[var(--circle-2)] bg-blue-10 mix-blend-screen transition-all duration-3000 ease-in group-hover:scale-105"
     ></div>
     <div
-      class="absolute inset-0 rotate-135 rounded-[var(--circle-3)] bg-red-10 mix-blend-screen transition-all duration-500 ease-in group-hover:scale-105"
+      class="absolute inset-0 rotate-135 rounded-[var(--circle-3)] bg-red-10 mix-blend-screen transition-all duration-3000 ease-in group-hover:scale-105"
     ></div>
     <div
-      class="absolute inset-0 rounded-[var(--circle-4)] bg-pink-10 mix-blend-screen transition-all duration-500 ease-in group-hover:scale-105"
+      class="absolute inset-0 rounded-[var(--circle-4)] bg-pink-10 mix-blend-screen transition-all duration-3000 ease-in group-hover:scale-105"
     ></div>
     <img src="https://placekitten.com/200/200" alt="Avatar" class="absolute inset-0 size-full rounded-full" />
   </div>
