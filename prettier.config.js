@@ -3,7 +3,6 @@ export default {
   printWidth: 120,
   singleQuote: true,
   htmlWhitespaceSensitivity: 'ignore',
-  tailwindEntryPoint: './app/app.css',
+  tailwindStylesheet: './app/style.css',
   plugins: ['prettier-plugin-tailwindcss'],
-  tailwindFunctions: ['tv'],
 };

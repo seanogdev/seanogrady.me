@@ -1,8 +1,8 @@
 import { defineCollection } from '@nuxt/content';
 
 export const collections = {
-  blog: defineCollection({
+  posts: defineCollection({
     type: 'page',
-    source: 'blog/**/*.md',
+    source: 'posts/**/*.md',
   }),
 };
