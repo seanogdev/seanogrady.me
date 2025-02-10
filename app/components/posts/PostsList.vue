@@ -5,7 +5,7 @@ const posts = computed(() => items.value?.[0]?.children ?? []);
 <template>
   <div class="grid auto-rows-auto gap-8">
     <h1
-      class="border-green-12 text-trim-both dark:border-greendark-12 text-mint-12 font-stretch-125% -ml-2 border-l pl-2 text-2xl font-semibold uppercase sm:-ml-4 sm:pl-4"
+      class="-ml-2 border-l-2 border-green-12 pl-2 text-2xl font-medium text-mint-12 uppercase font-stretch-125% text-trim-both sm:-ml-4 sm:pl-4 dark:border-greendark-12"
     >
       Posts
     </h1>
