@@ -9,7 +9,7 @@
 @layer base {
   html {
     @apply bg-mint-1 dark:bg-mintdark-1;
-    @apply text-green-11 dark:text-greendark-11;
+    @apply text-jade-11 dark:text-jadedark-11;
   }
 
   .page-enter-active,

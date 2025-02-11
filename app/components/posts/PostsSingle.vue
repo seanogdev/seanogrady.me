@@ -4,7 +4,7 @@ const { data: value } = await useAsyncData(route.path, () => queryCollection('po
 </script>
 
 <template>
-  <div class="prose">
+  <div class="col-span-8 col-start-3 prose">
     <ContentRenderer v-if="value" :value />
   </div>
 </template>

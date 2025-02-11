@@ -3,9 +3,9 @@ const { data: items } = await useAsyncData('navigation', () => queryCollectionNa
 const posts = computed(() => items.value?.[0]?.children ?? []);
 </script>
 <template>
-  <div class="grid auto-rows-auto gap-8">
+  <div class="col-span-full grid auto-rows-auto">
     <h1
-      class="-ml-2 border-l-2 border-green-12 pl-2 text-2xl font-medium text-mint-12 uppercase font-stretch-125% text-trim-both sm:-ml-4 sm:pl-4 dark:border-greendark-12"
+      class="-ml-2 border-l-2 border-jade-12 pl-2 text-2xl font-medium text-mint-12 uppercase font-stretch-125% text-trim-both sm:-ml-4 sm:pl-4 dark:border-jadedark-12"
     >
       Posts
     </h1>

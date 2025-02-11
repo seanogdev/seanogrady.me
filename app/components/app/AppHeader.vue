@@ -3,7 +3,7 @@ import { useDark, useToggle } from '@vueuse/core';
 
 const navItems = [
   { title: 'Posts', to: '/posts' },
-  { title: 'About', to: '/about' },
+  { title: 'Me', to: '/about' },
 ];
 
 const socialLinks = [
@@ -17,15 +17,15 @@ const toggleDark = useToggle(isDark);
 </script>
 <template>
   <header
-    class="border-green-12 bg-mint-1/80 dark:border-green-1 dark:bg-mintdark-1/80 sticky top-0 z-10 border-b py-4 backdrop-blur-lg"
+    class="sticky top-0 z-10 border-b border-jade-12 bg-mint-1/60 py-4 backdrop-blur-lg dark:border-jade-1 dark:bg-mintdark-1/60"
   >
-    <div class="container mx-auto flex items-center gap-8 px-4">
+    <div class="flex items-center gap-8 px-4">
       <nav>
         <ul class="flex items-center gap-4">
           <li v-for="item in navItems" :key="item.to">
             <NuxtLink
               :to="item.to"
-              class="text-green-12 dark:text-greendark-12 font-stretch-125% text-xs uppercase tracking-widest"
+              class="text-xs tracking-widest text-jade-12 uppercase font-stretch-125% dark:text-jadedark-12"
             >
               {{ item.title }}
             </NuxtLink>
@@ -34,7 +34,7 @@ const toggleDark = useToggle(isDark);
       </nav>
       <div class="flex-1" />
 
-      <NuxtLink to="/" class="text-lg font-semibold">Seán O'Grady</NuxtLink>
+      <NuxtLink to="/" class="min-w-0 text-lg font-semibold text-nowrap">Seán O'Grady</NuxtLink>
 
       <div class="flex-1" />
       <ul class="flex items-center gap-4">
@@ -43,7 +43,7 @@ const toggleDark = useToggle(isDark);
             :to="link.href"
             external
             :title="link.title"
-            class="text-green-11 dark:text-greendark-11"
+            class="text-jade-11 dark:text-jadedark-11"
             target="_blank"
           >
             <Icon :name="link.icon" class="size-5" />
@@ -54,7 +54,7 @@ const toggleDark = useToggle(isDark);
         type="button"
         @click="toggleDark()"
         aria-label="Toggle Dark Mode"
-        class="text-green-12 dark:text-greendark-12"
+        class="text-jade-12 dark:text-jadedark-12"
       >
         <Icon :name="isDark ? 'bi:moon-fill' : 'bi:moon'" class="size-5" />
       </button>
