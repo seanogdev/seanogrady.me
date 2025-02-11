@@ -1,6 +1,9 @@
 <script setup lang="ts">
 const { data: items } = await useAsyncData('navigation', () => queryCollectionNavigation('posts'));
 const posts = computed(() => items.value?.[0]?.children ?? []);
+useHead({
+  title: 'Posts & Musings',
+});
 </script>
 <template>
   <div class="col-span-full grid auto-rows-auto">
