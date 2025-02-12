@@ -14,6 +14,6 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   icon: { mode: 'svg' },
   future: { compatibilityVersion: 4 },
-  modules: ['@nuxt/content', 'reka-ui/nuxt', '@nuxt/icon'],
+  modules: ['@nuxt/content', 'reka-ui/nuxt', '@nuxt/icon', '@nuxt/eslint'],
   vite: { plugins: [tailwindcss()] },
 });

@@ -33,13 +33,13 @@ const open = ref(false);
           <span class="sr-only">Close</span>
         </DialogClose>
         <ComboboxRoot>
-          <ComboboxInput autoFocus v-model="search" class="w-ful lpx-6 h-12" placeholder="Search" />
+          <ComboboxInput v-model="search" autoFocus class="w-ful lpx-6 h-12" placeholder="Search" />
           <ComboboxContent class="px-6">
             <div role="presentation" class="flex flex-col items-stretch gap-2">
               <ComboboxItem
-                asChild
                 v-for="link of result"
                 :key="link.item.id"
+                asChild
                 :textValue="link.item.title"
                 :value="link.item.id"
                 class="data-[highlighted]:bg-blue-action px-2 py-1"

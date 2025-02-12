@@ -1,10 +1,7 @@
 <script lang="ts" setup>
 import { useDark, useToggle } from '@vueuse/core';
 
-const navItems = [
-  { title: 'Posts', to: '/posts' },
-  { title: 'Me', to: '/about' },
-];
+const navItems = [{ title: 'Posts', to: '/posts' }];
 
 const socialLinks = [
   { title: 'Github', href: 'https://github.com/seanogdev', icon: 'simple-icons:github' },
@@ -52,9 +49,9 @@ const toggleDark = useToggle(isDark);
       </ul>
       <button
         type="button"
-        @click="toggleDark()"
         aria-label="Toggle Dark Mode"
         class="text-jade-12 dark:text-jadedark-12"
+        @click="toggleDark()"
       >
         <Icon :name="isDark ? 'bi:moon-fill' : 'bi:moon'" class="size-5" />
       </button>

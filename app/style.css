@@ -4,11 +4,12 @@
   --color-*: initial;
 }
 @import 'tailwindcss-radix-colors/dist/all.css';
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
   html {
-    @apply bg-mint-1 dark:bg-mintdark-1;
+    @apply bg-jade-1 dark:bg-jadedark-1;
     @apply text-jade-11 dark:text-jadedark-11;
   }
 
