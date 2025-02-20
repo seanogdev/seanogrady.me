@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-@plugin '@tailwindcss/typography';
 @theme {
   --color-*: initial;
 }
@@ -25,4 +24,77 @@
 
 @utility text-trim-both {
   text-box: trim-both cap alphabetic;
+}
+
+@layer components {
+  .prose {
+    h1 {
+      @apply text-jade-12 dark:text-jadedark-12 mb-6 mt-8 text-2xl font-[600] italic sm:text-3xl;
+    }
+
+    h2 {
+      @apply text-jade-12 dark:text-jadedark-12 mb-4 mt-8 text-xl sm:text-2xl;
+    }
+
+    h3 {
+      @apply text-jade-12 dark:text-jadedark-12 mb-4 mt-6 text-lg sm:text-xl;
+    }
+
+    h4 {
+      @apply text-jade-12 dark:text-jadedark-12 mb-4 mt-6 text-base sm:text-lg;
+    }
+
+    h5 {
+      @apply text-jade-12 dark:text-jadedark-12 mb-4 mt-6 text-base;
+    }
+
+    p {
+      @apply mb-4 mt-0;
+    }
+
+    a {
+      @apply underline;
+    }
+
+    pre {
+      @apply text-jade-12 dark:text-jadedark-12 my-4 overflow-x-auto rounded-lg p-4 text-sm sm:text-base;
+    }
+
+    code {
+      @apply text-jade-12 dark:text-jadedark-12 rounded px-1.5 py-0.5 text-sm;
+    }
+
+    strong {
+      @apply font-[500];
+    }
+
+    ul,
+    ol {
+      @apply mb-4 mt-4 pl-6;
+    }
+
+    li {
+      @apply mb-1;
+    }
+
+    blockquote {
+      @apply my-4 border-l-4 pl-4 italic;
+    }
+
+    hr {
+      @apply my-8;
+    }
+
+    img {
+      @apply my-4 max-w-full rounded-lg;
+    }
+
+    figure {
+      @apply my-4;
+    }
+
+    figcaption {
+      @apply mt-2 text-sm;
+    }
+  }
 }

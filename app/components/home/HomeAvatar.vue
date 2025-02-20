@@ -43,11 +43,15 @@ const squircleBorderStyles = computed(() =>
     <div
       v-for="(squircle, index) in squircles"
       :key="index"
-      class="dark:mix-blend-scren absolute inset-0 rotate-[var(--rotation)] rounded-[var(--border)] mix-blend-multiply transition-all duration-3000 ease-in group-hover:scale-105"
+      class="absolute inset-0 rotate-[var(--rotation)] rounded-[var(--border)] mix-blend-multiply transition-all duration-3000 ease-in group-hover:scale-105 dark:mix-blend-screen"
       :class="squircle.class"
       :style="squircle.style"
     />
 
-    <img src="./HomeAvatar.jpg" alt="Avatar" class="absolute inset-0 size-full rounded-full mix-blend-screen" />
+    <img
+      src="./HomeAvatar.jpg"
+      alt="Avatar"
+      class="absolute inset-0 size-full rounded-full mix-blend-screen dark:mix-blend-normal"
+    />
   </div>
 </template>

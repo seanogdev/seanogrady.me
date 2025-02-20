@@ -14,9 +14,6 @@ importers:
       '@nuxt/icon':
         specifier: ^1.10.3
         version: 1.10.3(magicast@0.3.5)(vite@6.1.0(@types/node@22.13.1)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.38.1)(yaml@2.7.0))(vue@3.5.13(typescript@5.7.3))
-      '@tailwindcss/typography':
-        specifier: ^0.5.16
-        version: 0.5.16(tailwindcss@4.0.6)
       '@tailwindcss/vite':
         specifier: 4.0.6
         version: 4.0.6(vite@6.1.0(@types/node@22.13.1)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.38.1)(yaml@2.7.0))
@@ -33,8 +30,8 @@ importers:
         specifier: ^3.15.4
         version: 3.15.4(@libsql/client@0.14.0)(@parcel/watcher@2.5.1)(@types/node@22.13.1)(better-sqlite3@11.8.1)(db0@0.2.3(@libsql/client@0.14.0)(better-sqlite3@11.8.1))(eslint@9.20.1(jiti@2.4.2))(ioredis@5.5.0)(lightningcss@1.29.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.34.6)(terser@5.38.1)(typescript@5.7.3)(vite@6.1.0(@types/node@22.13.1)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.38.1)(yaml@2.7.0))(yaml@2.7.0)
       reka-ui:
-        specifier: 1.0.0-alpha.9
-        version: 1.0.0-alpha.9(@internationalized/date@3.6.0)(@internationalized/number@3.6.0)(typescript@5.7.3)(vue@3.5.13(typescript@5.7.3))
+        specifier: 1.0.0-alpha.10
+        version: 1.0.0-alpha.10(typescript@5.7.3)(vue@3.5.13(typescript@5.7.3))
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@4.0.6)
@@ -64,14 +61,14 @@ importers:
         specifier: ^9.32.0
         version: 9.32.0(eslint@9.20.1(jiti@2.4.2))
       globals:
-        specifier: ^15.14.0
-        version: 15.14.0
+        specifier: ^15.15.0
+        version: 15.15.0
       prettier:
-        specifier: ^3.5.0
-        version: 3.5.0
+        specifier: ^3.5.1
+        version: 3.5.1
       prettier-plugin-tailwindcss:
         specifier: ^0.6.11
-        version: 0.6.11(prettier@3.5.0)
+        version: 0.6.11(prettier@3.5.1)
       tailwindcss:
         specifier: 4.0.6
         version: 4.0.6
@@ -510,8 +507,8 @@ packages:
     peerDependencies:
       vue: '>=3'
 
-  '@internationalized/date@3.6.0':
-    resolution: {integrity: sha512-+z6ti+CcJnRlLHok/emGEsWQhe7kfSmEW+/6qCzvKY67YPh7YOBfvc7+/+NXq+zJlbArg30tYpqLjNgcAYv2YQ==}
+  '@internationalized/date@3.7.0':
+    resolution: {integrity: sha512-VJ5WS3fcVx0bejE/YHfbDKR/yawZgKqn/if+oEeLqNwBtPzVB06olkfcnojTmEMX+gTpH+FlQ69SHNitJ8/erQ==}
 
   '@internationalized/number@3.6.0':
     resolution: {integrity: sha512-PtrRcJVy7nw++wn4W2OuePQQfTqDzfusSuY1QTtui4wa7r+rGVtR75pO8CyKvHvzyQYi3Q1uO5sY0AsB4e65Bw==}
@@ -1154,11 +1151,6 @@ packages:
   '@tailwindcss/oxide@4.0.6':
     resolution: {integrity: sha512-lVyKV2y58UE9CeKVcYykULe9QaE1dtKdxDEdrTPIdbzRgBk6bdxHNAoDqvcqXbIGXubn3VOl1O/CFF77v/EqSA==}
     engines: {node: '>= 10'}
-
-  '@tailwindcss/typography@0.5.16':
-    resolution: {integrity: sha512-0wDLwCVF5V3x3b1SGXPCDcdsbDHMBe+lkFzBRaHeLvNi+nrrnZ1lA18u+OTWO8iSWU2GxUOCvlXtDuqftc1oiA==}
-    peerDependencies:
-      tailwindcss: '>=3.0.0 || insiders || >=4.0.0-alpha.20 || >=4.0.0-beta.1'
 
   '@tailwindcss/vite@4.0.6':
     resolution: {integrity: sha512-O25vZ/URWbZ2JHdk2o8wH7jOKqEGCsYmX3GwGmYS5DjE4X3mpf93a72Rn7VRnefldNauBzr5z2hfZptmBNtTUQ==}
@@ -2410,8 +2402,8 @@ packages:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
     engines: {node: '>=18'}
 
-  globals@15.14.0:
-    resolution: {integrity: sha512-OkToC372DtlQeje9/zHIo5CT8lRP/FUgEOKBEhU4e0abL7J7CD24fD9ohiLN5hagG/kWCYj4K5oaxxtj2Z0Dig==}
+  globals@15.15.0:
+    resolution: {integrity: sha512-7ACyT3wmyp3I61S4fG682L0VA2RGD9otkqGJIwNUMF1SWUombIIk+af1unuDYgMm082aHYwD+mzJvv9Iu8dsgg==}
     engines: {node: '>=18'}
 
   globby@14.0.2:
@@ -2898,17 +2890,11 @@ packages:
     resolution: {integrity: sha512-gvVijfZvn7R+2qyPX8mAuKcFGDf6Nc61GdvGafQsHL0sBIxfKzA+usWn4GFC/bk+QdwPUD4kWFJLhElipq+0VA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
-  lodash.castarray@4.4.0:
-    resolution: {integrity: sha512-aVx8ztPv7/2ULbArGJ2Y42bG1mEQ5mGjpdvrbJcJFU3TbYybe+QlLS4pst9zV52ymy2in1KpFPiZnAOATxD4+Q==}
-
   lodash.defaults@4.2.0:
     resolution: {integrity: sha512-qjxPLHd3r5DnsdGacqOMU6pb/avJzdh9tFX2ymgoZE27BmjXrNy/y4LoaiTeAb+O3gL8AfpJGtqfX/ae2leYYQ==}
 
   lodash.isarguments@3.1.0:
     resolution: {integrity: sha512-chi4NHZlZqZD18a0imDHnZPrDeBbTtVN7GXMwuGdRH9qotxAjYs3aVLKc7zNOG9eddR5Ksd8rvFEBc9SsggPpg==}
-
-  lodash.isplainobject@4.0.6:
-    resolution: {integrity: sha512-oSXzaWypCMHkPC3NvBEaPHf0KsA5mvPrOPgQWDsbg8n7orZ290M0BmC/jgRZ4vcJ6DTAhjrsSYgdsW/F+MFOBA==}
 
   lodash.memoize@4.1.2:
     resolution: {integrity: sha512-t7j+NzmgnQzTAYXcsHYLgimltOV1MXHtlOWf6GjL9Kj8GK5FInw5JotxvbOs+IvV1/Dzo04/fCGfLVs7aXb4Ag==}
@@ -3640,10 +3626,6 @@ packages:
     peerDependencies:
       postcss: ^8.4.31
 
-  postcss-selector-parser@6.0.10:
-    resolution: {integrity: sha512-IQ7TZdoaqbT+LCpShg46jnZVlhWD2w6iQYAcYXfHARZ7X1t/UGhhceQDs5X0cGqKvYlHNOuv7Oa1xmb0oQuA3w==}
-    engines: {node: '>=4'}
-
   postcss-selector-parser@6.1.2:
     resolution: {integrity: sha512-Q8qQfPiZ+THO/3ZrOrO0cJJKfpYCagtMUkXbnEfmgUjwXg6z/WBeOyS9APBBPCTSiDV+s4SwQGu8yFsiMRIudg==}
     engines: {node: '>=4'}
@@ -3739,8 +3721,8 @@ packages:
       prettier-plugin-svelte:
         optional: true
 
-  prettier@3.5.0:
-    resolution: {integrity: sha512-quyMrVt6svPS7CjQ9gKb3GLEX/rl3BCL2oa/QkNcXv4YNVBC9olt3s+H7ukto06q7B1Qz46PbrKLO34PR6vXcA==}
+  prettier@3.5.1:
+    resolution: {integrity: sha512-hPpFQvHwL3Qv5AdRvBFMhnKo4tYxp0ReXiPn2bxkiohEX6mBeBwEpBSQTkD458RaaDKQMYSp4hX4UtfUTA5wDw==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -3885,11 +3867,9 @@ packages:
   rehype-sort-attributes@5.0.1:
     resolution: {integrity: sha512-Bxo+AKUIELcnnAZwJDt5zUDDRpt4uzhfz9d0PVGhcxYWsbFj5Cv35xuWxu5r1LeYNFNhgGqsr9Q2QiIOM/Qctg==}
 
-  reka-ui@1.0.0-alpha.9:
-    resolution: {integrity: sha512-DkHU39TaMGDkJ4tFxgbU71aXJEnL6eQWHYr6iz1ZdOBrTtOU+/nwKtpqMMTIsBYMtAQfnf8+hfRigtfQR2tSfQ==}
+  reka-ui@1.0.0-alpha.10:
+    resolution: {integrity: sha512-fQ+7LLKlZ9dTFOMsSmefRBDLEnFdOcstWW3ZIaV7000d8YYsteYZOY86WWRi7k64FuWn8pMIE8Ya3Aq0pkc7lw==}
     peerDependencies:
-      '@internationalized/date': '>=3.5.0'
-      '@internationalized/number': '>=3.5.0'
       vue: '>= 3.2.0'
 
   remark-emoji@5.0.1:
@@ -5272,7 +5252,7 @@ snapshots:
       '@antfu/utils': 8.1.0
       '@iconify/types': 2.0.0
       debug: 4.4.0(supports-color@9.4.0)
-      globals: 15.14.0
+      globals: 15.15.0
       kolorist: 1.8.0
       local-pkg: 1.0.0
       mlly: 1.7.4
@@ -5284,7 +5264,7 @@ snapshots:
       '@iconify/types': 2.0.0
       vue: 3.5.13(typescript@5.7.3)
 
-  '@internationalized/date@3.6.0':
+  '@internationalized/date@3.7.0':
     dependencies:
       '@swc/helpers': 0.5.15
 
@@ -5628,7 +5608,7 @@ snapshots:
       eslint-plugin-unicorn: 56.0.1(eslint@9.20.1(jiti@2.4.2))
       eslint-plugin-vue: 9.32.0(eslint@9.20.1(jiti@2.4.2))
       eslint-processor-vue-blocks: 1.0.0(@vue/compiler-sfc@3.5.13)(eslint@9.20.1(jiti@2.4.2))
-      globals: 15.14.0
+      globals: 15.15.0
       local-pkg: 1.0.0
       pathe: 2.0.2
       vue-eslint-parser: 9.4.3(eslint@9.20.1(jiti@2.4.2))
@@ -6216,14 +6196,6 @@ snapshots:
       '@tailwindcss/oxide-linux-x64-musl': 4.0.6
       '@tailwindcss/oxide-win32-arm64-msvc': 4.0.6
       '@tailwindcss/oxide-win32-x64-msvc': 4.0.6
-
-  '@tailwindcss/typography@0.5.16(tailwindcss@4.0.6)':
-    dependencies:
-      lodash.castarray: 4.4.0
-      lodash.isplainobject: 4.0.6
-      lodash.merge: 4.6.2
-      postcss-selector-parser: 6.0.10
-      tailwindcss: 4.0.6
 
   '@tailwindcss/vite@4.0.6(vite@6.1.0(@types/node@22.13.1)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.38.1)(yaml@2.7.0))':
     dependencies:
@@ -7306,7 +7278,7 @@ snapshots:
       core-js-compat: 3.40.0
       eslint: 9.20.1(jiti@2.4.2)
       esquery: 1.6.0
-      globals: 15.14.0
+      globals: 15.15.0
       indent-string: 4.0.0
       is-builtin-module: 3.2.1
       jsesc: 3.1.0
@@ -7648,7 +7620,7 @@ snapshots:
 
   globals@14.0.0: {}
 
-  globals@15.14.0: {}
+  globals@15.15.0: {}
 
   globby@14.0.2:
     dependencies:
@@ -8189,13 +8161,9 @@ snapshots:
     dependencies:
       p-locate: 6.0.0
 
-  lodash.castarray@4.4.0: {}
-
   lodash.defaults@4.2.0: {}
 
   lodash.isarguments@3.1.0: {}
-
-  lodash.isplainobject@4.0.6: {}
 
   lodash.memoize@4.1.2: {}
 
@@ -9276,11 +9244,6 @@ snapshots:
       postcss: 8.5.1
       postcss-value-parser: 4.2.0
 
-  postcss-selector-parser@6.0.10:
-    dependencies:
-      cssesc: 3.0.0
-      util-deprecate: 1.0.2
-
   postcss-selector-parser@6.1.2:
     dependencies:
       cssesc: 3.0.0
@@ -9333,11 +9296,11 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-tailwindcss@0.6.11(prettier@3.5.0):
+  prettier-plugin-tailwindcss@0.6.11(prettier@3.5.1):
     dependencies:
-      prettier: 3.5.0
+      prettier: 3.5.1
 
-  prettier@3.5.0: {}
+  prettier@3.5.1: {}
 
   pretty-bytes@6.1.1: {}
 
@@ -9520,11 +9483,11 @@ snapshots:
       '@types/hast': 3.0.4
       unist-util-visit: 5.0.0
 
-  reka-ui@1.0.0-alpha.9(@internationalized/date@3.6.0)(@internationalized/number@3.6.0)(typescript@5.7.3)(vue@3.5.13(typescript@5.7.3)):
+  reka-ui@1.0.0-alpha.10(typescript@5.7.3)(vue@3.5.13(typescript@5.7.3)):
     dependencies:
       '@floating-ui/dom': 1.6.13
       '@floating-ui/vue': 1.1.6(vue@3.5.13(typescript@5.7.3))
-      '@internationalized/date': 3.6.0
+      '@internationalized/date': 3.7.0
       '@internationalized/number': 3.6.0
       '@tanstack/vue-virtual': 3.13.0(vue@3.5.13(typescript@5.7.3))
       '@vueuse/core': 12.5.0(typescript@5.7.3)

@@ -14,26 +14,25 @@ const toggleDark = useToggle(isDark);
 </script>
 <template>
   <header
-    class="sticky top-0 z-10 border-b border-jade-12 bg-mint-1/60 py-4 backdrop-blur-lg dark:border-jade-1 dark:bg-mintdark-1/60"
+    class="sticky top-0 z-10 grid grid-cols-3 border-b border-mint-12 bg-mint-1/60 px-4 py-4 backdrop-blur-lg md:px-8 dark:border-mint-1 dark:bg-mintdark-1/60"
   >
-    <div class="flex items-center gap-8 px-4">
-      <nav>
-        <ul class="flex items-center gap-4">
-          <li v-for="item in navItems" :key="item.to">
-            <NuxtLink
-              :to="item.to"
-              class="text-xs tracking-widest text-jade-12 uppercase font-stretch-125% dark:text-jadedark-12"
-            >
-              {{ item.title }}
-            </NuxtLink>
-          </li>
-        </ul>
-      </nav>
-      <div class="flex-1" />
+    <nav>
+      <ul class="flex items-center gap-4">
+        <li v-for="item in navItems" :key="item.to">
+          <NuxtLink
+            :to="item.to"
+            class="text-xs tracking-widest text-jade-12 uppercase font-stretch-125% dark:text-jadedark-12"
+          >
+            {{ item.title }}
+          </NuxtLink>
+        </li>
+      </ul>
+    </nav>
 
+    <div class="flex items-center justify-center">
       <NuxtLink to="/" class="min-w-0 text-lg font-semibold text-nowrap">Seán O'Grady</NuxtLink>
-
-      <div class="flex-1" />
+    </div>
+    <div class="flex items-center justify-end gap-8">
       <ul class="flex items-center gap-4">
         <li v-for="link in socialLinks" :key="link.title">
           <NuxtLink
@@ -55,8 +54,8 @@ const toggleDark = useToggle(isDark);
       >
         <Icon :name="isDark ? 'bi:moon-fill' : 'bi:moon'" class="size-5" />
       </button>
-
-      <!-- <AppSearch /> -->
     </div>
+
+    <!-- <AppSearch /> -->
   </header>
 </template>
