@@ -23,14 +23,14 @@ const socialLinks: SocialLink[] = [
 </script>
 
 <template>
-  <section class="w-full">
+  <section class="flex h-full w-full flex-col">
     <div class="mb-8">
       <h2 class="mb-2 text-sm font-semibold tracking-wider text-jade-11 uppercase dark:text-jadedark-11">
         FIND ME ONLINE
       </h2>
     </div>
 
-    <div class="flex flex-col gap-4">
+    <div class="flex flex-1 flex-col gap-4">
       <a
         v-for="link in socialLinks"
         :key="link.url"

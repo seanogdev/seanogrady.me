@@ -29,9 +29,5 @@ const careAboutTopics = [
       </div>
     </div>
     <HomeRecentPosts class="col-span-12" />
-    <div class="col-span-12 mt-16 grid gap-8 md:grid-cols-2">
-      <HomeSocialLinks class="w-full" />
-      <HomeNowPlaying class="w-full" />
-    </div>
   </ClientOnly>
 </template>

@@ -16,14 +16,14 @@ const shouldShowNowPlaying = computed(() => {
 </script>
 
 <template>
-  <section v-if="trackData" class="w-full">
+  <section v-if="trackData" class="flex h-full w-full flex-col">
     <div class="mb-8">
       <h2 class="mb-2 text-sm font-semibold tracking-wider text-jade-11 uppercase dark:text-jadedark-11">
         {{ shouldShowNowPlaying ? '🎵 NOW PLAYING' : '🎵 LAST PLAYED' }}
       </h2>
     </div>
 
-    <div class="relative overflow-hidden rounded-lg border-l-4 border-red-9 bg-gradient-to-br from-red-2 to-red-3 p-6 dark:border-reddark-9 dark:from-reddark-1 dark:to-reddark-2">
+    <div class="relative flex flex-1 flex-col overflow-hidden rounded-lg border-l-4 border-red-9 bg-gradient-to-br from-red-2 to-red-3 p-6 dark:border-reddark-9 dark:from-reddark-1 dark:to-reddark-2">
       <div class="flex items-center gap-5">
         <div class="relative">
           <img
