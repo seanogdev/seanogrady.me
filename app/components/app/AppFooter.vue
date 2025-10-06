@@ -1,8 +1,6 @@
 <template>
-  <footer class="col-span-12 mt-16">
-    <div class="grid gap-8 md:grid-cols-2 md:items-stretch">
-      <HomeSocialLinks class="w-full" />
-      <HomeNowPlaying class="w-full" />
-    </div>
+  <footer class="col-span-12 mt-16 grid grid-cols-subgrid gap-8">
+    <AppSocialLinks class="col-span-6" />
+    <AppNowPlaying class="col-span-6" />
   </footer>
 </template>
