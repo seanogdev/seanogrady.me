@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TrackData } from '~/shared/types';
+import type { TrackData } from '~~/shared/types';
 
 const { data: trackData } = await useFetch<TrackData>('/api/lastfm');
 
@@ -13,38 +13,54 @@ const isRecentlyPlayed = computed(() => {
 const shouldShowNowPlaying = computed(() => {
   return trackData.value?.nowPlaying && isRecentlyPlayed.value;
 });
+
+const relativeTime = computed(() => {
+  if (!trackData.value) return '';
+  const now = Date.now();
+  const diff = now - trackData.value.timestamp;
+
+  const seconds = Math.floor(diff / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+
+  if (days > 0) return `${days}d ago`;
+  if (hours > 0) return `${hours}h ago`;
+  if (minutes > 0) return `${minutes}m ago`;
+  return 'just now';
+});
 </script>
 
 <template>
   <section v-if="trackData" class="flex h-full w-full flex-col">
-    <div class="mb-8">
-      <h2 class="mb-2 text-sm font-semibold tracking-wider text-jade-11 uppercase dark:text-jadedark-11">
-        {{ shouldShowNowPlaying ? '🎵 NOW PLAYING' : '🎵 LAST PLAYED' }}
+    <div class="mb-8 flex items-center justify-between">
+      <h2 class="text-sm font-semibold tracking-wider text-red-11 uppercase dark:text-reddark-11">
+        {{ shouldShowNowPlaying ? 'Now playing' : 'Last played' }}
       </h2>
+      <div class="flex items-center gap-2">
+        <EqualizerIcon class="h-4 w-4 text-red-11 dark:text-reddark-11" />
+        <span class="text-xs text-red-11 dark:text-reddark-11">{{ relativeTime }}</span>
+      </div>
     </div>
 
-    <div class="relative flex flex-1 flex-col overflow-hidden rounded-lg border-l-4 border-red-9 bg-gradient-to-br from-red-2 to-red-3 p-6 dark:border-reddark-9 dark:from-reddark-1 dark:to-reddark-2">
-      <div class="flex items-center gap-5">
-        <div class="relative">
+    <div
+      class="relative flex flex-1 flex-col overflow-hidden rounded-lg border-l-4 border-red-9 bg-gradient-to-br from-red-2 to-red-3 p-6 dark:border-reddark-9 dark:from-reddark-1 dark:to-reddark-2"
+    >
+      <div class="flex gap-5">
+        <div class="relative flex-shrink-0">
           <img
             v-if="trackData.albumArt"
             :src="trackData.albumArt"
             :alt="`${trackData.album} album art`"
-            class="h-24 w-24 flex-shrink-0 rounded-md"
+            class="h-32 w-32 rounded-md"
           />
-          <Icon v-else name="lucide:music" class="h-24 w-24 flex-shrink-0 text-red-11 dark:text-reddark-11" />
-          <div
-            v-if="shouldShowNowPlaying"
-            class="absolute -right-2 -top-2 flex h-8 w-8 items-center justify-center rounded-full bg-red-9 dark:bg-reddark-9"
-          >
-            <EqualizerIcon class="h-4 w-4 text-red-1 dark:text-reddark-1" />
-          </div>
+          <Icon v-else name="lucide:music" class="h-32 w-32 text-red-11 dark:text-reddark-11" />
         </div>
 
-        <div class="flex-1 min-w-0">
-          <div class="truncate text-lg font-bold text-red-12 dark:text-reddark-12">{{ trackData.name }}</div>
-          <div class="truncate text-sm font-medium text-red-11 dark:text-reddark-11">{{ trackData.artist }}</div>
-          <div v-if="trackData.album" class="mt-1 truncate text-xs text-red-10 dark:text-reddark-10">
+        <div class="min-w-0 flex-1">
+          <div class="text-xl font-bold leading-tight text-red-12 dark:text-reddark-12">{{ trackData.name }}</div>
+          <div class="mt-2 text-base font-medium text-red-11 dark:text-reddark-11">{{ trackData.artist }}</div>
+          <div v-if="trackData.album" class="mt-1 text-sm text-red-10 dark:text-reddark-10">
             {{ trackData.album }}
           </div>
         </div>
