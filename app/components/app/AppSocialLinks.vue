@@ -11,13 +11,19 @@ const socialLinks: SocialLink[] = [
     title: 'BlueSky',
     subtitle: '@seanogrady.me',
     url: 'https://bsky.app/profile/seanogrady.me',
-    icon: 'lucide:cloud',
+    icon: 'proicons:bluesky',
   },
   {
     title: 'GitHub',
     subtitle: 'Open source projects',
     url: 'https://github.com/seanogrady',
-    icon: 'lucide:github',
+    icon: 'proicons:github',
+  },
+  {
+    title: 'LinkedIn',
+    subtitle: 'Professional network',
+    url: 'https://linkedin.com/in/seanogrady',
+    icon: 'proicons:linkedin',
   },
 ];
 </script>
@@ -26,7 +32,7 @@ const socialLinks: SocialLink[] = [
   <section class="flex h-full w-full flex-col">
     <div class="mb-8">
       <h2 class="mb-2 text-sm font-semibold tracking-wider text-jade-11 uppercase dark:text-jadedark-11">
-        FIND ME ONLINE
+        Find me online
       </h2>
     </div>
 
