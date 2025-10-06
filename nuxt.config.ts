@@ -8,12 +8,11 @@ const moduleDirectories = modules.map((dir) => ({
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-11-01',
+  compatibilityDate: '2025-10-06',
   components: moduleDirectories,
   css: ['~/style.css'],
   devtools: { enabled: true },
   icon: { mode: 'svg' },
-  future: { compatibilityVersion: 4 },
   modules: ['@nuxt/content', 'reka-ui/nuxt', '@nuxt/icon', '@nuxt/eslint'],
   vite: { plugins: [tailwindcss()] },
 });

@@ -1,3 +1,3 @@
 <template>
-  <PostsList />
+  <PostsList class="col-span-12" />
 </template>

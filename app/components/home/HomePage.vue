@@ -9,6 +9,6 @@
         that are accessible, and tooling that automates the boring stuff.
       </p>
     </div>
-    <HomeRecentPosts />
+    <HomeRecentPosts class="col-span-12 md:col-span-10 md:col-start-2" />
   </ClientOnly>
 </template>
