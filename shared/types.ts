@@ -4,4 +4,5 @@ export interface TrackData {
   album: string;
   albumArt: string;
   nowPlaying: boolean;
+  timestamp: number;
 }

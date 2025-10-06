@@ -35,6 +35,7 @@ const trackDataSchema = z.object({
   album: z.string(),
   albumArt: z.string(),
   nowPlaying: z.boolean(),
+  timestamp: z.number(),
 }) satisfies z.ZodType<TrackData>;
 
 async function fetchRecentTracks(apiKey: string, username: string) {
@@ -70,6 +71,7 @@ function extractTrackData(apiResponse: z.infer<typeof lastfmApiResponseSchema>):
     album: track.album['#text'],
     albumArt: largeImage?.['#text'] || '',
     nowPlaying: track['@attr']?.nowplaying === 'true',
+    timestamp: Date.now(),
   };
 
   return trackDataSchema.parse(trackData);
