@@ -23,7 +23,7 @@ const socialLinks: SocialLink[] = [
     title: 'LinkedIn',
     subtitle: 'Professional network',
     url: 'https://linkedin.com/in/seanogrady',
-    icon: 'proicons:linkedin',
+    icon: 'mdi:linkedin',
   },
 ];
 </script>
