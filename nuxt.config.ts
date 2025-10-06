@@ -16,7 +16,12 @@ export default defineNuxtConfig({
   modules: ['@nuxt/content', 'reka-ui/nuxt', '@nuxt/icon', '@nuxt/eslint'],
   runtimeConfig: {
     lastfmApiKey: '',
-    lastfmUsername: '',
+    public: {
+      lastfmUsername: '',
+    },
+  },
+  experimental: {
+    entryImportMap: false,
   },
   vite: { plugins: [tailwindcss()] },
 });

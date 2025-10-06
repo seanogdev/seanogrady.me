@@ -3,6 +3,8 @@ import type { TrackData } from '~~/shared/types';
 
 const { data: trackData } = await useFetch<TrackData>('/api/lastfm');
 
+const config = useRuntimeConfig();
+
 const isRecentlyPlayed = computed(() => {
   if (!trackData.value) return false;
   const threeHoursInMs = 3 * 60 * 60 * 1000;
@@ -60,7 +62,9 @@ const relativeTime = computed(() => {
         </div>
 
         <div class="min-w-0 flex-1">
-          <div class="truncate text-xl leading-tight font-bold text-red-12 dark:text-reddark-12">{{ trackData.name }}</div>
+          <div class="truncate text-xl leading-tight font-bold text-red-12 dark:text-reddark-12">
+            {{ trackData.name }}
+          </div>
           <div class="mt-2 truncate text-base font-medium text-red-11 dark:text-reddark-11">{{ trackData.artist }}</div>
           <div v-if="trackData.album" class="mt-1 truncate text-sm text-red-10 dark:text-reddark-10">
             {{ trackData.album }}
@@ -71,7 +75,7 @@ const relativeTime = computed(() => {
       <div class="mt-6 flex items-center justify-between border-t border-red-6 pt-4 dark:border-reddark-6">
         <p class="text-xs text-red-11 dark:text-reddark-11">Updates automatically via Last.fm</p>
         <a
-          :href="`https://www.last.fm/user/${$config.lastfmUsername}`"
+          :href="`https://www.last.fm/user/${config.public.lastfmUsername}`"
           target="_blank"
           rel="noopener noreferrer"
           class="text-xs font-medium text-red-11 underline decoration-red-9 underline-offset-2 transition-colors hover:text-red-12 dark:text-reddark-11 dark:decoration-reddark-9 dark:hover:text-reddark-12"
