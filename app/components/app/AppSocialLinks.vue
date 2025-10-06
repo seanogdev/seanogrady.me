@@ -52,13 +52,6 @@ const socialLinks: SocialLink[] = [
           <div class="font-semibold text-jade-12 dark:text-jadedark-12">{{ link.title }}</div>
           <div class="text-sm text-jade-11 dark:text-jadedark-11">{{ link.subtitle }}</div>
         </div>
-
-        <Icon
-          v-if="link.title === 'GitHub'"
-          name="lucide:external-link"
-          class="h-4 w-4 flex-shrink-0 text-jade-11 dark:text-jadedark-11"
-          aria-hidden="true"
-        />
       </a>
     </div>
   </section>
