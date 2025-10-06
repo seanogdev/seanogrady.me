@@ -36,7 +36,7 @@
 @layer base {
   html {
     @apply bg-jade-1 dark:bg-jadedark-1;
-    @apply text-jade-11 dark:text-jadedark-11;
+    @apply text-sage-11 dark:text-sagedark-11;
   }
 
   .page-enter-active,
@@ -56,19 +56,19 @@
 @layer components {
   .prose {
     h1 {
-      @apply mt-8 mb-6 text-2xl font-semibold text-jade-12 italic sm:text-3xl dark:text-jadedark-12;
+      @apply mt-8 mb-6 text-2xl font-semibold text-jade-12 italic no-underline sm:text-3xl dark:text-jadedark-12;
     }
 
     h2 {
-      @apply mt-8 mb-4 text-xl text-jade-12 sm:text-2xl dark:text-jadedark-12;
+      @apply mt-8 mb-4 text-xl font-semibold text-jade-12 no-underline sm:text-2xl dark:text-jadedark-12;
     }
 
     h3 {
-      @apply mt-6 mb-4 text-lg text-jade-12 sm:text-xl dark:text-jadedark-12;
+      @apply mt-6 mb-4 text-lg font-semibold text-jade-12 no-underline sm:text-xl dark:text-jadedark-12;
     }
 
     h4 {
-      @apply mt-6 mb-4 text-base text-jade-12 sm:text-lg dark:text-jadedark-12;
+      @apply mt-6 mb-4 text-base font-semibold text-jade-12 no-underline sm:text-lg dark:text-jadedark-12;
     }
 
     h5 {

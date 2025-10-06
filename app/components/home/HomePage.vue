@@ -28,6 +28,6 @@ const careAboutTopics = [
         </div>
       </div>
     </div>
-    <HomeRecentPosts class="col-span-12" />
+    <HomeRecentPosts class="col-span-full" />
   </ClientOnly>
 </template>
