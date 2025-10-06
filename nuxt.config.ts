@@ -1,6 +1,6 @@
 import tailwindcss from '@tailwindcss/vite';
 
-const modules = ['app', 'home', 'about', 'posts', 'shared'];
+const modules = ['app', 'home', 'posts', 'shared'];
 const moduleDirectories = modules.map((dir) => ({
   path: `~/components/${dir}`,
   pathPrefix: false,
@@ -14,5 +14,9 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   icon: { mode: 'svg' },
   modules: ['@nuxt/content', 'reka-ui/nuxt', '@nuxt/icon', '@nuxt/eslint'],
+  runtimeConfig: {
+    lastfmApiKey: '',
+    lastfmUsername: '',
+  },
   vite: { plugins: [tailwindcss()] },
 });
