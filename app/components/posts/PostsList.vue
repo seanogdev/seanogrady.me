@@ -13,7 +13,7 @@ useHead({
   </h1>
   <nav>
     <ul>
-      <li v-for="item in posts" :key="item.id">
+      <li v-for="item in posts" :key="item.title">
         <NuxtLink :to="item.path">{{ item.title }}</NuxtLink>
       </li>
     </ul>
