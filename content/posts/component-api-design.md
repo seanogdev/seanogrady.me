@@ -46,7 +46,7 @@ Consider a `Card` component. The configuration approach might look like this:
   image="/image.jpg"
   actions={[
     { label: 'Edit', onClick: handleEdit },
-    { label: 'Delete', onClick: handleDelete }
+    { label: 'Delete', onClick: handleDelete },
   ]}
   showDivider={true}
   padding="large"
@@ -160,7 +160,7 @@ const Input = forwardRef((props, ref) => {
     select: () => inputRef.current.select(),
     get value() {
       return inputRef.current.value;
-    }
+    },
   }));
 
   return <input ref={inputRef} {...props} />;

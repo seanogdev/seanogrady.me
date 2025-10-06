@@ -7,7 +7,7 @@ export const collections = {
     schema: z.object({
       date: z.coerce.date(),
       tags: z.array(z.string()),
-      rawbody: z.string()
-    })
+      rawbody: z.string(),
+    }),
   }),
 };

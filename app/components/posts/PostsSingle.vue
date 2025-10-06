@@ -7,7 +7,7 @@ useHead({
 </script>
 
 <template>
-  <div class="col-span-8 col-start-3 prose">
+  <div class="prose col-span-8 col-start-3">
     <ContentRenderer v-if="post" :value="post" />
   </div>
 </template>

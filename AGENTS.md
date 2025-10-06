@@ -23,11 +23,13 @@ This project uses pnpm as the package manager. Essential commands:
 This is a Nuxt 4 personal website/blog with the following structure:
 
 ### Content Management
+
 - Uses @nuxt/content for markdown-based blog posts
 - Blog posts are stored in `content/posts/*.md`
 - Content collection defined in `content.config.ts`
 
 ### Component Organization
+
 - Components are organized by feature modules in `app/components/`:
   - `app/` - Core app components (header, search)
   - `home/` - Homepage components (avatar, page)
@@ -35,6 +37,7 @@ This is a Nuxt 4 personal website/blog with the following structure:
 - Module-based auto-import configured in `nuxt.config.ts`
 
 ### Routing
+
 - Pages in `app/pages/`:
   - `index.vue` - Homepage
   - `posts/index.vue` - Blog post listing
@@ -42,12 +45,14 @@ This is a Nuxt 4 personal website/blog with the following structure:
 - Uses Nuxt's file-based routing
 
 ### Styling
+
 - Tailwind CSS 4.x via @tailwindcss/vite plugin
 - Global styles in `app/style.css`
 - Uses reka-ui component library
 - Tailwind Radix Colors and tailwindcss-animate for enhanced styling
 
 ### Key Dependencies
+
 - Vue 3.5+ with Nuxt 4.x
 - @nuxt/content for markdown processing
 - @nuxt/icon for SVG icons

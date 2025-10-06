@@ -5,7 +5,7 @@
  */
 export function readTime(content: string): string {
   if (!content || content.trim().length === 0) {
-    return '1 min read'
+    return '1 min read';
   }
 
   // Strip markdown syntax for accurate word count
@@ -31,23 +31,23 @@ export function readTime(content: string): string {
     .replace(/^>\s+/gm, '')
     // Remove list markers
     .replace(/^[\s]*[-*+]\s+/gm, '')
-    .replace(/^[\s]*\d+\.\s+/gm, '')
+    .replace(/^[\s]*\d+\.\s+/gm, '');
 
   // Count words (split by whitespace and filter empty strings)
   const words = plainText
     .trim()
     .split(/\s+/)
-    .filter(word => word.length > 0)
+    .filter((word) => word.length > 0);
 
-  const wordCount = words.length
+  const wordCount = words.length;
 
   // Calculate read time based on 225 words per minute average
-  const minutes = Math.ceil(wordCount / 225)
+  const minutes = Math.ceil(wordCount / 225);
 
   // Handle very short content
   if (minutes < 1) {
-    return '1 min read'
+    return '1 min read';
   }
 
-  return `${minutes} min read`
+  return `${minutes} min read`;
 }

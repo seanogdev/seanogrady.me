@@ -50,6 +50,7 @@ Design tokens need documentation just like code needs comments. But documenting 
 We solve this with structured metadata embedded in our token files. Each token includes a description, usage guidelines, and example use cases. Our documentation site automatically generates token pages from this metadata, ensuring the docs stay synchronized with the actual tokens.
 
 For example:
+
 ```json
 {
   "color": {

@@ -35,15 +35,8 @@ Accessible validation starts with proper ARIA (Accessible Rich Internet Applicat
 First, mark invalid fields explicitly:
 
 ```html
-<input
-  type="email"
-  id="email"
-  aria-invalid="true"
-  aria-describedby="email-error"
-/>
-<span id="email-error" role="alert">
-  Please enter a valid email address
-</span>
+<input type="email" id="email" aria-invalid="true" aria-describedby="email-error" />
+<span id="email-error" role="alert">Please enter a valid email address</span>
 ```
 
 The `aria-invalid="true"` attribute tells screen readers this field has a validation problem. When the user focuses the input, they'll hear "Email, invalid entry, edit text." They know immediately something's wrong.
@@ -127,7 +120,11 @@ Here's a React Hook Form example with proper accessibility:
 import { useForm } from 'react-hook-form';
 
 function SignupForm() {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -142,8 +139,8 @@ function SignupForm() {
             required: 'Email is required',
             pattern: {
               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: 'Please enter a valid email address'
-            }
+              message: 'Please enter a valid email address',
+            },
           })}
         />
         {errors.email && (

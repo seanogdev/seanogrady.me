@@ -1,7 +1,7 @@
 <script setup lang="ts">
-const route = useRoute()
-const page = computed(() => Number(route.query.page) || 1)
-const itemsPerPage = 10
+const route = useRoute();
+const page = computed(() => Number(route.query.page) || 1);
+const itemsPerPage = 10;
 
 const { data: posts } = await useAsyncData(
   'posts',
@@ -11,18 +11,16 @@ const { data: posts } = await useAsyncData(
       .skip((page.value - 1) * itemsPerPage)
       .limit(itemsPerPage)
       .all(),
-  { watch: [page] }
-)
+  { watch: [page] },
+);
 
-const { data: totalCount } = await useAsyncData('posts-count', () =>
-  queryCollection('posts').count()
-)
+const { data: totalCount } = await useAsyncData('posts-count', () => queryCollection('posts').count());
 
-const totalPages = computed(() => Math.ceil((totalCount.value || 0) / itemsPerPage))
+const totalPages = computed(() => Math.ceil((totalCount.value || 0) / itemsPerPage));
 
 useHead({
   title: 'Posts & Musings',
-})
+});
 </script>
 
 <template>
@@ -50,17 +48,15 @@ useHead({
       <NuxtLink
         v-if="page > 1"
         :to="{ query: { page: page - 1 } }"
-        class="rounded-lg border border-gray-6 bg-gray-1 px-4 py-2 text-sm font-medium text-gray-12 hover:bg-gray-3 transition-colors"
+        class="rounded-lg border border-gray-6 bg-gray-1 px-4 py-2 text-sm font-medium text-gray-12 transition-colors hover:bg-gray-3"
       >
         ← Previous
       </NuxtLink>
-      <span class="flex items-center px-4 py-2 text-sm text-gray-11">
-        Page {{ page }} of {{ totalPages }}
-      </span>
+      <span class="flex items-center px-4 py-2 text-sm text-gray-11">Page {{ page }} of {{ totalPages }}</span>
       <NuxtLink
         v-if="page < totalPages"
         :to="{ query: { page: page + 1 } }"
-        class="rounded-lg border border-gray-6 bg-gray-1 px-4 py-2 text-sm font-medium text-gray-12 hover:bg-gray-3 transition-colors"
+        class="rounded-lg border border-gray-6 bg-gray-1 px-4 py-2 text-sm font-medium text-gray-12 transition-colors hover:bg-gray-3"
       >
         Next →
       </NuxtLink>

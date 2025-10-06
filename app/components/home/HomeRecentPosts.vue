@@ -1,16 +1,13 @@
 <script setup lang="ts">
 const { data: posts } = await useAsyncData('recent-posts', () =>
-  queryCollection('posts')
-    .order('date', 'DESC')
-    .limit(5)
-    .all()
-)
+  queryCollection('posts').order('date', 'DESC').limit(5).all(),
+);
 </script>
 
 <template>
   <section class="mt-16 w-full">
     <div class="mb-8">
-      <h2 class="text-sm font-semibold tracking-wider text-gray-11 uppercase mb-2">RECENT WRITING</h2>
+      <h2 class="mb-2 text-sm font-semibold tracking-wider text-gray-11 uppercase">RECENT WRITING</h2>
       <p class="text-gray-11">Thoughts on frontend development, design systems, and accessibility</p>
     </div>
 
@@ -30,7 +27,7 @@ const { data: posts } = await useAsyncData('recent-posts', () =>
     <div class="mt-8 text-center">
       <NuxtLink
         to="/posts"
-        class="inline-flex items-center text-sm font-medium text-blue-11 hover:text-blue-12 transition-colors"
+        class="inline-flex items-center text-sm font-medium text-blue-11 transition-colors hover:text-blue-12"
       >
         View all articles →
       </NuxtLink>

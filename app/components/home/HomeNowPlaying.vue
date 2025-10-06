@@ -1,19 +1,21 @@
 <script setup lang="ts">
 interface MusicData {
-  title: string
-  artist: string
+  title: string;
+  artist: string;
 }
 
 const nowPlaying: MusicData = {
   title: 'Nomad',
-  artist: 'Clairo'
-}
+  artist: 'Clairo',
+};
 </script>
 
 <template>
   <section class="w-full">
     <div class="mb-8">
-      <h2 class="text-sm font-semibold tracking-wider text-gray-11 dark:text-graydark-11 uppercase mb-2">🎵 LAST PLAYED</h2>
+      <h2 class="mb-2 text-sm font-semibold tracking-wider text-gray-11 uppercase dark:text-graydark-11">
+        🎵 LAST PLAYED
+      </h2>
     </div>
 
     <div class="flex items-center gap-4 rounded-lg bg-gray-3 p-4 dark:bg-graydark-3">
