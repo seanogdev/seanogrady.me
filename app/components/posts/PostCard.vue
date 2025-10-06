@@ -29,7 +29,7 @@ const formatDate = (date: string | Date) => {
       </span>
     </div>
 
-    <h3 class="mb-2 text-xl font-semibold leading-relaxed text-jade-12 dark:text-jadedark-12">
+    <h3 class="mb-2 text-xl leading-relaxed font-semibold text-jade-12 dark:text-jadedark-12">
       {{ title }}
     </h3>
 
@@ -42,7 +42,7 @@ const formatDate = (date: string | Date) => {
 
       <NuxtLink
         :to="path"
-        class="inline-flex items-center text-sm font-medium leading-relaxed text-jade-12 transition-colors hover:text-jade-11 dark:text-jadedark-12 dark:hover:text-jadedark-11"
+        class="inline-flex items-center text-sm leading-relaxed font-medium text-jade-12 transition-colors hover:text-jade-11 dark:text-jadedark-12 dark:hover:text-jadedark-11"
       >
         Read article →
       </NuxtLink>

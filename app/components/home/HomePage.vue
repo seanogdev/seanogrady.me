@@ -22,7 +22,7 @@ const careAboutTopics = [
         that are accessible, and tooling that automates the boring stuff.
       </p>
       <div class="mt-2">
-        <h2 class="mb-4 text-xl font-bold leading-relaxed text-jade-11 dark:text-jadedark-12">What I care about</h2>
+        <h2 class="mb-4 text-xl leading-relaxed font-bold text-jade-11 dark:text-jadedark-12">What I care about</h2>
         <div class="flex flex-wrap gap-2">
           <Chip v-for="topic in careAboutTopics" :key="topic" :label="topic" />
         </div>
