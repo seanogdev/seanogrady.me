@@ -8,7 +8,7 @@ interface PostCardProps {
   path: string;
 }
 
-const props = defineProps<PostCardProps>();
+defineProps<PostCardProps>();
 
 const formatDate = (date: string | Date) => {
   const d = new Date(date);
@@ -17,7 +17,9 @@ const formatDate = (date: string | Date) => {
 </script>
 
 <template>
-  <article class="rounded-lg border border-gray-6 bg-white p-6 transition-shadow hover:shadow-md dark:border-graydark-6 dark:bg-graydark-1">
+  <article
+    class="bg-white rounded-lg border border-gray-6 p-6 transition-shadow hover:shadow-md dark:border-graydark-6 dark:bg-graydark-1"
+  >
     <div class="mb-3 flex items-center gap-2 text-sm text-gray-11 dark:text-graydark-11">
       <time :datetime="typeof date === 'string' ? date : date.toISOString()">{{ formatDate(date) }}</time>
       <span>•</span>
