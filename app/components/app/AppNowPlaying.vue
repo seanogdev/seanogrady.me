@@ -16,6 +16,8 @@ const shouldShowNowPlaying = computed(() => {
 
 const relativeTime = computed(() => {
   if (!trackData.value) return '';
+
+  const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
   const now = Date.now();
   const diff = now - trackData.value.timestamp;
 
@@ -24,10 +26,10 @@ const relativeTime = computed(() => {
   const hours = Math.floor(minutes / 60);
   const days = Math.floor(hours / 24);
 
-  if (days > 0) return `${days}d ago`;
-  if (hours > 0) return `${hours}h ago`;
-  if (minutes > 0) return `${minutes}m ago`;
-  return 'just now';
+  if (days > 0) return rtf.format(-days, 'day');
+  if (hours > 0) return rtf.format(-hours, 'hour');
+  if (minutes > 0) return rtf.format(-minutes, 'minute');
+  return rtf.format(0, 'second');
 });
 </script>
 
@@ -58,7 +60,7 @@ const relativeTime = computed(() => {
         </div>
 
         <div class="min-w-0 flex-1">
-          <div class="text-xl font-bold leading-tight text-red-12 dark:text-reddark-12">{{ trackData.name }}</div>
+          <div class="text-xl leading-tight font-bold text-red-12 dark:text-reddark-12">{{ trackData.name }}</div>
           <div class="mt-2 text-base font-medium text-red-11 dark:text-reddark-11">{{ trackData.artist }}</div>
           <div v-if="trackData.album" class="mt-1 text-sm text-red-10 dark:text-reddark-10">
             {{ trackData.album }}
