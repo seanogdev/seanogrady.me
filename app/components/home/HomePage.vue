@@ -10,9 +10,11 @@ const careAboutTopics = [
 </script>
 <template>
   <ClientOnly>
-    <HomeAvatar class="col-span-4 mt-4 aspect-square" />
-    <div class="col-span-8 grid auto-rows-auto content-start gap-6">
-      <h1 class="text-4xl leading-relaxed font-bold text-balance md:text-5xl">
+    <HomeAvatar
+      class="col-span-6 col-start-4 mx-auto mt-4 aspect-square w-full max-w-64 md:col-span-4 md:col-start-1 md:max-w-none"
+    />
+    <div class="col-span-12 grid auto-rows-auto content-start gap-6 md:col-span-8">
+      <h1 class="text-6xl leading-relaxed font-bold text-balance md:text-5xl">
         Hey, I'm
         <span class="font-bold">Seán</span>
         <span class="inline-block">👋</span>

@@ -19,6 +19,11 @@ const lastfmApiResponseSchema = z.object({
             '#text': z.string(),
           }),
         ),
+        date: z
+          .object({
+            uts: z.string(),
+          })
+          .optional(),
         '@attr': z
           .object({
             nowplaying: z.string(),
@@ -64,14 +69,18 @@ function extractTrackData(apiResponse: z.infer<typeof lastfmApiResponseSchema>):
   }
 
   const largeImage = track.image.find((img) => img.size === 'large');
+  const isNowPlaying = track['@attr']?.nowplaying === 'true';
+
+  // Use the actual play timestamp from Last.fm (in seconds), or current time for now playing tracks
+  const timestamp = isNowPlaying ? Date.now() : (track.date ? parseInt(track.date.uts) * 1000 : Date.now());
 
   const trackData = {
     name: track.name,
     artist: track.artist['#text'],
     album: track.album['#text'],
     albumArt: largeImage?.['#text'] || '',
-    nowPlaying: track['@attr']?.nowplaying === 'true',
-    timestamp: Date.now(),
+    nowPlaying: isNowPlaying,
+    timestamp,
   };
 
   return trackDataSchema.parse(trackData);
