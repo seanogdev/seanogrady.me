@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import type { TrackData } from '../../shared/types';
 import { readCache, writeCache } from '../utils/cache';
 
 const lastfmApiResponseSchema = z.object({
@@ -34,9 +35,7 @@ const trackDataSchema = z.object({
   album: z.string(),
   albumArt: z.string(),
   nowPlaying: z.boolean(),
-});
-
-type TrackData = z.infer<typeof trackDataSchema>;
+}) satisfies z.ZodType<TrackData>;
 
 async function fetchRecentTracks(apiKey: string, username: string) {
   const url = new URL('https://ws.audioscrobbler.com/2.0/');
