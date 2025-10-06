@@ -71,7 +71,7 @@ const relativeTime = computed(() => {
       <div class="mt-6 flex items-center justify-between border-t border-red-6 pt-4 dark:border-reddark-6">
         <p class="text-xs text-red-11 dark:text-reddark-11">Updates automatically via Last.fm</p>
         <a
-          href="https://www.last.fm/user/YOUR_USERNAME"
+          :href="`https://www.last.fm/user/${$config.lastfmUsername}`"
           target="_blank"
           rel="noopener noreferrer"
           class="text-xs font-medium text-red-11 underline decoration-red-9 underline-offset-2 transition-colors hover:text-red-12 dark:text-reddark-11 dark:decoration-reddark-9 dark:hover:text-reddark-12"
