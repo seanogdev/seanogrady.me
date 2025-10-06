@@ -9,5 +9,6 @@
         that are accessible, and tooling that automates the boring stuff.
       </p>
     </div>
+    <HomeRecentPosts />
   </ClientOnly>
 </template>
