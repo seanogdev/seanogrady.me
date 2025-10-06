@@ -26,7 +26,7 @@ useHead({
 <template>
   <div>
     <h1
-      class="-ml-2 border-l-2 border-jade-12 pl-2 text-2xl font-medium text-mint-12 uppercase font-stretch-125% text-trim-both sm:-ml-4 sm:pl-4 dark:border-jadedark-12"
+      class="-ml-2 border-l-2 border-jade-12 pl-2 text-2xl font-medium text-jade-12 uppercase text-trim-both sm:-ml-4 sm:pl-4 dark:border-jadedark-12 dark:text-jadedark-12"
     >
       Posts
     </h1>
@@ -48,15 +48,17 @@ useHead({
       <NuxtLink
         v-if="page > 1"
         :to="{ query: { page: page - 1 } }"
-        class="rounded-lg border border-gray-6 bg-gray-1 px-4 py-2 text-sm font-medium text-gray-12 transition-colors hover:bg-gray-3"
+        class="rounded-lg border border-jade-6 bg-jade-1 px-4 py-2 text-sm font-medium text-jade-12 transition-colors hover:bg-jade-3 dark:border-jadedark-6 dark:bg-jadedark-1 dark:text-jadedark-12 dark:hover:bg-jadedark-3"
       >
         ← Previous
       </NuxtLink>
-      <span class="flex items-center px-4 py-2 text-sm text-gray-11">Page {{ page }} of {{ totalPages }}</span>
+      <span class="flex items-center px-4 py-2 text-sm text-jade-11 dark:text-jadedark-11">
+        Page {{ page }} of {{ totalPages }}
+      </span>
       <NuxtLink
         v-if="page < totalPages"
         :to="{ query: { page: page + 1 } }"
-        class="rounded-lg border border-gray-6 bg-gray-1 px-4 py-2 text-sm font-medium text-gray-12 transition-colors hover:bg-gray-3"
+        class="rounded-lg border border-jade-6 bg-jade-1 px-4 py-2 text-sm font-medium text-jade-12 transition-colors hover:bg-jade-3 dark:border-jadedark-6 dark:bg-jadedark-1 dark:text-jadedark-12 dark:hover:bg-jadedark-3"
       >
         Next →
       </NuxtLink>

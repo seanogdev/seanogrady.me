@@ -56,7 +56,7 @@
 @layer components {
   .prose {
     h1 {
-      @apply mt-8 mb-6 text-2xl font-[600] text-jade-12 italic sm:text-3xl dark:text-jadedark-12;
+      @apply mt-8 mb-6 text-2xl font-semibold text-jade-12 italic sm:text-3xl dark:text-jadedark-12;
     }
 
     h2 {
@@ -92,7 +92,7 @@
     }
 
     strong {
-      @apply font-[500];
+      @apply font-medium;
     }
 
     ul,

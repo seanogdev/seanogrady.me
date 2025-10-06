@@ -25,7 +25,7 @@ const socialLinks: SocialLink[] = [
 <template>
   <section class="w-full">
     <div class="mb-8">
-      <h2 class="mb-2 text-sm font-semibold tracking-wider text-gray-11 uppercase dark:text-graydark-11">
+      <h2 class="mb-2 text-sm font-semibold tracking-wider text-jade-11 uppercase dark:text-jadedark-11">
         FIND ME ONLINE
       </h2>
     </div>
@@ -38,19 +38,19 @@ const socialLinks: SocialLink[] = [
         target="_blank"
         rel="noopener noreferrer"
         :aria-label="`Visit my ${link.title} profile`"
-        class="focus-visible:ring-primary-8 flex items-center gap-4 rounded-lg bg-gray-3 p-4 transition-shadow hover:shadow-md focus-visible:ring-2 focus-visible:outline-none dark:bg-graydark-3 dark:hover:shadow-lg"
+        class="flex items-center gap-4 rounded-lg bg-jade-3 p-4 transition-shadow hover:shadow-md focus-visible:ring-2 focus-visible:ring-jade-8 focus-visible:outline-none dark:bg-jadedark-1 dark:hover:shadow-lg"
       >
-        <Icon :name="link.icon" class="h-6 w-6 flex-shrink-0 text-gray-11 dark:text-graydark-11" />
+        <Icon :name="link.icon" class="h-6 w-6 flex-shrink-0 text-jade-11 dark:text-jadedark-11" />
 
         <div class="flex-1">
-          <div class="font-semibold text-gray-12 dark:text-graydark-12">{{ link.title }}</div>
-          <div class="text-sm text-gray-11 dark:text-graydark-11">{{ link.subtitle }}</div>
+          <div class="font-semibold text-jade-12 dark:text-jadedark-12">{{ link.title }}</div>
+          <div class="text-sm text-jade-11 dark:text-jadedark-11">{{ link.subtitle }}</div>
         </div>
 
         <Icon
           v-if="link.title === 'GitHub'"
           name="lucide:external-link"
-          class="h-4 w-4 flex-shrink-0 text-gray-11 dark:text-graydark-11"
+          class="h-4 w-4 flex-shrink-0 text-jade-11 dark:text-jadedark-11"
           aria-hidden="true"
         />
       </a>

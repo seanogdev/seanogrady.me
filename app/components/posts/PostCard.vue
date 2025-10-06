@@ -18,9 +18,9 @@ const formatDate = (date: string | Date) => {
 
 <template>
   <article
-    class="bg-white rounded-lg border border-gray-6 p-6 transition-shadow hover:shadow-md dark:border-graydark-6 dark:bg-graydark-1"
+    class="rounded-lg border border-jade-6 bg-jade-1 p-6 transition-shadow hover:shadow-md dark:border-jadedark-6 dark:bg-jadedark-1"
   >
-    <div class="mb-3 flex items-center gap-2 text-sm text-gray-11 dark:text-graydark-11">
+    <div class="mb-3 flex items-center gap-2 text-sm text-jade-11 dark:text-jadedark-11">
       <time :datetime="typeof date === 'string' ? date : date.toISOString()">{{ formatDate(date) }}</time>
       <span>•</span>
       <span class="flex items-center gap-1">
@@ -29,11 +29,11 @@ const formatDate = (date: string | Date) => {
       </span>
     </div>
 
-    <h3 class="mb-2 text-xl font-semibold text-gray-12 dark:text-graydark-12">
+    <h3 class="mb-2 text-xl font-semibold leading-relaxed text-jade-12 dark:text-jadedark-12">
       {{ title }}
     </h3>
 
-    <p class="mb-4 leading-relaxed text-gray-11 dark:text-graydark-11">{{ description }}</p>
+    <p class="mb-4 leading-relaxed text-jade-12 dark:text-jadedark-12">{{ description }}</p>
 
     <div class="flex items-center justify-between">
       <div class="flex flex-wrap gap-2">
@@ -42,7 +42,7 @@ const formatDate = (date: string | Date) => {
 
       <NuxtLink
         :to="path"
-        class="inline-flex items-center text-sm font-medium text-gray-12 transition-colors hover:text-blue-11 dark:text-graydark-12 dark:hover:text-blue-11"
+        class="inline-flex items-center text-sm font-medium leading-relaxed text-jade-12 transition-colors hover:text-jade-11 dark:text-jadedark-12 dark:hover:text-jadedark-11"
       >
         Read article →
       </NuxtLink>

@@ -21,7 +21,7 @@ const toggleDark = useToggle(isDark);
         <li v-for="item in navItems" :key="item.to">
           <NuxtLink
             :to="item.to"
-            class="text-xs tracking-widest text-jade-12 uppercase font-stretch-125% dark:text-jadedark-12"
+            class="text-xs font-medium tracking-widest text-jade-12 uppercase dark:text-jadedark-12"
           >
             {{ item.title }}
           </NuxtLink>
