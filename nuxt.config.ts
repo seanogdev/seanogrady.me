@@ -22,6 +22,7 @@ export default defineNuxtConfig({
   },
   experimental: {
     entryImportMap: false,
+    viewTransition: true,
   },
   vite: { plugins: [tailwindcss()] },
 });

@@ -1,68 +1,104 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+> Personal website and blog built with Nuxt 4, Vue 3, and Nuxt Content
 
-## Development Commands
+## What This Project Is
 
-This project uses pnpm as the package manager. Essential commands:
+A Nuxt 4 personal website/blog featuring:
 
-- `pnpm dev` - Start development server on localhost:3000
-- `pnpm build` - Build for production
-- `pnpm generate` - Generate static site
-- `pnpm preview` - Preview production build locally
-- `pnpm install` - Install dependencies
+- Markdown-based blog posts via @nuxt/content
+- File-based routing with dynamic post pages
+- Tailwind CSS 4 styling with Radix Colors
+- Client-side search with Fuse.js
+- View Transitions API for smooth page navigation
 
-### Linting and Formatting
+## Project Structure
 
-- ESLint is configured via `eslint.config.ts` using @nuxt/eslint
-- Prettier is configured via `prettier.config.js` with Tailwind CSS plugin
-- No explicit lint/format scripts defined - use your editor integration or run `pnpm exec eslint .` and `pnpm exec prettier --write .`
+```
+app/
+  components/
+    app/       - Core (header, search)
+    home/      - Homepage (avatar, page)
+    posts/     - Blog (list, card, single)
+    content/   - Prose component overrides (ProseH1, etc.)
+  pages/
+    index.vue                 - Homepage
+    posts/index.vue           - Post listing
+    posts/[...slug].vue       - Individual posts
+  style.css                   - Global styles + transitions
+content/
+  posts/       - Blog post markdown files
+nuxt.config.ts - Nuxt configuration
+content.config.ts - Content collections config
+```
 
-## Architecture
+## Quick Start
 
-This is a Nuxt 4 personal website/blog with the following structure:
+**Assume the dev server is already running on `localhost:3000`.**
 
-### Content Management
+```bash
+# Development
+pnpm dev              # Start dev server (localhost:3000)
 
-- Uses @nuxt/content for markdown-based blog posts
-- Blog posts are stored in `content/posts/*.md`
-- Content collection defined in `content.config.ts`
+# Production
+pnpm build            # Build for production
+pnpm preview          # Preview production build
 
-### Component Organization
+# Static
+pnpm generate         # Generate static site
+```
 
-- Components are organized by feature modules in `app/components/`:
-  - `app/` - Core app components (header, search)
-  - `home/` - Homepage components (avatar, page)
-  - `posts/` - Blog post components (list, single post)
-- Module-based auto-import configured in `nuxt.config.ts`
+**Requirements:** Node.js >=22.0.0, pnpm 10.3.0+
 
-### Routing
+## How to Work on This Project
 
-- Pages in `app/pages/`:
-  - `index.vue` - Homepage
-  - `posts/index.vue` - Blog post listing
-  - `posts/[...slug].vue` - Individual blog posts
-- Uses Nuxt's file-based routing
+### Adding Content
+
+**Blog posts** go in `content/posts/` as `.md` files with frontmatter:
+
+```yaml
+---
+title: Post Title
+description: Post description
+publishedAt: 2026-01-25
+---
+```
+
+**Prose components** can be customized in `app/components/content/` (e.g., `ProseH1.vue`) to override markdown rendering.
 
 ### Styling
 
-- Tailwind CSS 4.x via @tailwindcss/vite plugin
+- **Always use Tailwind classes** for styling; avoid inline styles or custom CSS
+- **Tailwind 4** via Vite plugin (not PostCSS)
+- Use **arbitrary values** for dynamic CSS: `[view-transition-name:foo]`
 - Global styles in `app/style.css`
-- Uses reka-ui component library
-- Tailwind Radix Colors and tailwindcss-animate for enhanced styling
+- Component library: `reka-ui` (auto-imported)
+- Colors: Tailwind Radix Colors (`sand`, `jade` themes)
 
-### Key Dependencies
+### Component Patterns
 
-- Vue 3.5+ with Nuxt 4.x
-- @nuxt/content for markdown processing
-- @nuxt/icon for SVG icons
-- @vueuse/core for Vue utilities
-- Fuse.js for search functionality
-- es-toolkit for utility functions
+- Components **auto-import** from `app/components/`
+- Organized by feature module (`app/`, `home/`, `posts/`)
+- Use **camelCase** for Vue attributes (`vue/attribute-hyphenation: never`)
+- **Dates**: Store as ISO strings, use Luxon `DateTime.fromISO()` and `toLocaleString()` for formatting
 
-## Important Notes
+### Linting & Formatting
 
-- Requires Node.js >=22.0.0
-- Uses pnpm 10.3.0+ as specified in packageManager field
-- ESLint rule: `vue/attribute-hyphenation` set to 'never' (use camelCase for attributes)
-- Prettier configured with 120 character line width and single quotes
+Use editor integration, or:
+
+```bash
+pnpm exec eslint .
+pnpm exec prettier --write .
+```
+
+Config: `eslint.config.ts`, `prettier.config.js` (120 char lines, single quotes)
+
+## Framework Documentation
+
+When you need detailed framework guidance:
+
+- **Nuxt 4**: https://nuxt.com/llms-full.txt
+- **Nuxt Content v3**: https://content.nuxt.com/llms-full.txt
+- **Reka UI**: https://reka-ui.com/llms-full.txt
+
+Read these when working on routing, data fetching, content queries, MDC syntax, or component patterns.

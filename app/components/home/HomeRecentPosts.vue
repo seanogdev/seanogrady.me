@@ -14,16 +14,7 @@ const { data: posts } = await useAsyncData('recent-posts', () =>
     </div>
 
     <div class="flex flex-col gap-6">
-      <PostCard
-        v-for="post in posts"
-        :key="post.path"
-        :title="post.title"
-        :description="post.description"
-        :date="post.date"
-        :readTime="readTime(post.rawbody || '')"
-        :tags="post.tags"
-        :path="post.path"
-      />
+      <PostCard v-for="post in posts" :key="post.path" :post="post" />
     </div>
 
     <div class="mt-8 text-center">

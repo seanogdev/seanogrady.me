@@ -1,25 +1,31 @@
 <script setup lang="ts">
 const route = useRoute();
+const tag = computed(() => route.params.tag as string);
 const page = computed(() => Number(route.query.page) || 1);
 const itemsPerPage = 10;
 
 const { data: posts } = await useAsyncData(
-  'posts',
+  () => `posts-tag-${tag.value}-${page.value}`,
   () =>
     queryCollection('posts')
+      .where('tags', 'LIKE', `%"${tag.value}"%`)
       .order('date', 'DESC')
       .skip((page.value - 1) * itemsPerPage)
       .limit(itemsPerPage)
       .all(),
-  { watch: [page] },
+  { watch: [page, tag] },
 );
 
-const { data: totalCount } = await useAsyncData('posts-count', () => queryCollection('posts').count());
+const { data: totalCount } = await useAsyncData(
+  () => `posts-tag-${tag.value}-count`,
+  () => queryCollection('posts').where('tags', 'LIKE', `%"${tag.value}"%`).count(),
+  { watch: [tag] },
+);
 
 const totalPages = computed(() => Math.ceil((totalCount.value || 0) / itemsPerPage));
 
 useHead({
-  title: 'Posts & Musings',
+  title: () => `Posts tagged "${tag.value}"`,
 });
 </script>
 
@@ -28,11 +34,19 @@ useHead({
     <h1
       class="-ml-2 border-l-2 border-jade-12 pl-2 text-2xl font-medium text-jade-12 uppercase text-trim-both sm:-ml-4 sm:pl-4 dark:border-jadedark-12 dark:text-jadedark-12"
     >
-      Posts
+      Tagged: {{ tag }}
     </h1>
+
+    <p class="mt-2 text-jade-11 dark:text-jadedark-11">
+      {{ totalCount }} {{ totalCount === 1 ? 'post' : 'posts' }} tagged with "{{ tag }}"
+    </p>
 
     <div class="mt-8 flex flex-col gap-6">
       <PostCard v-for="post in posts" :key="post.path" :post="post" />
+    </div>
+
+    <div v-if="posts?.length === 0" class="mt-8 text-center text-jade-11 dark:text-jadedark-11">
+      No posts found with this tag.
     </div>
 
     <div v-if="totalPages > 1" class="mt-8 flex justify-center gap-2">

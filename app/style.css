@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap');
 @import 'tailwindcss';
+
 @theme {
   --color-*: initial;
+
+  --font-family-serif: Fraunces, ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
 
   @keyframes squircle-morph {
     0% {
@@ -28,6 +32,50 @@
       transform: rotate(360deg);
     }
   }
+
+  @keyframes wave {
+    0% {
+      transform: rotate(0deg);
+    }
+    10% {
+      transform: rotate(14deg);
+    }
+    20% {
+      transform: rotate(-8deg);
+    }
+    30% {
+      transform: rotate(14deg);
+    }
+    40% {
+      transform: rotate(-4deg);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+    60% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes drawLine {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
 }
 @import 'tailwindcss-radix-colors/dist/all.css';
 
@@ -39,13 +87,8 @@
     @apply text-sage-11 dark:text-sagedark-11;
   }
 
-  .page-enter-active,
-  .page-leave-active {
-    @apply transition-all duration-300;
-  }
-  .page-enter-from,
-  .page-leave-to {
-    @apply opacity-0 blur-sm;
+  ::view-transition-group(*) {
+    @apply [animation-duration:500ms];
   }
 }
 
@@ -56,23 +99,23 @@
 @layer components {
   .prose {
     h1 {
-      @apply mt-8 mb-6 text-2xl font-semibold text-jade-12 italic no-underline sm:text-3xl dark:text-jadedark-12;
+      @apply mt-8 mb-6 font-serif text-2xl font-light text-jade-12 italic no-underline sm:text-3xl dark:text-jadedark-12;
     }
 
     h2 {
-      @apply mt-8 mb-4 text-xl font-semibold text-jade-12 no-underline sm:text-2xl dark:text-jadedark-12;
+      @apply mt-8 mb-4 font-serif text-xl font-light text-jade-12 no-underline sm:text-2xl dark:text-jadedark-12;
     }
 
     h3 {
-      @apply mt-6 mb-4 text-lg font-semibold text-jade-12 no-underline sm:text-xl dark:text-jadedark-12;
+      @apply mt-6 mb-4 font-serif text-lg font-light text-jade-12 no-underline sm:text-xl dark:text-jadedark-12;
     }
 
     h4 {
-      @apply mt-6 mb-4 text-base font-semibold text-jade-12 no-underline sm:text-lg dark:text-jadedark-12;
+      @apply mt-6 mb-4 font-serif text-base font-light text-jade-12 no-underline sm:text-lg dark:text-jadedark-12;
     }
 
     h5 {
-      @apply mt-6 mb-4 text-base text-jade-12 dark:text-jadedark-12;
+      @apply mt-6 mb-4 font-serif text-base font-light text-jade-12 dark:text-jadedark-12;
     }
 
     p {
