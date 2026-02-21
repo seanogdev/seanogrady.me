@@ -41,7 +41,7 @@ export function readTime(content: string): string {
 
   const wordCount = words.length;
 
-  // Calculate read time based on 225 words per minute average
+  // Calculate read time based on 225 wpm average
   const minutes = Math.ceil(wordCount / 225);
 
   // Handle very short content

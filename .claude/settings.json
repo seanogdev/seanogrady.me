@@ -1,0 +1,23 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path | select(test(\"\\\\.(vue|ts|js)$\"))' | xargs -I{} pnpm --dir \"$CLAUDE_PROJECT_DIR\" exec prettier --write {}",
+            "timeout": 30,
+            "statusMessage": "Formatting..."
+          },
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path | select(test(\"\\\\.(vue|ts|js)$\"))' | xargs -I{} pnpm --dir \"$CLAUDE_PROJECT_DIR\" exec eslint --fix --quiet {}",
+            "timeout": 30,
+            "statusMessage": "Linting..."
+          }
+        ]
+      }
+    ]
+  }
+}
