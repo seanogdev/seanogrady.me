@@ -2,7 +2,15 @@
 import { randomInt, sample } from 'es-toolkit';
 
 const circleCount = 5;
-const backgroundOptions = ['bg-amber-9', 'bg-blue-9', 'bg-red-9', 'bg-crimson-9', 'bg-mint-9', 'bg-sky-9', 'bg-iris-9'];
+const backgroundOptions = [
+  'bg-amber-9',
+  'bg-blue-9',
+  'bg-red-9',
+  'bg-crimson-9',
+  'bg-mint-9',
+  'bg-sky-9',
+  'bg-iris-9',
+];
 
 const squircles = Array(circleCount)
   .fill(0)

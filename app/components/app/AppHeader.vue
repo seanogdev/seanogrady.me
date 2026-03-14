@@ -5,8 +5,16 @@ const navItems = [{ title: 'Posts', to: '/posts' }];
 
 const socialLinks = [
   { title: 'Github', href: 'https://github.com/seanogdev', icon: 'simple-icons:github' },
-  { title: 'Bluesky', href: 'https://bsky.app/profile/seanogrady.me', icon: 'simple-icons:bluesky' },
-  { title: 'LinkedIn', href: 'https://www.linkedin.com/in/seanogdev/', icon: 'simple-icons:linkedin' },
+  {
+    title: 'Bluesky',
+    href: 'https://bsky.app/profile/seanogrady.me',
+    icon: 'simple-icons:bluesky',
+  },
+  {
+    title: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/seanogdev/',
+    icon: 'simple-icons:linkedin',
+  },
 ];
 
 const isDark = useDark();

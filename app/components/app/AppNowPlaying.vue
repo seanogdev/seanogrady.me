@@ -65,14 +65,21 @@ const relativeTime = computed(() => {
           <div class="truncate text-xl leading-tight font-bold text-red-12 dark:text-reddark-12">
             {{ trackData.name }}
           </div>
-          <div class="mt-2 truncate text-base font-medium text-red-11 dark:text-reddark-11">{{ trackData.artist }}</div>
-          <div v-if="trackData.album" class="mt-1 truncate text-sm text-red-10 dark:text-reddark-10">
+          <div class="mt-2 truncate text-base font-medium text-red-11 dark:text-reddark-11">
+            {{ trackData.artist }}
+          </div>
+          <div
+            v-if="trackData.album"
+            class="mt-1 truncate text-sm text-red-10 dark:text-reddark-10"
+          >
             {{ trackData.album }}
           </div>
         </div>
       </div>
 
-      <div class="mt-6 flex items-center justify-between border-t border-red-6 pt-4 dark:border-reddark-6">
+      <div
+        class="mt-6 flex items-center justify-between border-t border-red-6 pt-4 dark:border-reddark-6"
+      >
         <p class="text-xs text-red-11 dark:text-reddark-11">Updates automatically via Last.fm</p>
         <a
           :href="`https://www.last.fm/user/${config.public.lastfmUsername}`"

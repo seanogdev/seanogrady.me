@@ -1,2 +1,2 @@
 [build]
-  command = "pnpm run generate"
+command = "pnpm run generate"

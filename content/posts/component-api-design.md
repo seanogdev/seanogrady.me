@@ -41,23 +41,23 @@ Consider a `Card` component. The configuration approach might look like this:
 
 ```jsx
 <Card
-  title="Article Title"
-  subtitle="Published on Jan 1, 2024"
-  image="/image.jpg"
+  title='Article Title'
+  subtitle='Published on Jan 1, 2024'
+  image='/image.jpg'
   actions={[
     { label: 'Edit', onClick: handleEdit },
     { label: 'Delete', onClick: handleDelete },
   ]}
   showDivider={true}
-  padding="large"
+  padding='large'
 />
 ```
 
 The composition approach looks like this:
 
 ```jsx
-<Card padding="large">
-  <CardImage src="/image.jpg" />
+<Card padding='large'>
+  <CardImage src='/image.jpg' />
   <CardHeader>
     <CardTitle>Article Title</CardTitle>
     <CardSubtitle>Published on Jan 1, 2024</CardSubtitle>

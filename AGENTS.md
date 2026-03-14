@@ -28,11 +28,13 @@ pnpm preview    # preview production build
 
 ## Gotchas
 
-- `pnpm.overrides` replaces `vite` with `rolldown-vite` — may affect some plugins
+- Vite 8 installed directly — some plugins may show unmet peer dep warnings until they update their ranges
 - Last.fm "Now Playing" requires env vars: `NUXT_LASTFM_API_KEY`, `NUXT_PUBLIC_LASTFM_USERNAME`
 
 ## Framework Docs
 
-- **Nuxt 4**: https://nuxt.com/llms-full.txt
-- **Nuxt Content v3**: https://content.nuxt.com/llms-full.txt
+- **Vue 3**: https://vuejs.org/llms-full.txt
+- **Nuxt**: https://nuxt.com/llms-full.txt
+- **Nuxt Content**: https://content.nuxt.com/llms-full.txt
 - **Reka UI**: https://reka-ui.com/llms-full.txt
+- **Oxfmt/Oxlint**: https://oxc.rs/llms-full.txt

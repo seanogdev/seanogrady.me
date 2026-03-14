@@ -1,4 +1,5 @@
 import { z } from 'zod';
+
 import type { TrackData } from '../../shared/types';
 import { readCache, writeCache } from '../utils/cache';
 
@@ -72,7 +73,11 @@ function extractTrackData(apiResponse: z.infer<typeof lastfmApiResponseSchema>):
   const isNowPlaying = track['@attr']?.nowplaying === 'true';
 
   // Use the actual play timestamp from Last.fm (in seconds), or current time for now playing tracks
-  const timestamp = isNowPlaying ? Date.now() : track.date ? parseInt(track.date.uts) * 1000 : Date.now();
+  const timestamp = isNowPlaying
+    ? Date.now()
+    : track.date
+      ? parseInt(track.date.uts) * 1000
+      : Date.now();
 
   const trackData = {
     name: track.name,

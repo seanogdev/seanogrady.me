@@ -129,10 +129,10 @@ function SignupForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
-        <label htmlFor="email">Email</label>
+        <label htmlFor='email'>Email</label>
         <input
-          id="email"
-          type="email"
+          id='email'
+          type='email'
           aria-invalid={errors.email ? 'true' : 'false'}
           aria-describedby={errors.email ? 'email-error' : undefined}
           {...register('email', {
@@ -144,12 +144,12 @@ function SignupForm() {
           })}
         />
         {errors.email && (
-          <span id="email-error" role="alert">
+          <span id='email-error' role='alert'>
             {errors.email.message}
           </span>
         )}
       </div>
-      <button type="submit">Sign up</button>
+      <button type='submit'>Sign up</button>
     </form>
   );
 }

@@ -15,8 +15,12 @@
         </h1>
       </div>
 
-      <div class="animate-[fadeInUp_0.8s_cubic-bezier(0.16,1,0.3,1)_0.5s_forwards] space-y-5 opacity-0">
-        <p class="text-xl leading-relaxed text-pretty text-jade-12 md:text-2xl dark:text-jadedark-12">
+      <div
+        class="animate-[fadeInUp_0.8s_cubic-bezier(0.16,1,0.3,1)_0.5s_forwards] space-y-5 opacity-0"
+      >
+        <p
+          class="text-xl leading-relaxed text-pretty text-jade-12 md:text-2xl dark:text-jadedark-12"
+        >
           Hey, I'm Seán — a front-end engineer who's spent the last decade making software that's
           <span class="font-serif italic">simple</span>
           ,
@@ -27,6 +31,8 @@
         </p>
       </div>
     </div>
-    <HomeRecentPosts class="col-span-full animate-[fadeInUp_0.8s_cubic-bezier(0.16,1,0.3,1)_0.7s_forwards] opacity-0" />
+    <HomeRecentPosts
+      class="col-span-full animate-[fadeInUp_0.8s_cubic-bezier(0.16,1,0.3,1)_0.7s_forwards] opacity-0"
+    />
   </ClientOnly>
 </template>
