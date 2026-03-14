@@ -12,9 +12,7 @@ const viewTransitionName = computed(() => `post-${props.post.stem}`);
     class="rounded-lg border border-jade-6 bg-jade-1 p-6 transition-shadow hover:shadow-md dark:border-jadedark-6 dark:bg-jadedark-1"
   >
     <div class="mb-3 flex items-center gap-2 text-sm text-jade-11 dark:text-jadedark-11">
-      <time :datetime="date.toISODate() ?? undefined">{{
-        date.toLocaleString(DateTime.DATE_FULL)
-      }}</time>
+      <time :datetime="date.toISODate() ?? undefined">{{ date.toLocaleString(DateTime.DATE_FULL) }}</time>
       <span>•</span>
       <span class="flex items-center gap-1">
         <Icon name="lucide:clock" class="h-4 w-4" />

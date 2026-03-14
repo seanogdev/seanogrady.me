@@ -7,9 +7,7 @@ const { data: posts } = await useAsyncData('recent-posts', () =>
 <template>
   <section class="mt-16 w-full">
     <div class="mb-8">
-      <h2 class="mb-4 text-xl leading-relaxed font-bold text-jade-11 dark:text-jadedark-12">
-        RECENT WRITING
-      </h2>
+      <h2 class="mb-4 text-xl leading-relaxed font-bold text-jade-11 dark:text-jadedark-12">RECENT WRITING</h2>
       <p class="text-jade-11 dark:text-jadedark-11">
         Thoughts on frontend development, design systems, and accessibility
       </p>

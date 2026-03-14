@@ -14,9 +14,7 @@ const { data: posts } = await useAsyncData(
   { watch: [page] },
 );
 
-const { data: totalCount } = await useAsyncData('posts-count', () =>
-  queryCollection('posts').count(),
-);
+const { data: totalCount } = await useAsyncData('posts-count', () => queryCollection('posts').count());
 
 const totalPages = computed(() => Math.ceil((totalCount.value || 0) / itemsPerPage));
 

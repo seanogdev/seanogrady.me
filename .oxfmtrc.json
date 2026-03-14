@@ -3,6 +3,7 @@
   "ignorePatterns": [],
   "singleQuote": true,
   "jsxSingleQuote": true,
+  "printWidth": 120,
   "experimentalSortPackageJson": true,
   "experimentalTailwindcss": {
     "stylesheet": "./app/style.css",
