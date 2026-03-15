@@ -14,6 +14,8 @@ const config: KnipConfig = {
     'typescript-eslint',
     // Nuxt auto-imports vue-router
     'vue-router',
+    // Pinned to stay on latest version
+    'vue',
     // Sub-deps of @nuxtjs/mdc installed directly to fix optimizeDeps resolution
     'debug',
     'parse5',
