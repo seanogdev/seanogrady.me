@@ -7,18 +7,12 @@ function toggleDark() {
 </script>
 <template>
   <header class="flex items-center justify-between py-6">
-    <NuxtLink
-      to="/"
-      class="text-xs font-medium tracking-widest text-jade-12 uppercase dark:text-jadedark-12"
-    >
+    <NuxtLink to="/" class="text-xs font-medium tracking-widest text-jade-12 uppercase dark:text-jadedark-12">
       Seán O'Grady
     </NuxtLink>
 
     <div class="flex items-center gap-6">
-      <NuxtLink
-        to="/posts"
-        class="text-xs font-medium tracking-widest text-jade-12 uppercase dark:text-jadedark-12"
-      >
+      <NuxtLink to="/posts" class="text-xs font-medium tracking-widest text-jade-12 uppercase dark:text-jadedark-12">
         Posts
       </NuxtLink>
       <button

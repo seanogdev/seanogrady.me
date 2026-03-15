@@ -47,9 +47,12 @@ export default defineNuxtConfig({
       },
     },
   },
+  nitro: {
+    preset: 'cloudflare-pages-static',
+  },
   experimental: {
     viewTransition: true,
-    payloadExtraction: false,
+    payloadExtraction: 'client',
   },
   vite: {
     optimizeDeps: {
