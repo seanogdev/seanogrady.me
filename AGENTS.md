@@ -7,7 +7,7 @@
 - **Nuxt 4** + Vue 3, file-based routing
 - **@nuxt/content** v3 — Markdown blog posts in `content/posts/`
 - **Tailwind CSS 4** via Vite plugin (not PostCSS) + Radix Colors (`sage`, `jade`)
-- **Fuse.js** — client-side search
+- **Knip** — unused code detection (`pnpm knip`), config in `knip.config.ts`
 
 ## Commands
 
