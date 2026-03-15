@@ -10,11 +10,7 @@ const moduleDirectories = modules.map((dir) => ({
 export default defineNuxtConfig({
   app: {
     head: {
-      link: [
-        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
-        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
-      ],
+      link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
     },
   },
   compatibilityDate: '2025-10-06',
@@ -22,7 +18,14 @@ export default defineNuxtConfig({
   css: ['~/style.css'],
   devtools: { enabled: true },
   icon: { mode: 'svg' },
-  modules: ['@nuxt/content', '@nuxt/icon', '@nuxt/eslint', '@nuxtjs/color-mode'],
+  modules: ['@nuxt/content', '@nuxt/fonts', '@nuxt/icon', '@nuxt/eslint', '@nuxtjs/color-mode'],
+  fonts: {
+    families: [
+      { name: 'Plus Jakarta Sans', provider: 'google', weights: ['200 800'], styles: ['normal', 'italic'], global: true },
+      { name: 'Fraunces', provider: 'google', weights: ['100 900'], styles: ['normal', 'italic'], global: true },
+    ],
+    processCSSVariables: true,
+  },
   colorMode: {
     classSuffix: '',
   },

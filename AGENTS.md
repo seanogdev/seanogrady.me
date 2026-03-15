@@ -37,4 +37,5 @@ pnpm preview    # preview production build
 - **Nuxt**: https://nuxt.com/llms-full.txt
 - **Nuxt Content**: https://content.nuxt.com/llms-full.txt
 - **Oxfmt/Oxlint**: https://oxc.rs/llms-full.txt
+- **Nuxt Fonts**: https://fonts.nuxt.com/llms.txt
 - **Oxc (short)**: https://oxc.rs/llms.txt

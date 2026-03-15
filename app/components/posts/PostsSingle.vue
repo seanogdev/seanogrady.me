@@ -28,6 +28,15 @@ const date = computed(() => (post.value ? DateTime.fromISO(post.value.date) : nu
     class="prose col-span-12 *:scroll-mt-14 md:col-span-8 md:col-start-3"
     :style="{ viewTransitionName: transitionName }"
   >
+    <img
+      v-if="post.coverImage"
+      :src="post.coverImage"
+      :alt="post.title"
+      width="1200"
+      height="800"
+      class="not-prose mb-8 aspect-[3/1] w-full rounded-lg object-cover md:-mx-12 md:w-[calc(100%+6rem)] md:max-w-[calc(100%+6rem)]"
+    />
+
     <div class="not-prose mb-8 flex items-center gap-4 text-sm text-sage-10 dark:text-sagedark-10">
       <time v-if="date" :datetime="date.toISODate() ?? undefined">{{ date.toLocaleString(DateTime.DATE_MED) }}</time>
       <span>·</span>
