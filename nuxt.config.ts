@@ -19,9 +19,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     lastfmApiKey: '',
-    public: {
-      lastfmUsername: '',
-    },
+    lastfmUsername: '',
   },
   eslint: {
     config: {

@@ -90,7 +90,7 @@ function extractTrackData(apiResponse: z.infer<typeof lastfmApiResponseSchema>):
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig(event);
   const apiKey = config.lastfmApiKey;
-  const username = config.public.lastfmUsername;
+  const username = config.lastfmUsername;
 
   if (!apiKey || !username) {
     throw createError({

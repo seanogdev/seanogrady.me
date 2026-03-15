@@ -30,7 +30,7 @@ pnpm preview    # preview production build
 ## Gotchas
 
 - Vite 8 installed directly — some plugins may show unmet peer dep warnings until they update their ranges
-- Last.fm "Now Playing" requires env vars: `NUXT_LASTFM_API_KEY`, `NUXT_PUBLIC_LASTFM_USERNAME`
+- Last.fm "Now Playing" requires env vars: `NUXT_LASTFM_API_KEY`, `NUXT_LASTFM_USERNAME`
 
 ## Framework Docs
 
