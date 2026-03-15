@@ -52,7 +52,6 @@ export default defineNuxtConfig({
       nodeCompat: true,
     },
   },
-  ssr: false,
   experimental: {
     viewTransition: true,
     payloadExtraction: false,
