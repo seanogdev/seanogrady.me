@@ -64,7 +64,7 @@ The first version of just that was a standalone script. It found the issues, but
 
 Knip, on the other hand, already deals with dead code. It has reporters, GitHub integration, and people already use it as part of their workflow. If I could get composable analysis into that same pipeline, it wouldn't be a side project. It'd just be part of how we work.
 
-Knip has a [preprocessor API](https://knip.dev/reference/preprocessors) that lets you inject issues into its pipeline. It's not designed for this, but as I learned, you _can_ shoehorn composable analysis into Knip's unused exports report. It's very much a hack, but it works - composable dead code shows up in the same workflow developers already use.
+Knip has a [preprocessor API](https://knip.dev/features/reporters#preprocessors) that lets you inject issues into its pipeline. It's not designed for this, but as I learned, you _can_ shoehorn composable analysis into Knip's unused exports report. It's very much a hack, but it works - composable dead code shows up in the same workflow developers already use.
 
 It can't catch everything. If a consumer does `const todos = useTodos()` without destructuring, the tool bails out - it can't know which properties are accessed later. That's fine, I'd rather it miss things than report false positives. A flagged property might also still be used internally within the composable, so it's not always a straight deletion. It just tells you (or \<Insert AI tool of your choice\>) where to look.
 
