@@ -18,7 +18,7 @@ When you call a composable, it runs all of its setup code - every ref, every wat
 
 We've been using [Knip](https://knip.dev/) at work for a while. It finds unused files, unused dependencies and unused exports across your codebase. For us it's been brilliant at keeping things tidy as our project scales and evolves.
 
-But Knip can only work at module boundaries.
+But Knip can only work at module boundaries - it tracks what's imported and exported between files, not what's used within them. So what about the unused code inside of a composable?
 
 ```ts
 // useTodos.ts
