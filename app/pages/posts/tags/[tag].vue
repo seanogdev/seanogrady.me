@@ -25,7 +25,7 @@ const { data: totalCount } = await useAsyncData(
 const totalPages = computed(() => Math.ceil((totalCount.value || 0) / itemsPerPage));
 
 useHead({ title: () => `Tagged: ${tag.value}` });
-useSeoMeta({ description: () => `Posts tagged with "${tag.value}" by Sean O'Grady.` });
+useSeoMeta({ description: () => `Posts tagged with "${tag.value}".` });
 </script>
 
 <template>
