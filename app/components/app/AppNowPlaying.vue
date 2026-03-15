@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import type { TrackData } from '~~/shared/types';
-
 import { DateTime } from 'luxon';
+import type { TrackData } from '~~/shared/types';
 
 const { data: trackData } = await useFetch<TrackData>('/api/lastfm');
 

@@ -7,7 +7,9 @@ const { data: posts } = await useAsyncData('recent-posts', () =>
 <template>
   <section class="col-span-12 md:col-span-8 md:col-start-3">
     <div class="mb-6 flex items-baseline justify-between">
-      <h2 class="text-xs font-medium tracking-widest text-balance text-sage-10 uppercase dark:text-sagedark-10">Recent writing</h2>
+      <h2 class="text-xs font-medium tracking-widest text-balance text-sage-10 uppercase dark:text-sagedark-10">
+        Recent writing
+      </h2>
       <NuxtLink
         to="/posts"
         class="text-sm text-sage-10 transition-colors hover:text-jade-11 dark:text-sagedark-10 dark:hover:text-jadedark-11"
