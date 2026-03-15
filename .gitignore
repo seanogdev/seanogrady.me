@@ -13,6 +13,9 @@ node_modules
 logs
 *.log
 
+# ESLint
+.eslintcache
+
 # Misc
 .DS_Store
 .fleet

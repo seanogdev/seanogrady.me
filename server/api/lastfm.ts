@@ -58,7 +58,7 @@ async function fetchRecentTracks(apiKey: string, username: string) {
     throw new Error(`Last.fm API error: ${response.status} ${response.statusText}`);
   }
 
-  const data = await response.json();
+  const data: unknown = await response.json();
   return lastfmApiResponseSchema.parse(data);
 }
 

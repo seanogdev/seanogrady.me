@@ -23,6 +23,14 @@ export default defineNuxtConfig({
       lastfmUsername: '',
     },
   },
+  eslint: {
+    config: {
+      stylistic: false,
+      typescript: {
+        tsconfigPath: './tsconfig.json',
+      },
+    },
+  },
   experimental: {
     entryImportMap: false,
     viewTransition: true,

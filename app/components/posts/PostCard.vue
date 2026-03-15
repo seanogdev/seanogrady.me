@@ -2,23 +2,20 @@
 import type { PostsCollectionItem } from '@nuxt/content';
 import { DateTime } from 'luxon';
 
-const props = defineProps<{ post: PostsCollectionItem }>();
-const date = computed(() => DateTime.fromISO(props.post.date));
-const transitionName = computed(() => `post-${props.post.stem?.replaceAll('/', '-')}`);
-
-const active = ref(false);
+const { post } = defineProps<{ post: PostsCollectionItem }>();
+const date = computed(() => DateTime.fromISO(post.date));
+const transitionName = computed(() => `post-${post.slug}`);
 </script>
 
 <template>
-  <article class="py-6" :style="{ viewTransitionName: active ? transitionName : undefined }">
+  <article class="py-6" :style="{ viewTransitionName: transitionName }">
     <h3
       class="mb-2 font-serif text-2xl leading-normal font-light md:text-4xl"
-      :style="{ viewTransitionName: active ? `${transitionName}-title` : undefined }"
+      :style="{ viewTransitionName: `${transitionName}-title` }"
     >
       <NuxtLink
         :to="post.path"
         class="text-sage-12 transition-colors hover:text-jade-11 dark:text-sagedark-11 dark:hover:text-jadedark-11"
-        @click="active = true"
       >
         {{ post.title }}
       </NuxtLink>
@@ -29,7 +26,7 @@ const active = ref(false);
     <div class="flex items-center gap-2 text-xs tracking-wide text-sage-10 uppercase dark:text-sagedark-10">
       <time :datetime="date.toISODate() ?? undefined">{{ date.toLocaleString(DateTime.DATE_MED) }}</time>
       <span>·</span>
-      <span>{{ readTime(post.rawbody || '') }}</span>
+      <span>{{ post.readingTime || 1 }} min read</span>
       <template v-if="post.tags?.length">
         <span>·</span>
         <NuxtLink

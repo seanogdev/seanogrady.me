@@ -3,6 +3,7 @@ title: 'Using Static Analysis to Clean Up Vue Composables'
 date: 2026-03-15
 description: 'How we used a Knip preprocessor to find unused return properties in Vue composables and gain confidence in cleaning them up.'
 tags: ['developer-tooling', 'vue', 'performance', 'dead-code']
+coverImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&q=80'
 ---
 
 # Using Static Analysis to Clean Up Vue Composables

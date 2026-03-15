@@ -17,7 +17,7 @@ export async function readCache<T>(filename: string): Promise<T | null> {
   }
 }
 
-export async function writeCache<T>(filename: string, data: T): Promise<void> {
+export async function writeCache(filename: string, data: unknown): Promise<void> {
   await ensureCacheDir();
   const filePath = join(CACHE_DIR, filename);
   await writeFile(filePath, JSON.stringify(data, null, 2), 'utf-8');

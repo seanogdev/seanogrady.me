@@ -2,9 +2,7 @@
 <script setup lang="ts">
 import type { PrimitiveProps } from 'reka-ui';
 
-withDefaults(defineProps<PrimitiveProps>(), {
-  as: 'span',
-});
+const { as = 'span', asChild } = defineProps<PrimitiveProps>();
 </script>
 
 <template>

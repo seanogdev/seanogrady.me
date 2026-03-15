@@ -1,4 +1,4 @@
-import type { KnipConfig } from 'knip'
+import type { KnipConfig } from 'knip';
 
 const config: KnipConfig = {
   entry: [
@@ -20,6 +20,6 @@ const config: KnipConfig = {
     'oxlint.config.ts',
     'content.config.ts',
   ],
-}
+};
 
-export default config
+export default config;

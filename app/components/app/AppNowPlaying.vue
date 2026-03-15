@@ -5,8 +5,6 @@ import { DateTime } from 'luxon';
 
 const { data: trackData } = await useFetch<TrackData>('/api/lastfm');
 
-const config = useRuntimeConfig();
-
 const timestamp = computed(() => (trackData.value ? DateTime.fromMillis(trackData.value.timestamp) : null));
 
 const isRecentlyPlayed = computed(() => {
@@ -37,7 +35,7 @@ const relativeTime = computed(() => {
     </div>
 
     <div class="flex gap-5">
-      <div class="relative flex-shrink-0">
+      <div class="relative shrink-0">
         <img
           v-if="trackData.albumArt"
           :src="trackData.albumArt"
@@ -57,14 +55,6 @@ const relativeTime = computed(() => {
         <div v-if="trackData.album" class="mt-1 truncate text-base text-sage-11 dark:text-sagedark-11">
           {{ trackData.album }}
         </div>
-        <a
-          :href="`https://www.last.fm/user/${config.public.lastfmUsername}`"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="mt-2 inline-block text-xs text-sage-10 transition-colors hover:text-jade-11 dark:text-sagedark-10 dark:hover:text-jadedark-11"
-        >
-          View on Last.fm →
-        </a>
       </div>
     </div>
   </section>

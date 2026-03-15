@@ -1,37 +1,30 @@
 <script setup lang="ts">
-const route = useRoute();
-const page = computed(() => Number(route.query.page) || 1);
-const itemsPerPage = 10;
+import type { PostsCollectionItem } from '@nuxt/content';
 
-const { data: posts } = await useAsyncData(
-  'posts',
-  () =>
-    queryCollection('posts')
-      .order('date', 'DESC')
-      .skip((page.value - 1) * itemsPerPage)
-      .limit(itemsPerPage)
-      .all(),
-  { watch: [page] },
-);
-
-const { data: totalCount } = await useAsyncData('posts-count', () => queryCollection('posts').count());
-
-const totalPages = computed(() => Math.ceil((totalCount.value || 0) / itemsPerPage));
-
-useHead({
-  title: 'Posts & Musings',
-});
+const {
+  title,
+  posts,
+  page = 1,
+  totalPages = 1,
+} = defineProps<{
+  title: string;
+  posts: PostsCollectionItem[];
+  page?: number;
+  totalPages?: number;
+}>();
 </script>
 
 <template>
   <div class="col-span-12 md:col-span-8 md:col-start-3">
-    <h1 class="font-serif text-3xl leading-normal font-light text-sage-12 sm:text-4xl dark:text-sagedark-11">
-      Posts
+    <h1 class="text-xs font-medium tracking-widest text-sage-10 uppercase dark:text-sagedark-10">
+      {{ title }}
     </h1>
 
     <div class="mt-8 divide-y divide-sage-6 dark:divide-sagedark-6">
       <PostCard v-for="post in posts" :key="post.path" :post="post" />
     </div>
+
+    <div v-if="posts.length === 0" class="mt-8 text-sage-11 dark:text-sagedark-11">No posts found.</div>
 
     <div v-if="totalPages > 1" class="mt-8 flex justify-center gap-2">
       <NuxtLink

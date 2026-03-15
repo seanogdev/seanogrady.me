@@ -1,5 +1,8 @@
 <script lang="ts" setup>
-const navItems = [{ title: 'Posts', to: '/posts' }];
+const navItems = [
+  { title: 'Home', to: '/' },
+  { title: 'Posts', to: '/posts' },
+];
 
 const socialLinks = [
   { title: 'Github', href: 'https://github.com/seanogdev', icon: 'simple-icons:github' },
@@ -22,9 +25,7 @@ function toggleDark() {
 }
 </script>
 <template>
-  <header
-    class="flex items-center justify-between py-6"
-  >
+  <header class="flex items-center justify-between py-6">
     <nav>
       <ul class="flex items-center gap-4">
         <li v-for="item in navItems" :key="item.to">

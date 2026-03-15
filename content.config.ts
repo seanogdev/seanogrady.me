@@ -9,6 +9,9 @@ export const collections = {
       date: z.string(),
       tags: z.array(z.string()),
       rawbody: z.string(),
+      coverImage: z.string().optional(),
+      readingTime: z.number(),
+      slug: z.string(),
     }),
   }),
 };
