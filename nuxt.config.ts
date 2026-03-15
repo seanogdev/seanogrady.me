@@ -13,7 +13,7 @@ export default defineNuxtConfig({
       link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
     },
   },
-  compatibilityDate: '2025-10-06',
+  compatibilityDate: '2026-03-15',
   components: moduleDirectories,
   css: ['~/style.css'],
   devtools: { enabled: true },
@@ -46,7 +46,11 @@ export default defineNuxtConfig({
     },
   },
   nitro: {
-    preset: 'cloudflarePagesStatic',
+    preset: 'cloudflarePages',
+    cloudflare: {
+      deployConfig: true,
+      nodeCompat: true,
+    },
   },
   ssr: false,
   experimental: {
