@@ -21,7 +21,13 @@ export default defineNuxtConfig({
   modules: ['@nuxt/content', '@nuxt/fonts', '@nuxt/image', '@nuxt/icon', '@nuxt/eslint', '@nuxtjs/color-mode'],
   fonts: {
     families: [
-      { name: 'Plus Jakarta Sans', provider: 'google', weights: ['200 800'], styles: ['normal', 'italic'], global: true },
+      {
+        name: 'Plus Jakarta Sans',
+        provider: 'google',
+        weights: ['200 800'],
+        styles: ['normal', 'italic'],
+        global: true,
+      },
       { name: 'Fraunces', provider: 'google', weights: ['100 900'], styles: ['normal', 'italic'], global: true },
     ],
     processCSSVariables: true,
@@ -43,7 +49,6 @@ export default defineNuxtConfig({
   },
   experimental: {
     viewTransition: true,
-    inlineSSRStyles: true,
   },
   vite: {
     optimizeDeps: {

@@ -36,7 +36,7 @@ const date = computed(() => (post.value ? DateTime.fromISO(post.value.date) : nu
       height="800"
       loading="eager"
       :preload="{ fetchPriority: 'high' }"
-      class="not-prose mb-8 aspect-[3/1] w-full rounded-lg object-cover md:-mx-12 md:w-[calc(100%+6rem)] md:max-w-[calc(100%+6rem)]"
+      class="not-prose mb-8 aspect-3/1 w-full rounded-lg object-cover md:-mx-12 md:w-[calc(100%+6rem)] md:max-w-[calc(100%+6rem)]"
     />
 
     <div class="not-prose mb-8 flex items-center gap-4 text-sm text-sage-10 dark:text-sagedark-10">
