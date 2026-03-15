@@ -30,14 +30,14 @@ const date = computed(() => (post.value ? DateTime.fromISO(post.value.date) : nu
     class="prose col-span-12 *:scroll-mt-14 md:col-span-8 md:col-start-3"
     :style="{ viewTransitionName: transitionName }"
   >
-    <NuxtImg
+    <img
       v-if="post.coverImage"
       :src="post.coverImage"
       :alt="post.title"
       width="1200"
       height="800"
       loading="eager"
-      :preload="{ fetchPriority: 'high' }"
+      fetchpriority="high"
       class="not-prose mb-8 aspect-3/1 w-full rounded-lg object-cover md:-mx-12 md:w-[calc(100%+6rem)] md:max-w-[calc(100%+6rem)]"
     />
 
