@@ -7,7 +7,6 @@
 - **Nuxt 4** + Vue 3, file-based routing
 - **@nuxt/content** v3 — Markdown blog posts in `content/posts/`
 - **Tailwind CSS 4** via Vite plugin (not PostCSS) + Radix Colors (`sage`, `jade`)
-- **Reka UI** — component library (auto-imported)
 - **Fuse.js** — client-side search
 
 ## Commands
@@ -37,5 +36,5 @@ pnpm preview    # preview production build
 - **Vue 3**: https://vuejs.org/llms-full.txt
 - **Nuxt**: https://nuxt.com/llms-full.txt
 - **Nuxt Content**: https://content.nuxt.com/llms-full.txt
-- **Reka UI**: https://reka-ui.com/llms-full.txt
 - **Oxfmt/Oxlint**: https://oxc.rs/llms-full.txt
+- **Oxc (short)**: https://oxc.rs/llms.txt

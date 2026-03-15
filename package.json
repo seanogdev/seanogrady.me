@@ -18,12 +18,12 @@
   },
   "dependencies": {
     "@eslint/js": "^10.0.1",
-    "@nuxt/content": "3.11.2",
+    "@nuxt/content": "3.12.0",
     "@nuxt/eslint": "^1.15.2",
     "@nuxt/eslint-config": "^1.15.2",
     "@nuxt/icon": "^2.2.1",
     "@nuxtjs/color-mode": "^4.0.0",
-    "@tailwindcss/vite": "4.2.0",
+    "@tailwindcss/vite": "4.2.1",
     "@types/luxon": "^3.7.1",
     "@vueuse/core": "^14.2.1",
     "es-toolkit": "^1.45.1",
@@ -34,14 +34,13 @@
     "globals": "^17.4.0",
     "luxon": "^3.7.2",
     "nuxt": "^4.4.2",
-    "oxfmt": "^0.35.0",
+    "oxfmt": "^0.40.0",
     "oxlint": "^1.50.0",
     "oxlint-tsgolint": "^0.16.0",
-    "reka-ui": "2.8.2",
     "remark-parse": "^11.0.0",
     "remark-stringify": "^11.0.0",
     "strip-markdown": "^6.0.0",
-    "tailwindcss": "4.2.0",
+    "tailwindcss": "4.2.1",
     "tailwindcss-radix-colors": "^2.1.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.57.0",
@@ -57,7 +56,7 @@
     "knip": "^5.86.0"
   },
   "engines": {
-    "node": ">=22.0.0"
+    "node": ">=24.0.0"
   },
   "packageManager": "pnpm@10.30.1+sha512.3590e550d5384caa39bd5c7c739f72270234b2f6059e13018f975c313b1eb9fefcc09714048765d4d9efe961382c312e624572c0420762bdc5d5940cdf9be73a",
   "pnpm": {

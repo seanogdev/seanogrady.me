@@ -1,6 +1,7 @@
 import { defineConfig } from 'oxlint';
 
 export default defineConfig({
+  plugins: ['import', 'jsdoc', 'promise', 'node', 'vue'],
   categories: {},
   rules: {
     'eslint/func-style': ['error', 'declaration'],

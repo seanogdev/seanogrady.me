@@ -22,7 +22,7 @@ export default defineNuxtConfig({
   css: ['~/style.css'],
   devtools: { enabled: true },
   icon: { mode: 'svg' },
-  modules: ['@nuxt/content', 'reka-ui/nuxt', '@nuxt/icon', '@nuxt/eslint', '@nuxtjs/color-mode'],
+  modules: ['@nuxt/content', '@nuxt/icon', '@nuxt/eslint', '@nuxtjs/color-mode'],
   colorMode: {
     classSuffix: '',
   },
