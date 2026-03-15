@@ -26,7 +26,7 @@
       </div>
     </div>
   </div>
-  <HomeRecentPosts
+  <LazyHomeRecentPosts
     class="col-span-12 animate-[fadeInUp_0.8s_cubic-bezier(0.16,1,0.3,1)_0.7s_forwards] opacity-0 md:col-span-8 md:col-start-3"
   />
 </template>

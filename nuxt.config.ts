@@ -18,7 +18,7 @@ export default defineNuxtConfig({
   css: ['~/style.css'],
   devtools: { enabled: true },
   icon: { mode: 'svg' },
-  modules: ['@nuxt/content', '@nuxt/fonts', '@nuxt/icon', '@nuxt/eslint', '@nuxtjs/color-mode'],
+  modules: ['@nuxt/content', '@nuxt/fonts', '@nuxt/image', '@nuxt/icon', '@nuxt/eslint', '@nuxtjs/color-mode'],
   fonts: {
     families: [
       { name: 'Plus Jakarta Sans', provider: 'google', weights: ['200 800'], styles: ['normal', 'italic'], global: true },
