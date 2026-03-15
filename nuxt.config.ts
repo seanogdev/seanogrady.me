@@ -32,9 +32,7 @@ export default defineNuxtConfig({
     ],
     processCSSVariables: true,
   },
-  colorMode: {
-    classSuffix: '',
-  },
+  colorMode: { classSuffix: '' },
   runtimeConfig: {
     lastfmApiKey: '',
     lastfmUsername: '',
@@ -48,8 +46,9 @@ export default defineNuxtConfig({
     },
   },
   nitro: {
-    preset: 'cloudflare-pages-static',
+    preset: 'cloudflarePagesStatic',
   },
+  ssr: false,
   experimental: {
     viewTransition: true,
     payloadExtraction: false,
