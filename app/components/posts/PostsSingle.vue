@@ -2,7 +2,9 @@
 import { DateTime } from 'luxon';
 
 const route = useRoute();
-const { data: post } = await useAsyncData(route.path, () => queryCollection('posts').path(route.path).first());
+const { data: post } = await useAsyncData(route.path, () => queryCollection('posts').path(route.path).first(), {
+  getCachedData: (key, nuxtApp) => nuxtApp.payload.data[key] ?? nuxtApp.static.data[key],
+});
 useHead({
   title: post.value?.title,
 });

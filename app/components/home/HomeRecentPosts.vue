@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const { data: posts } = await useAsyncData('recent-posts', () =>
   queryCollection('posts').order('date', 'DESC').limit(5).all(),
+  { getCachedData: (key, nuxtApp) => nuxtApp.payload.data[key] ?? nuxtApp.static.data[key] },
 );
 </script>
 

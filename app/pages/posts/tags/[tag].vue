@@ -13,13 +13,13 @@ const { data: posts } = await useAsyncData(
       .skip((page.value - 1) * itemsPerPage)
       .limit(itemsPerPage)
       .all(),
-  { watch: [page, tag] },
+  { watch: [page, tag], getCachedData: (key, nuxtApp) => nuxtApp.payload.data[key] ?? nuxtApp.static.data[key] },
 );
 
 const { data: totalCount } = await useAsyncData(
   () => `posts-tag-${tag.value}-count`,
   () => queryCollection('posts').where('tags', 'LIKE', `%"${tag.value}"%`).count(),
-  { watch: [tag] },
+  { watch: [tag], getCachedData: (key, nuxtApp) => nuxtApp.payload.data[key] ?? nuxtApp.static.data[key] },
 );
 
 const totalPages = computed(() => Math.ceil((totalCount.value || 0) / itemsPerPage));

@@ -11,10 +11,12 @@ const { data: posts } = await useAsyncData(
       .skip((page.value - 1) * itemsPerPage)
       .limit(itemsPerPage)
       .all(),
-  { watch: [page] },
+  { watch: [page], getCachedData: (key, nuxtApp) => nuxtApp.payload.data[key] ?? nuxtApp.static.data[key] },
 );
 
-const { data: totalCount } = await useAsyncData('posts-count', () => queryCollection('posts').count());
+const { data: totalCount } = await useAsyncData('posts-count', () => queryCollection('posts').count(), {
+  getCachedData: (key, nuxtApp) => nuxtApp.payload.data[key] ?? nuxtApp.static.data[key],
+});
 const totalPages = computed(() => Math.ceil((totalCount.value || 0) / itemsPerPage));
 
 useHead({ title: 'Posts' });
