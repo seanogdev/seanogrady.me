@@ -10,7 +10,7 @@ const transitionName = computed(() => `post-${post.slug}`);
 <template>
   <article class="py-6" :style="{ viewTransitionName: transitionName }">
     <h3
-      class="mb-2 font-serif text-2xl leading-normal font-light md:text-4xl"
+      class="mb-2 font-serif text-2xl leading-normal font-light text-balance md:text-4xl"
       :style="{ viewTransitionName: `${transitionName}-title` }"
     >
       <NuxtLink
@@ -21,7 +21,7 @@ const transitionName = computed(() => `post-${post.slug}`);
       </NuxtLink>
     </h3>
 
-    <p class="mb-3 text-lg leading-normal text-sage-12 dark:text-sagedark-11">{{ post.description }}</p>
+    <p class="mb-3 text-lg leading-normal text-pretty text-sage-12 dark:text-sagedark-11">{{ post.description }}</p>
 
     <div class="flex items-center gap-2 text-xs tracking-wide text-sage-10 uppercase dark:text-sagedark-10">
       <time :datetime="date.toISODate() ?? undefined">{{ date.toLocaleString(DateTime.DATE_MED) }}</time>

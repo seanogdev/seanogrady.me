@@ -7,6 +7,17 @@ useHead({
   title: post.value?.title,
 });
 
+useSeoMeta({
+  description: post.value?.description,
+  ogTitle: post.value?.title,
+  ogDescription: post.value?.description,
+  ogImage: post.value?.coverImage,
+  ogType: 'article',
+  articlePublishedTime: post.value?.date,
+  articleTag: post.value?.tags,
+  twitterCard: 'summary_large_image',
+});
+
 const transitionName = computed(() => (post.value ? `post-${post.value.slug}` : undefined));
 const date = computed(() => (post.value ? DateTime.fromISO(post.value.date) : null));
 </script>

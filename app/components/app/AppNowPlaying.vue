@@ -25,7 +25,7 @@ const relativeTime = computed(() => {
 <template>
   <section v-if="trackData" class="flex h-full w-full flex-col gap-4">
     <div class="mb-4 flex items-center justify-between">
-      <h2 class="text-sm font-medium tracking-widest text-sage-10 uppercase dark:text-sagedark-10">
+      <h2 class="text-sm font-medium tracking-widest text-balance text-sage-10 uppercase dark:text-sagedark-10">
         {{ shouldShowNowPlaying ? 'Now playing' : 'Last played' }}
       </h2>
       <div class="flex items-center gap-2">

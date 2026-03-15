@@ -8,13 +8,13 @@ coverImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&q=
 
 # Using Static Analysis to Clean Up Vue Composables
 
-As your application grows, so does the codebase. But with growth comes baggage. Features get deprecated, ownership changes hands, people leave and the domain knowledge of what their code did goes with them. Nobody's confident enough to delete the logic that looks unused because they're not sure what else depends on it.
+As your application grows, so does the codebase. But with growth comes baggage. People leave and the domain knowledge of what their code did goes with them. Nobody's confident enough to delete the logic that looks unused because they're not sure what else depends on it.
 
-This compounds. The bigger the codebase gets, the harder it is to keep on top of, and the less likely anyone is to go digging through logic they didn't write. That's true for humans, and it's especially true now that AI tooling is generating code faster than anyone can manually audit it.
+The bigger the codebase gets, the less likely anyone is to go digging through logic they didn't write. That's true for humans, and it's especially true now that AI tooling is generating code faster than anyone can manually audit it.
 
 ## The gap in standard tooling
 
-Destructuring composable return values is a convention the Vue community has aligned on. It works well, but it means the composable body runs in full regardless of which properties the consumer actually uses. That's just how JavaScript works, but it does create a blind spot.
+When you call a composable, it runs all of its setup code - every ref, every watcher, every API call - regardless of which properties the consumer actually uses. That's just how JavaScript works. The Vue community convention of destructuring return values makes it easy to grab only what you need, but the composable itself has no idea what you picked. It does everything anyway.
 
 We've been using [Knip](https://knip.dev/) at work for a while. It finds unused files, unused dependencies and unused exports across your codebase. For us it's been brilliant at keeping things tidy as our project scales and evolves.
 
@@ -64,13 +64,9 @@ The first version of just that was a standalone script. It found the issues, but
 
 Knip, on the other hand, already deals with dead code. It has reporters, GitHub integration, and people already use it as part of their workflow. If I could get composable analysis into that same pipeline, it wouldn't be a side project. It'd just be part of how we work.
 
-Knip has a [preprocessor API](https://knip.dev/reference/preprocessors) that lets you inject issues into its pipeline. It's not designed for this, but you _can_ (emphasis on can) shoehorn composable analysis into Knip's unused exports report and it works well enough.
+Knip has a [preprocessor API](https://knip.dev/reference/preprocessors) that lets you inject issues into its pipeline. It's not designed for this, but as I learned, you _can_ shoehorn composable analysis into Knip's unused exports report. It's very much a hack, but it works - composable dead code shows up in the same workflow developers already use.
 
-Let's be clear, this is a total hack. The preprocessor parses the codebase with TypeScript's AST, finds composable definitions and all their call sites, then figures out which return properties nobody ever destructures. It then jams those results into Knip's export report as if they were regular unused exports. But it works, and it means composable dead code shows up in the same workflow developers already use.
-
-However, it can't catch everything. If a consumer does `const todos = useTodos()` without destructuring, the tool bails out because it can't know which properties are accessed later. Same with rest patterns and dynamic property names. That's fine, it's conservative by design. I'd rather it miss things than report false positives.
-
-It's also worth noting that a flagged property might still be used internally within the composable. If it's not used externally _or_ internally, it's safe to remove entirely. But if it's still used internally, you need to actually look at the logic. A ref that's written to by a watcher but never read from is still dead, but the tool can't make that call for you. It just tells you (or \<Insert AI tool of your choice\>) where to look.
+It can't catch everything. If a consumer does `const todos = useTodos()` without destructuring, the tool bails out - it can't know which properties are accessed later. That's fine, I'd rather it miss things than report false positives. A flagged property might also still be used internally within the composable, so it's not always a straight deletion. It just tells you (or \<Insert AI tool of your choice\>) where to look.
 
 Having trust in the tool is crucial to get buy-in from developers. It isn't there to be a hindrance, it's there to give them confidence and help clean up code that could be missed in manual verification.
 
@@ -86,6 +82,6 @@ The tool is now part of our standard Knip report, which means new dead composabl
 
 Before this, cleaning up a composable meant reading through every call site and hoping you didn't miss one. Now we know exactly what's unused. Developers can confidently trim composables down, and the people reviewing those changes can trust the tooling instead of relying on gut feeling.
 
-This also helps with AI-assisted development. AI is known to be generally reluctant to delete code without the strongest of evidence that it's safe to do so. This report gives it exactly that - a verified list of what's unused, so it can clean things up without second-guessing itself.
+It's also been useful for AI-assisted development. AI tooling tends to be reluctant to delete code without strong evidence that it's safe to do so. This report gives it exactly that - a verified list of what's unused, so it can clean things up without second-guessing itself.
 
-That confidence feeds into everything else. Smaller composable contracts are easier to understand, easier to refactor, and ultimately mean less unnecessary work happening at runtime for our users.
+Smaller composable contracts are easier to understand, easier to refactor, and ultimately mean less unnecessary work happening at runtime for our users.

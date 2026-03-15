@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 @import 'tailwindcss';
 
 @theme {
   --color-*: initial;
 
+  --font-family-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
   --font-family-serif: Fraunces, ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
 
   @keyframes squircle-morph {
@@ -103,28 +104,36 @@
 
 @layer components {
   .prose {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      @apply mt-6 mb-4 font-serif font-light text-balance text-sage-12 dark:text-sagedark-12;
+    }
+
     h1 {
-      @apply mt-8 mb-6 font-serif text-3xl leading-normal font-light text-sage-12 sm:text-4xl dark:text-sagedark-11;
+      @apply mt-8 mb-6 text-3xl leading-normal sm:text-4xl;
     }
 
     h2 {
-      @apply mt-8 mb-4 font-serif text-2xl font-light text-sage-12 sm:text-3xl dark:text-sagedark-11;
+      @apply mt-8 text-2xl sm:text-3xl;
     }
 
     h3 {
-      @apply mt-6 mb-4 font-serif text-xl font-light text-sage-12 sm:text-2xl dark:text-sagedark-11;
+      @apply text-xl sm:text-2xl;
     }
 
     h4 {
-      @apply mt-6 mb-4 font-serif text-lg font-light text-sage-12 sm:text-xl dark:text-sagedark-11;
+      @apply text-lg sm:text-xl;
     }
 
     h5 {
-      @apply mt-6 mb-4 font-serif text-base font-light text-sage-12 sm:text-lg dark:text-sagedark-11;
+      @apply text-base sm:text-lg;
     }
 
     p {
-      @apply mt-0 mb-4;
+      @apply mt-0 mb-4 text-lg text-pretty;
     }
 
     :where(p, li, blockquote, figcaption) a {
@@ -149,11 +158,11 @@
     }
 
     li {
-      @apply mb-1;
+      @apply mb-1 text-lg;
     }
 
     blockquote {
-      @apply my-4 border-l-4 pl-4 italic;
+      @apply my-4 border-l-4 pl-4 text-lg italic;
     }
 
     hr {

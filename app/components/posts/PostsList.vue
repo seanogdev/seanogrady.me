@@ -16,7 +16,7 @@ const {
 
 <template>
   <div class="col-span-12 md:col-span-8 md:col-start-3">
-    <h1 class="text-xs font-medium tracking-widest text-sage-10 uppercase dark:text-sagedark-10">
+    <h1 class="text-xs font-medium tracking-widest text-balance text-sage-10 uppercase dark:text-sagedark-10">
       {{ title }}
     </h1>
 

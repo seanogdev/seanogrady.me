@@ -18,6 +18,7 @@ const { data: totalCount } = await useAsyncData('posts-count', () => queryCollec
 const totalPages = computed(() => Math.ceil((totalCount.value || 0) / itemsPerPage));
 
 useHead({ title: 'Posts' });
+useSeoMeta({ description: "Articles on front-end engineering, Vue, and web development by Sean O'Grady." });
 </script>
 
 <template>

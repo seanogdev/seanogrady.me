@@ -30,7 +30,7 @@ const socialLinks: SocialLink[] = [
 
 <template>
   <section class="flex h-full w-full flex-col gap-4">
-    <h2 class="text-sm font-medium tracking-widest text-sage-10 uppercase dark:text-sagedark-10">Find me online</h2>
+    <h2 class="text-sm font-medium tracking-widest text-balance text-sage-10 uppercase dark:text-sagedark-10">Find me online</h2>
 
     <div class="flex flex-col gap-2">
       <a
