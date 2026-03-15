@@ -15,6 +15,12 @@
             "command": "jq -r '.tool_input.file_path | select(test(\"\\\\.(vue|ts|js)$\"))' | xargs -I{} pnpm --dir \"$CLAUDE_PROJECT_DIR\" exec eslint --fix --quiet {}",
             "timeout": 30,
             "statusMessage": "Linting..."
+          },
+          {
+            "type": "command",
+            "command": "if [[ \"$CLAUDE_TOOL_INPUT_FILE_PATH\" =~ \\.(vue|ts|js)$ ]]; then\n  output=$(pnpm --dir \"$CLAUDE_PROJECT_DIR\" type-check 2>&1)\n  exit_code=$?\n  if [ $exit_code -eq 0 ]; then\n    echo '{\"suppressOutput\": true}'\n  else\n    echo \"$output\" | head -30 >&2\n  fi\n  exit 0\nfi",
+            "timeout": 60,
+            "statusMessage": "Type-checking..."
           }
         ]
       }

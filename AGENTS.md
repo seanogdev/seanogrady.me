@@ -6,7 +6,7 @@
 
 - **Nuxt 4** + Vue 3, file-based routing
 - **@nuxt/content** v3 — Markdown blog posts in `content/posts/`
-- **Tailwind CSS 4** via Vite plugin (not PostCSS) + Radix Colors (`sand`, `jade`)
+- **Tailwind CSS 4** via Vite plugin (not PostCSS) + Radix Colors (`sage`, `jade`)
 - **Reka UI** — component library (auto-imported)
 - **Fuse.js** — client-side search
 
@@ -25,6 +25,7 @@ pnpm preview    # preview production build
 - **Dates**: store as ISO strings; format with `DateTime.fromISO().toLocaleString()` (Luxon)
 - **Blog frontmatter**: use `date` (not `publishedAt`), optional `tags: []`
 - **Styling**: Tailwind classes only — no inline styles or custom CSS
+- **Radix Colors harmonies**: https://www.radix-ui.com/colors/docs/palette-composition/understanding-the-scale
 
 ## Gotchas
 

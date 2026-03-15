@@ -4,44 +4,43 @@ import { DateTime } from 'luxon';
 
 const props = defineProps<{ post: PostsCollectionItem }>();
 const date = computed(() => DateTime.fromISO(props.post.date));
-const viewTransitionName = computed(() => `post-${props.post.stem}`);
+const transitionName = computed(() => `post-${props.post.stem?.replaceAll('/', '-')}`);
+
+const active = ref(false);
 </script>
 
 <template>
-  <article
-    class="rounded-lg border border-jade-6 bg-jade-1 p-6 transition-shadow hover:shadow-md dark:border-jadedark-6 dark:bg-jadedark-1"
-  >
-    <div class="mb-3 flex items-center gap-2 text-sm text-jade-11 dark:text-jadedark-11">
-      <time :datetime="date.toISODate() ?? undefined">{{ date.toLocaleString(DateTime.DATE_FULL) }}</time>
-      <span>•</span>
-      <span class="flex items-center gap-1">
-        <Icon name="lucide:clock" class="h-4 w-4" />
-        {{ readTime(post.rawbody || '') }}
-      </span>
-    </div>
-
+  <article class="py-6" :style="{ viewTransitionName: active ? transitionName : undefined }">
     <h3
-      class="mb-2 font-serif text-xl leading-relaxed font-light text-jade-12 dark:text-jadedark-12"
-      :style="{ viewTransitionName: viewTransitionName }"
+      class="mb-2 font-serif text-2xl leading-normal font-light md:text-4xl"
+      :style="{ viewTransitionName: active ? `${transitionName}-title` : undefined }"
     >
-      {{ post.title }}
-    </h3>
-
-    <p class="mb-4 leading-relaxed text-jade-12 dark:text-jadedark-12">{{ post.description }}</p>
-
-    <div class="flex items-center justify-between">
-      <div class="flex flex-wrap gap-2">
-        <Chip v-for="tag in post.tags" :key="tag" asChild>
-          <NuxtLink :to="`/posts/tags/${tag}`">{{ tag }}</NuxtLink>
-        </Chip>
-      </div>
-
       <NuxtLink
         :to="post.path"
-        class="inline-flex items-center text-sm leading-relaxed font-medium text-jade-12 transition-colors hover:text-jade-11 dark:text-jadedark-12 dark:hover:text-jadedark-11"
+        class="text-sage-12 transition-colors hover:text-jade-11 dark:text-sagedark-11 dark:hover:text-jadedark-11"
+        @click="active = true"
       >
-        Read article →
+        {{ post.title }}
       </NuxtLink>
+    </h3>
+
+    <p class="mb-3 text-lg leading-normal text-sage-12 dark:text-sagedark-11">{{ post.description }}</p>
+
+    <div class="flex items-center gap-2 text-xs tracking-wide text-sage-10 uppercase dark:text-sagedark-10">
+      <time :datetime="date.toISODate() ?? undefined">{{ date.toLocaleString(DateTime.DATE_MED) }}</time>
+      <span>·</span>
+      <span>{{ readTime(post.rawbody || '') }}</span>
+      <template v-if="post.tags?.length">
+        <span>·</span>
+        <NuxtLink
+          v-for="tag in post.tags"
+          :key="tag"
+          :to="`/posts/tags/${tag}`"
+          class="transition-colors hover:text-jade-11 dark:hover:text-jadedark-11"
+        >
+          #{{ tag }}
+        </NuxtLink>
+      </template>
     </div>
   </article>
 </template>

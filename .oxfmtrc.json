@@ -4,13 +4,14 @@
   "singleQuote": true,
   "jsxSingleQuote": true,
   "printWidth": 120,
-  "experimentalSortPackageJson": true,
+  "htmlWhitespaceSensitivity": "ignore",
+  "sortPackageJson": true,
   "experimentalTailwindcss": {
     "stylesheet": "./app/style.css",
     "attributes": ["class", "className"],
     "functions": ["clsx", "cn", "tv"],
     "preserveDuplicates": false,
-    "preserveWhitespace": false
+    "preserveWhitespace": false,
   },
   "experimentalSortImports": {
     "groups": [
@@ -20,7 +21,7 @@
       ["internal", "type-internal"],
       ["parent", "type-parent"],
       ["sibling", "type-sibling"],
-      ["index", "type-index"]
-    ]
-  }
+      ["index", "type-index"],
+    ],
+  },
 }

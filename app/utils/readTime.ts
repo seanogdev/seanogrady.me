@@ -1,4 +1,5 @@
 import remarkParse from 'remark-parse';
+import remarkStringify from 'remark-stringify';
 import stripMarkdown from 'strip-markdown';
 import { unified } from 'unified';
 
@@ -7,7 +8,7 @@ export function readTime(content: string): string {
     return '1 min read';
   }
 
-  const file = unified().use(remarkParse).use(stripMarkdown).processSync(content);
+  const file = unified().use(remarkParse).use(stripMarkdown).use(remarkStringify).processSync(content);
 
   const words = String(file)
     .trim()

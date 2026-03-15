@@ -1,32 +1,32 @@
 <template>
-  <ClientOnly>
-    <HomeAvatar
-      class="col-span-6 col-start-4 mx-auto aspect-square w-full max-w-64 md:col-span-3 md:col-start-1 md:max-w-none"
-    />
-    <div class="col-span-12 grid auto-rows-auto content-start gap-8 md:col-span-9">
-      <div class="relative">
-        <h1
-          class="animate-[fadeInUp_0.8s_cubic-bezier(0.16,1,0.3,1)_forwards] font-serif text-[clamp(3rem,10vw,5.5rem)] leading-[0.9] font-light tracking-tighter text-balance text-jade-12 opacity-0 dark:text-jadedark-12"
-        >
-          I build
-          <span class="italic">interfaces</span>
-          that
-          <span class="italic">work</span>
-        </h1>
-      </div>
+  <div class="col-span-12 md:col-span-8 md:col-start-3">
+    <div class="flex flex-col items-center gap-8 md:flex-row md:items-center">
+      <HomeAvatar class="aspect-square w-full max-w-48 flex-shrink-0 md:max-w-52" />
+      <div class="grid auto-rows-auto content-start gap-8">
+        <div class="relative">
+          <h1
+            class="animate-[fadeInUp_0.8s_cubic-bezier(0.16,1,0.3,1)_forwards] font-serif text-[clamp(2.5rem,8vw,4rem)] leading-[1.1] font-light tracking-tighter text-balance text-sage-12 opacity-0 dark:text-sagedark-11"
+          >
+            I build interfaces that
+            <span class="italic">work</span>
+          </h1>
+        </div>
 
-      <div class="animate-[fadeInUp_0.8s_cubic-bezier(0.16,1,0.3,1)_0.5s_forwards] space-y-5 opacity-0">
-        <p class="text-xl leading-relaxed text-pretty text-jade-12 md:text-2xl dark:text-jadedark-12">
-          Hey, I'm Seán — a front-end engineer who's spent the last decade making software that's
-          <span class="font-serif italic">simple</span>
-          ,
-          <span class="font-serif italic">accessible</span>
-          , and
-          <span class="font-serif italic">delightful</span>
-          to use.
-        </p>
+        <div class="animate-[fadeInUp_0.8s_cubic-bezier(0.16,1,0.3,1)_0.5s_forwards] space-y-5 opacity-0">
+          <p class="text-xl leading-normal text-pretty text-sage-12 md:text-2xl dark:text-sagedark-11">
+            Hey, I'm Seán — a front-end engineer who's spent the last decade making software that's
+            <span class="font-serif italic">simple</span>
+            ,
+            <span class="font-serif italic">accessible</span>
+            , and
+            <span class="font-serif italic">delightful</span>
+            to use.
+          </p>
+        </div>
       </div>
     </div>
-    <HomeRecentPosts class="col-span-full animate-[fadeInUp_0.8s_cubic-bezier(0.16,1,0.3,1)_0.7s_forwards] opacity-0" />
-  </ClientOnly>
+  </div>
+  <HomeRecentPosts
+    class="col-span-12 animate-[fadeInUp_0.8s_cubic-bezier(0.16,1,0.3,1)_0.7s_forwards] opacity-0 md:col-span-8 md:col-start-3"
+  />
 </template>

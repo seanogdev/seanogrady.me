@@ -4,10 +4,15 @@ const { data: post } = await useAsyncData(route.path, () => queryCollection('pos
 useHead({
   title: post.value?.title,
 });
+
+const transitionName = computed(() => `post-${route.path.replace(/^\//, '').replaceAll('/', '-')}`);
 </script>
 
 <template>
-  <div class="prose &>*:scroll-mt-14 col-span-8 col-start-3">
+  <div
+    class="prose col-span-12 [&>*]:scroll-mt-14 md:col-span-8 md:col-start-3"
+    :style="{ viewTransitionName: transitionName }"
+  >
     <ContentRenderer v-if="post" :value="post" />
   </div>
 </template>

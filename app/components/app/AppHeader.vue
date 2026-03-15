@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { useDark, useToggle } from '@vueuse/core';
-
 const navItems = [{ title: 'Posts', to: '/posts' }];
 
 const socialLinks = [
@@ -17,12 +15,15 @@ const socialLinks = [
   },
 ];
 
-const isDark = useDark();
-const toggleDark = useToggle(isDark);
+const colorMode = useColorMode();
+const isDark = computed(() => colorMode.value === 'dark');
+function toggleDark() {
+  colorMode.preference = isDark.value ? 'light' : 'dark';
+}
 </script>
 <template>
   <header
-    class="sticky top-0 z-10 grid grid-cols-3 border-b border-mint-12 bg-mint-1/60 px-4 py-4 backdrop-blur-lg md:px-8 dark:border-mint-1 dark:bg-mintdark-1/60"
+    class="flex items-center justify-between py-6"
   >
     <nav>
       <ul class="flex items-center gap-4">
@@ -37,10 +38,7 @@ const toggleDark = useToggle(isDark);
       </ul>
     </nav>
 
-    <div class="flex items-center justify-center">
-      <NuxtLink to="/" class="min-w-0 text-lg font-semibold text-nowrap">Seán O'Grady</NuxtLink>
-    </div>
-    <div class="flex items-center justify-end gap-8">
+    <div class="flex items-center gap-8">
       <ul class="flex items-center gap-4">
         <li v-for="link in socialLinks" :key="link.title">
           <NuxtLink

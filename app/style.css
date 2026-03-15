@@ -83,12 +83,17 @@
 
 @layer base {
   html {
-    @apply bg-jade-1 dark:bg-jadedark-1;
+    @apply bg-jade-1 dark:bg-sagedark-1;
     @apply text-sage-11 dark:text-sagedark-11;
   }
 
   ::view-transition-group(*) {
-    @apply [animation-duration:500ms];
+    animation-duration: 300ms;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
   }
 }
 
@@ -99,30 +104,30 @@
 @layer components {
   .prose {
     h1 {
-      @apply mt-8 mb-6 font-serif text-2xl font-light text-jade-12 italic no-underline sm:text-3xl dark:text-jadedark-12;
+      @apply mt-8 mb-6 font-serif text-3xl leading-normal font-light text-sage-12 sm:text-4xl dark:text-sagedark-11;
     }
 
     h2 {
-      @apply mt-8 mb-4 font-serif text-xl font-light text-jade-12 no-underline sm:text-2xl dark:text-jadedark-12;
+      @apply mt-8 mb-4 font-serif text-2xl font-light text-sage-12 sm:text-3xl dark:text-sagedark-11;
     }
 
     h3 {
-      @apply mt-6 mb-4 font-serif text-lg font-light text-jade-12 no-underline sm:text-xl dark:text-jadedark-12;
+      @apply mt-6 mb-4 font-serif text-xl font-light text-sage-12 sm:text-2xl dark:text-sagedark-11;
     }
 
     h4 {
-      @apply mt-6 mb-4 font-serif text-base font-light text-jade-12 no-underline sm:text-lg dark:text-jadedark-12;
+      @apply mt-6 mb-4 font-serif text-lg font-light text-sage-12 sm:text-xl dark:text-sagedark-11;
     }
 
     h5 {
-      @apply mt-6 mb-4 font-serif text-base font-light text-jade-12 dark:text-jadedark-12;
+      @apply mt-6 mb-4 font-serif text-base font-light text-sage-12 sm:text-lg dark:text-sagedark-11;
     }
 
     p {
       @apply mt-0 mb-4;
     }
 
-    a {
+    :where(p, li, blockquote, figcaption) a {
       @apply underline;
     }
 

@@ -4,14 +4,17 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
+    "check": "pnpm type-check && pnpm knip && pnpm lint",
     "dev": "nuxt dev",
     "format": "oxfmt",
     "generate": "nuxt generate",
+    "knip": "knip",
     "lint": "pnpm lint:oxlint && pnpm lint:eslint",
     "lint:eslint": "eslint --fix --cache --concurrency auto",
-    "lint:oxlint": "oxlint --type-aware --fix --ignore-path .gitignore",
+    "lint:oxlint": "oxlint --type-aware --fix",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "type-check": "golar --noEmit"
   },
   "dependencies": {
     "@eslint/js": "^10.0.1",
@@ -19,6 +22,7 @@
     "@nuxt/eslint": "^1.15.2",
     "@nuxt/eslint-config": "^1.15.2",
     "@nuxt/icon": "^2.2.1",
+    "@nuxtjs/color-mode": "^4.0.0",
     "@tailwindcss/vite": "4.2.0",
     "@types/luxon": "^3.7.1",
     "@vueuse/core": "^14.2.1",
@@ -35,9 +39,9 @@
     "oxlint-tsgolint": "^0.16.0",
     "reka-ui": "2.8.2",
     "remark-parse": "^11.0.0",
+    "remark-stringify": "^11.0.0",
     "strip-markdown": "^6.0.0",
     "tailwindcss": "4.2.0",
-    "tailwindcss-animate": "^1.0.7",
     "tailwindcss-radix-colors": "^2.1.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.57.0",
@@ -46,6 +50,11 @@
     "vue": "^3.5.30",
     "vue-router": "^5.0.3",
     "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@golar/vue": "^0.0.16",
+    "golar": "^0.0.16",
+    "knip": "^5.86.0"
   },
   "engines": {
     "node": ">=22.0.0"

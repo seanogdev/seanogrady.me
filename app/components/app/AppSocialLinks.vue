@@ -30,9 +30,9 @@ const socialLinks: SocialLink[] = [
 
 <template>
   <section class="flex h-full w-full flex-col gap-4">
-    <h2 class="text-sm font-semibold tracking-wider text-jade-11 uppercase dark:text-jadedark-11">Find me online</h2>
+    <h2 class="text-sm font-medium tracking-widest text-sage-10 uppercase dark:text-sagedark-10">Find me online</h2>
 
-    <div class="flex flex-1 flex-col gap-4">
+    <div class="flex flex-col gap-2">
       <a
         v-for="link in socialLinks"
         :key="link.url"
@@ -40,14 +40,9 @@ const socialLinks: SocialLink[] = [
         target="_blank"
         rel="noopener noreferrer"
         :aria-label="`Visit my ${link.title} profile`"
-        class="flex items-center gap-4 rounded-lg bg-jade-3 p-4 transition-shadow hover:shadow-md focus-visible:ring-2 focus-visible:ring-jade-8 focus-visible:outline-none dark:bg-jadedark-1 dark:hover:shadow-lg"
+        class="text-sage-11 transition-colors hover:text-jade-11 focus-visible:ring-2 focus-visible:ring-jade-8 focus-visible:outline-none dark:text-sagedark-11 dark:hover:text-jadedark-11"
       >
-        <Icon :name="link.icon" class="h-6 w-6 flex-shrink-0 text-jade-11 dark:text-jadedark-11" />
-
-        <div class="flex-1">
-          <div class="font-semibold text-jade-12 dark:text-jadedark-12">{{ link.title }}</div>
-          <div class="text-sm text-jade-11 dark:text-jadedark-11">{{ link.subtitle }}</div>
-        </div>
+        {{ link.title }}
       </a>
     </div>
   </section>

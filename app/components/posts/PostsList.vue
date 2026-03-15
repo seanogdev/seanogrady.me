@@ -24,14 +24,12 @@ useHead({
 </script>
 
 <template>
-  <div>
-    <h1
-      class="-ml-2 border-l-2 border-jade-12 pl-2 text-2xl font-medium text-jade-12 uppercase text-trim-both sm:-ml-4 sm:pl-4 dark:border-jadedark-12 dark:text-jadedark-12"
-    >
+  <div class="col-span-12 md:col-span-8 md:col-start-3">
+    <h1 class="font-serif text-3xl leading-normal font-light text-sage-12 sm:text-4xl dark:text-sagedark-11">
       Posts
     </h1>
 
-    <div class="mt-8 flex flex-col gap-6">
+    <div class="mt-8 divide-y divide-sage-6 dark:divide-sagedark-6">
       <PostCard v-for="post in posts" :key="post.path" :post="post" />
     </div>
 

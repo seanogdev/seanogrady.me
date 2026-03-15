@@ -4,17 +4,19 @@ import { randomInt, sample } from 'es-toolkit';
 const circleCount = 5;
 const backgroundOptions = ['bg-amber-9', 'bg-blue-9', 'bg-red-9', 'bg-crimson-9', 'bg-mint-9', 'bg-sky-9', 'bg-iris-9'];
 
-const squircles = Array(circleCount)
-  .fill(0)
-  .map(() => ({
-    class: [sample(backgroundOptions)],
-    style: {
-      '--animation-duration': randomInt(8, 15) + 's',
-      '--animation-delay': -randomInt(0, 10) + 's',
-      '--rotation-speed': randomInt(20, 40) + 's',
-      '--rotation-direction': randomInt(0, 1) ? 'normal' : 'reverse',
-    },
-  }));
+const squircles = useState('avatar-squircles', () =>
+  Array(circleCount)
+    .fill(0)
+    .map(() => ({
+      class: [sample(backgroundOptions)],
+      style: {
+        '--animation-duration': randomInt(8, 15) + 's',
+        '--animation-delay': -randomInt(0, 10) + 's',
+        '--rotation-speed': randomInt(20, 40) + 's',
+        '--rotation-direction': randomInt(0, 1) ? 'normal' : 'reverse',
+      },
+    })),
+);
 </script>
 <template>
   <div class="group relative">

@@ -1,15 +1,17 @@
 <script setup lang="ts">
 import type { TrackData } from '~~/shared/types';
 
+import { DateTime } from 'luxon';
+
 const { data: trackData } = await useFetch<TrackData>('/api/lastfm');
 
 const config = useRuntimeConfig();
 
+const timestamp = computed(() => (trackData.value ? DateTime.fromMillis(trackData.value.timestamp) : null));
+
 const isRecentlyPlayed = computed(() => {
-  if (!trackData.value) return false;
-  const threeHoursInMs = 3 * 60 * 60 * 1000;
-  const timeSinceFetch = Date.now() - trackData.value.timestamp;
-  return timeSinceFetch < threeHoursInMs;
+  if (!timestamp.value) return false;
+  return timestamp.value.diffNow().as('hours') > -3;
 });
 
 const shouldShowNowPlaying = computed(() => {
@@ -17,70 +19,49 @@ const shouldShowNowPlaying = computed(() => {
 });
 
 const relativeTime = computed(() => {
-  if (!trackData.value) return '';
-
-  const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
-  const now = Date.now();
-  const diff = now - trackData.value.timestamp;
-
-  const seconds = Math.floor(diff / 1000);
-  const minutes = Math.floor(seconds / 60);
-  const hours = Math.floor(minutes / 60);
-  const days = Math.floor(hours / 24);
-
-  if (days > 0) return rtf.format(-days, 'day');
-  if (hours > 0) return rtf.format(-hours, 'hour');
-  if (minutes > 0) return rtf.format(-minutes, 'minute');
-  return rtf.format(0, 'second');
+  if (!timestamp.value) return '';
+  return timestamp.value.toRelative() ?? '';
 });
 </script>
 
 <template>
   <section v-if="trackData" class="flex h-full w-full flex-col gap-4">
-    <div class="flex items-center justify-between">
-      <h2 class="text-sm font-semibold tracking-wider text-red-11 uppercase dark:text-reddark-11">
+    <div class="mb-4 flex items-center justify-between">
+      <h2 class="text-sm font-medium tracking-widest text-sage-10 uppercase dark:text-sagedark-10">
         {{ shouldShowNowPlaying ? 'Now playing' : 'Last played' }}
       </h2>
       <div class="flex items-center gap-2">
-        <EqualizerIcon class="h-4 w-4 text-red-11 dark:text-reddark-11" />
-        <span class="text-xs text-red-11 dark:text-reddark-11">{{ relativeTime }}</span>
+        <EqualizerIcon class="h-4 w-4 text-sage-10 dark:text-sagedark-10" />
+        <span class="text-xs text-sage-10 dark:text-sagedark-10">{{ relativeTime }}</span>
       </div>
     </div>
 
-    <div
-      class="relative flex flex-1 flex-col justify-between overflow-hidden rounded-lg border-l-4 border-red-9 bg-gradient-to-br from-red-2 to-red-3 p-6 dark:border-reddark-9 dark:from-reddark-1 dark:to-reddark-2"
-    >
-      <div class="flex gap-5">
-        <div class="relative flex-shrink-0">
-          <img
-            v-if="trackData.albumArt"
-            :src="trackData.albumArt"
-            :alt="`${trackData.album} album art`"
-            class="h-32 w-32 rounded-md"
-          />
-          <Icon v-else name="lucide:music" class="h-32 w-32 text-red-11 dark:text-reddark-11" />
-        </div>
-
-        <div class="min-w-0 flex-1">
-          <div class="truncate text-xl leading-tight font-bold text-red-12 dark:text-reddark-12">
-            {{ trackData.name }}
-          </div>
-          <div class="mt-2 truncate text-base font-medium text-red-11 dark:text-reddark-11">
-            {{ trackData.artist }}
-          </div>
-          <div v-if="trackData.album" class="mt-1 truncate text-sm text-red-10 dark:text-reddark-10">
-            {{ trackData.album }}
-          </div>
-        </div>
+    <div class="flex gap-5">
+      <div class="relative flex-shrink-0">
+        <img
+          v-if="trackData.albumArt"
+          :src="trackData.albumArt"
+          :alt="`${trackData.album} album art`"
+          class="h-32 w-32 rounded-md"
+        />
+        <Icon v-else name="lucide:music" class="h-32 w-32 text-sage-10 dark:text-sagedark-10" />
       </div>
 
-      <div class="mt-6 flex items-center justify-between border-t border-red-6 pt-4 dark:border-reddark-6">
-        <p class="text-xs text-red-11 dark:text-reddark-11">Updates automatically via Last.fm</p>
+      <div class="min-w-0 flex-1">
+        <div class="truncate font-serif text-2xl leading-tight font-normal text-jade-12 dark:text-jadedark-12">
+          {{ trackData.name }}
+        </div>
+        <div class="mt-1 truncate text-lg text-sage-12 dark:text-sagedark-11">
+          {{ trackData.artist }}
+        </div>
+        <div v-if="trackData.album" class="mt-1 truncate text-base text-sage-11 dark:text-sagedark-11">
+          {{ trackData.album }}
+        </div>
         <a
           :href="`https://www.last.fm/user/${config.public.lastfmUsername}`"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-xs font-medium text-red-11 underline decoration-red-9 underline-offset-2 transition-colors hover:text-red-12 dark:text-reddark-11 dark:decoration-reddark-9 dark:hover:text-reddark-12"
+          class="mt-2 inline-block text-xs text-sage-10 transition-colors hover:text-jade-11 dark:text-sagedark-10 dark:hover:text-jadedark-11"
         >
           View on Last.fm →
         </a>

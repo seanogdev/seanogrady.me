@@ -13,7 +13,10 @@ export default defineNuxtConfig({
   css: ['~/style.css'],
   devtools: { enabled: true },
   icon: { mode: 'svg' },
-  modules: ['@nuxt/content', 'reka-ui/nuxt', '@nuxt/icon', '@nuxt/eslint'],
+  modules: ['@nuxt/content', 'reka-ui/nuxt', '@nuxt/icon', '@nuxt/eslint', '@nuxtjs/color-mode'],
+  colorMode: {
+    classSuffix: '',
+  },
   runtimeConfig: {
     lastfmApiKey: '',
     public: {
@@ -24,5 +27,8 @@ export default defineNuxtConfig({
     entryImportMap: false,
     viewTransition: true,
   },
-  vite: { plugins: [tailwindcss()] },
+  vite: {
+    plugins: [tailwindcss()],
+    server: { forwardConsole: true },
+  },
 });
