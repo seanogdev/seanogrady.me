@@ -8,6 +8,15 @@ const moduleDirectories = modules.map((dir) => ({
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  app: {
+    head: {
+      link: [
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+      ],
+    },
+  },
   compatibilityDate: '2025-10-06',
   components: moduleDirectories,
   css: ['~/style.css'],
