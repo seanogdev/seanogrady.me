@@ -1,6 +1,6 @@
 import tailwindcss from '@tailwindcss/vite';
 
-const modules = ['app', 'home', 'posts', 'shared'];
+const modules = ['app', 'home', 'posts'];
 const moduleDirectories = modules.map((dir) => ({
   path: `~/components/${dir}`,
   pathPrefix: false,
