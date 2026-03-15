@@ -1,6 +1,4 @@
-import type { FileAfterParseHook, FileBeforeParseHook } from '@nuxt/content';
 import { defineNuxtModule } from 'nuxt/kit';
-import type { Nuxt } from 'nuxt/schema';
 import remarkParse from 'remark-parse';
 import remarkStringify from 'remark-stringify';
 import stripMarkdown from 'strip-markdown';
@@ -38,30 +36,22 @@ function injectCoverImage(body: string): string {
   return body.slice(0, h1EndIndex) + imageTag + body.slice(h1EndIndex);
 }
 
-/**
- * Content hooks are typed in @nuxt/content's module declaration but the
- * augmentation isn't resolved during nuxi typecheck for local modules.
- * Cast via Nuxt's hookable instance to work around this.
- */
-function contentHook(nuxt: Nuxt, name: string, fn: (ctx: never) => void) {
-  (nuxt.hooks.hook as (name: string, fn: (ctx: never) => void) => void)(name, fn);
-}
-
 export default defineNuxtModule({
   setup(_, nuxt) {
-    contentHook(nuxt, 'content:file:afterParse', ((ctx: FileAfterParseHook) => {
+    nuxt.hook('content:file:afterParse', (ctx) => {
       if (!ctx.file.id.endsWith('.md')) return;
 
       const text = typeof ctx.file.body === 'string' ? ctx.file.body : '';
       ctx.content.readingTime = calculateReadingTime(text);
+
       const stem = ctx.content.stem as string | undefined;
       ctx.content.slug = stem?.replaceAll('/', '-') || ctx.file.id.replace(/\.md$/, '').replaceAll('/', '-');
-    }) as never);
+    });
 
-    contentHook(nuxt, 'content:file:beforeParse', ((ctx: FileBeforeParseHook) => {
+    nuxt.hook('content:file:beforeParse', (ctx) => {
       if (!ctx.file.id.endsWith('.md')) return;
 
       ctx.file.body = injectCoverImage(ctx.file.body);
-    }) as never);
+    });
   },
 });
