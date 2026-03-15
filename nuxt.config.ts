@@ -42,6 +42,9 @@ export default defineNuxtConfig({
     viewTransition: true,
   },
   vite: {
+    optimizeDeps: {
+      include: ['es-toolkit', 'luxon'],
+    },
     plugins: [tailwindcss()],
     server: { forwardConsole: true },
   },

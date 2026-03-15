@@ -14,6 +14,15 @@ const config: KnipConfig = {
     'typescript-eslint',
     // Nuxt auto-imports vue-router
     'vue-router',
+    // Sub-deps of @nuxtjs/mdc installed directly to fix optimizeDeps resolution
+    'debug',
+    'parse5',
+    'rehype-raw',
+    'remark-emoji',
+    'remark-gfm',
+    'remark-mdc',
+    'remark-rehype',
+    'unist-util-visit',
   ],
   ignore: [
     // Config files consumed by their respective tools, not imported by code
