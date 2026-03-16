@@ -13,7 +13,7 @@
 
 ```bash
 pnpm dev        # localhost:3000 (assume already running)
-pnpm generate   # static build (deploys to Netlify)
+pnpm generate   # static build (deploys to Cloudflare Pages)
 pnpm build      # SSR build
 pnpm preview    # preview production build
 ```
@@ -33,9 +33,8 @@ pnpm preview    # preview production build
 
 ## Framework Docs
 
-- **Vue 3**: https://vuejs.org/llms-full.txt
 - **Nuxt**: https://nuxt.com/llms-full.txt
 - **Nuxt Content**: https://content.nuxt.com/llms-full.txt
-- **Oxfmt/Oxlint**: https://oxc.rs/llms-full.txt
 - **Nuxt Fonts**: https://fonts.nuxt.com/llms.txt
-- **Oxc (short)**: https://oxc.rs/llms.txt
+- **Oxc**: https://oxc.rs/llms-full.txt
+- **Vue 3**: https://vuejs.org/llms-full.txt
