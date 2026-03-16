@@ -46,14 +46,15 @@ export default defineNuxtConfig({
     },
   },
   nitro: {
-    preset: 'cloudflare-pages-static',
-    prerender: {
-      autoSubfolderIndex: false,
+    preset: 'cloudflare_pages',
+    cloudflare: {
+      deployConfig: true,
+      nodeCompat: true,
     },
   },
   experimental: {
     viewTransition: true,
-    payloadExtraction: false,
+    payloadExtraction: 'client',
   },
   vite: {
     optimizeDeps: {
