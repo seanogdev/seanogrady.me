@@ -21,7 +21,12 @@ function toggleDark() {
         class="text-jade-12 dark:text-jadedark-12"
         @click="toggleDark()"
       >
-        <Icon :name="isDark ? 'bi:moon-fill' : 'bi:moon'" class="size-5" />
+        <ClientOnly>
+          <Icon :name="isDark ? 'bi:moon-fill' : 'bi:moon'" class="size-5" />
+          <template #fallback>
+            <Icon name="bi:moon" class="size-5" />
+          </template>
+        </ClientOnly>
       </button>
     </div>
   </header>
