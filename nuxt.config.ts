@@ -46,10 +46,9 @@ export default defineNuxtConfig({
     },
   },
   nitro: {
-    preset: 'cloudflare-module',
-    cloudflare: {
-      deployConfig: true,
-      nodeCompat: true,
+    preset: 'cloudflare-pages-static',
+    prerender: {
+      autoSubfolderIndex: false,
     },
   },
   experimental: {
