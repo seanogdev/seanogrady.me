@@ -7,7 +7,7 @@ const date = computed(() => DateTime.fromISO(post.date));
 </script>
 
 <template>
-  <article class="py-6" :style="{ viewTransitionName: `post-${post.slug}` }">
+  <article class="py-6">
     <h3
       class="mb-2 font-serif text-2xl leading-normal font-light text-balance md:text-4xl"
     >

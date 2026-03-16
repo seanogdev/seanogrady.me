@@ -47,7 +47,6 @@ export default defineNuxtConfig({
   },
   experimental: {
     payloadExtraction: true,
-    viewTransition: true,
   },
   vite: {
     optimizeDeps: {
