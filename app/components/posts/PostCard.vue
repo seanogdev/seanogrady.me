@@ -4,14 +4,12 @@ import { DateTime } from 'luxon';
 
 const { post } = defineProps<{ post: PostsCollectionItem }>();
 const date = computed(() => DateTime.fromISO(post.date));
-const transitionName = computed(() => `post-${post.slug}`);
 </script>
 
 <template>
-  <article class="py-6" :style="{ viewTransitionName: transitionName }">
+  <article class="py-6">
     <h3
       class="mb-2 font-serif text-2xl leading-normal font-light text-balance md:text-4xl"
-      :style="{ viewTransitionName: `${transitionName}-title` }"
     >
       <NuxtLink
         :to="post.path"

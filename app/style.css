@@ -86,15 +86,6 @@
     @apply bg-jade-1 dark:bg-sagedark-1;
     @apply text-sage-11 dark:text-sagedark-11;
   }
-
-  ::view-transition-group(*) {
-    animation-duration: 300ms;
-  }
-
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
-    animation: none;
-  }
 }
 
 @utility text-trim-both {

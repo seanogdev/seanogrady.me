@@ -45,9 +45,9 @@ export default defineNuxtConfig({
       },
     },
   },
-  experimental: {
-    viewTransition: true,
-  },
+  // experimental: {
+  //   viewTransition: true,
+  // },
   vite: {
     optimizeDeps: {
       include: ['es-toolkit', 'luxon'],

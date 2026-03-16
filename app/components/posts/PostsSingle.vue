@@ -20,7 +20,6 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 });
 
-const transitionName = computed(() => (post.value ? `post-${post.value.slug}` : undefined));
 const date = computed(() => (post.value ? DateTime.fromISO(post.value.date) : null));
 </script>
 
@@ -28,7 +27,6 @@ const date = computed(() => (post.value ? DateTime.fromISO(post.value.date) : nu
   <div
     v-if="post"
     class="prose col-span-12 *:scroll-mt-14 md:col-span-8 md:col-start-3"
-    :style="{ viewTransitionName: transitionName }"
   >
     <img
       v-if="post.coverImage"
