@@ -45,16 +45,8 @@ export default defineNuxtConfig({
       },
     },
   },
-  nitro: {
-    preset: 'cloudflare_pages',
-    cloudflare: {
-      deployConfig: true,
-      nodeCompat: true,
-    },
-  },
   experimental: {
     viewTransition: true,
-    payloadExtraction: false,
   },
   vite: {
     optimizeDeps: {
