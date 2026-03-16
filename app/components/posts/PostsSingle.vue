@@ -27,6 +27,7 @@ const date = computed(() => (post.value ? DateTime.fromISO(post.value.date) : nu
   <div
     v-if="post"
     class="prose col-span-12 *:scroll-mt-14 md:col-span-8 md:col-start-3"
+    :style="{ viewTransitionName: post.slug ? `post-${post.slug}` : undefined }"
   >
     <img
       v-if="post.coverImage"
