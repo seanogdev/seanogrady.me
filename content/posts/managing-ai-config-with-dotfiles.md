@@ -16,7 +16,7 @@ But there's been some promising movement. The community has started to coalesce 
 
 Anthropic's own CLI tool only reads `CLAUDE.md`. The irony here is two-fold: they're very much a part of these foundations and they kick-started the approaches in skills and the CLAUDE/AGENTS file. They did at one point mention how to get AGENTS.md read by Claude, but it was a paltry "add `@AGENTS.md` to your `CLAUDE.md`". They need to do better here.
 
-So... my workaround is a simple symlink. Or should I say, a complex series of symlinks. It's symlinks all the way down.
+So... my workaround is a simple symlink. Or should I say, a complex series of symlinks. It's actually just symlinks all the way down.
 
 ## Finding a home for it all
 
