@@ -10,11 +10,11 @@ coverImage: 'https://images.unsplash.com/photo-1760199789455-49098afd02f0?w=1200
 
 You spend months curating your agent setup. Writing your perfect CLAUDE.md, installing the skills that transform your workflow, tweaking permissions, dialling in hooks until everything works the way you think. That's a lot of effort to have sitting unversioned on a single machine. One dead Macbook and it's gone.
 
-And every tool is so needy, each tool wanting its own special directory. Cursor wants `.cursor/`. GitHub Copilot wants `.github/`. Claude wants `.claude/`. Windsurf, Codex, Gemini CLI, Roo Code - all of them. Each with their own config files, their own instruction formats and their own opinions about where things should live.
+And every tool is so needy, wanting its own special directory. Cursor wants `.cursor/`. GitHub Copilot wants `.github/`. Claude wants `.claude/`. Windsurf, Codex, Gemini CLI, Roo Code - all of them. Each with their own config files, their own instruction formats and their own opinions about where things should live.
 
-But theres been some promising changes there. The community has started to coalesce around a solution: `AGENTS.md`. It's an open standard, adopted by most of the major AI coding tools. One file, one format, readable by everything. Cursor reads it. Copilot reads it. Codex reads it. Even tools I've never heard of read from these files. Except for one.
+But there's been some promising movement. The community has started to coalesce around a solution: `AGENTS.md`. It's an open standard, adopted by most of the major AI coding tools. One file, one format, readable by everything. Cursor reads it. Copilot reads it. Codex reads it. Even tools I've never heard of read from these files. Except for one.
 
-Anthropic's own CLI tool only reads `CLAUDE.md`. The irony here is two-fold, they're very much a part of these foundations and they kick started the approaches in skills and the CLAUDE/AGENTS file. They did at one point mention how to get agents to be read inside Claude, but it was a palty "Add @AGENTS.md to your CLAUDE.md". They need to do better here, but alas.
+Anthropic's own CLI tool only reads `CLAUDE.md`. The irony here is two-fold: they're very much a part of these foundations and they kick-started the approaches in skills and the CLAUDE/AGENTS file. They did at one point mention how to get AGENTS.md read by Claude, but it was a paltry "add `@AGENTS.md` to your `CLAUDE.md`". They need to do better here.
 
 So... my workaround is a simple symlink. Or should I say, a complex series of symlinks. It's symlinks all the way down.
 
@@ -51,7 +51,7 @@ Adding AI config to this was straightforward. My `.agents/AGENTS.md` lives in th
 
 This is where things got interesting. Claude Code has a concept of "skills" - markdown files that give it specialised knowledge or workflows. There's a growing ecosystem of third-party skills for everything from Vue development to accessibility auditing.
 
-[Vercel's `skills` CLI](https://skills.sh/) is the best tool I've found for discovering and managing these. I'll be honest, Vercel aren't exactly the company I'd love to be championing, but credit where it's due - they've atmittedly built the most practical solution for browsing, installing and updating skills from GitHub repos. It handles versioning, lock files and multi-agent installation.
+[Vercel's `skills` CLI](https://skills.sh/) is the best tool I've found for discovering and managing these. I'll be honest, Vercel aren't exactly the company I'd love to be championing, but credit where it's due - they've admittedly built the most practical solution for browsing, installing and updating skills from GitHub repos. It handles versioning, lock files and multi-agent installation.
 
 My first approach was to just copy the skill files directly into my dotfiles repo. Commit them, stow them, done. It worked, but it didn't scale. Every time a skill got updated upstream, I had to manually pull down changes. Worse, committing someone else's skill files into my repo felt wrong from a licensing perspective. These aren't my files to redistribute.
 
@@ -72,16 +72,7 @@ The `-a claude-code` flag is key. It tells the CLI to copy the skill into `~/.cl
 
 ## Private skills via iCloud
 
-Not everything goes in the public repo. I have a couple of skills synced through iCloud that I deliberately don't publish. One is a content writer trained on my writing style - it knows my voice, my phrasing, the way I structure blog posts (it wrote this one, in fact). The other is a PR reviewer that gives feedback in my tone.
-
-These live in iCloud and get symlinked into `~/.claude/skills/`:
-
-```
-content-writer -> ~/Library/Mobile Documents/.../skills/content-writer
-review-pr      -> ~/Library/Mobile Documents/.../skills/review-pr
-```
-
-They're personal. The content writer has examples of my writing, my preferences, the specific things I do and don't do. Publishing that would let anyone replicate my voice, which sort of defeats the purpose of having a personal writing style.
+Not everything goes in the public repo. I have a couple of private skills synced through iCloud and symlinked into `~/.claude/skills/`. They contain personal writing samples and preferences that I don't want to publish, so iCloud keeps them portable without making them public.
 
 ## How it all layers together
 
