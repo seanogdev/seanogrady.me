@@ -22,7 +22,7 @@ So... my workaround is a simple symlink. Or should I say, a complex series of sy
 
 Developers have been version-controlling their shell config, editor settings and Git aliases for decades. Agent settings are just more of the same - text files in your home directory that define how your tools behave. The only difference is there are more of them now, and they're scattered across more directories than anyone asked for. Dotfiles are a natural fit. And because it's Git, you get history. If a tweak breaks something, just roll back.
 
-I manage my [dotfiles](https://github.com/seanogrady/dotfiles) with [GNU Stow](https://www.gnu.org/software/stow/). If you haven't used it, the concept is simple: you keep all your config files in a single repo, mirroring your home directory structure, and Stow creates symlinks to put everything in the right place. Fish shell config, Starship prompt, Ghostty terminal settings, Git config - it all lives in one repo and gets linked into `$HOME` with a single command.
+I manage my [dotfiles](https://github.com/seanogdev/dotfiles) with [GNU Stow](https://www.gnu.org/software/stow/). If you haven't used it, the concept is simple: you keep all your config files in a single repo, mirroring your home directory structure, and Stow creates symlinks to put everything in the right place. Fish shell config, Starship prompt, Ghostty terminal settings, Git config - it all lives in one repo and gets linked into `$HOME` with a single command.
 
 ```sh
 stow -d $HOME/projects/personal/dotfiles -t $HOME --no-folding --adopt --stow .

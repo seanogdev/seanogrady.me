@@ -16,7 +16,7 @@ const socialLinks: SocialLink[] = [
   {
     title: 'GitHub',
     subtitle: 'Open source projects',
-    url: 'https://github.com/seanogrady',
+    url: 'https://github.com/seanogdev',
     icon: 'proicons:github',
   },
   {
