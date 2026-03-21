@@ -1,8 +1,10 @@
 ---
 import DarkModeToggle from './DarkModeToggle.vue';
+
+const { class: className, ...rest } = Astro.props;
 ---
 
-<header class="flex items-center justify-between py-6">
+<header class:list={["flex items-center justify-between py-6", className]} {...rest}>
   <a href="/" class="text-xs font-medium tracking-widest text-jade-12 uppercase dark:text-jadedark-12">
     Seán O'Grady
   </a>
