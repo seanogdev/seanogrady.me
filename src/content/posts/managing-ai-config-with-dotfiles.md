@@ -6,8 +6,6 @@ tags: ['developer-tooling', 'ai', 'dotfiles']
 coverImage: 'https://images.unsplash.com/photo-1760199789455-49098afd02f0?w=1200&q=80'
 ---
 
-# Save Your Progress: Managing AI Config with Dotfiles
-
 You spend months curating your agent setup. Writing your perfect CLAUDE.md, installing the skills that transform your workflow, tweaking permissions, dialling in hooks until everything works the way you think. That's a lot of effort to have sitting unversioned on a single machine. One dead Macbook and it's gone.
 
 And every tool is so needy, wanting its own special directory. Cursor wants `.cursor/`. GitHub Copilot wants `.github/`. Claude wants `.claude/`. Windsurf, Codex, Gemini CLI, Roo Code - all of them. Each with their own config files, their own instruction formats and their own opinions about where things should live.

@@ -6,8 +6,6 @@ tags: ['developer-tooling', 'vue', 'performance', 'dead-code']
 coverImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&q=80'
 ---
 
-# Using Static Analysis to Clean Up Vue Composables
-
 As your application grows, so does the complexity in your codebase. With growth comes baggage. People leave and the domain knowledge of what their code did goes with them. Nobody's confident enough to delete the logic that looks unused because they're not sure what else depends on it.
 
 The bigger the codebase gets, the less likely anyone is to go digging through logic they didn't write. That's true for humans, and it's especially true now that AI tooling is generating code faster than anyone can manually audit it.

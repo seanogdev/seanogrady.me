@@ -6,8 +6,6 @@ tags: ['astro', 'vue', 'performance', 'developer-tooling']
 coverImage: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80'
 ---
 
-# Dropping the Dead Weight: Migrating from Nuxt to Astro
-
 This site was built with Nuxt 4, Vue 3 and Nuxt Content. It's a blog and a personal page. Static HTML, deployed to Cloudflare Pages. There's nothing dynamic about it except a Last.fm widget in the footer.
 
 And yet every page was shipping a WASM SQLite database to the browser.
