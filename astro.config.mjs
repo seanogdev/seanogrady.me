@@ -6,12 +6,15 @@ import icon from 'astro-icon';
 import { remarkReadingTime } from './src/utils/remark-reading-time.ts';
 
 export default defineConfig({
-  adapter: cloudflare(),
+  adapter: cloudflare({ prerenderEnvironment: 'node' }),
   integrations: [vue(), icon()],
   markdown: {
     remarkPlugins: [remarkReadingTime],
   },
   vite: {
     plugins: [tailwindcss()],
+    optimizeDeps: {
+      include: ['debug'],
+    },
   },
 });
