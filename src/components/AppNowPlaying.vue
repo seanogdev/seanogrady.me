@@ -34,6 +34,7 @@ const relativeTime = computed(() => {
 </script>
 
 <template>
+  <div>
   <section v-if="trackData" class="flex h-full w-full flex-col gap-4">
     <div class="mb-4 flex items-center justify-between">
       <h2 class="text-sm font-medium tracking-widest text-balance text-sage-10 uppercase dark:text-sagedark-10">
@@ -75,6 +76,7 @@ const relativeTime = computed(() => {
       </div>
     </div>
   </section>
+  </div>
 </template>
 
 <style scoped>
