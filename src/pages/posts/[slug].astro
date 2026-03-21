@@ -31,7 +31,7 @@ const date = DateTime.fromJSDate(post.data.date);
       />
     )}
 
-    <h1 class="mt-8 mb-6 text-3xl leading-normal font-serif font-light text-balance text-sage-12 sm:text-4xl dark:text-sagedark-12" transition:name={`post-title-${post.id}`}>
+    <h1 class="mt-8 mb-6 text-3xl leading-normal font-serif font-light text-balance text-sage-12 sm:text-4xl dark:text-sagedark-12" transition:name={`post-title-${post.id}`} transition:animate="slide">
       {post.data.title}
     </h1>
 

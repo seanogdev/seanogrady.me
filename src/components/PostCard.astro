@@ -12,7 +12,7 @@ const date = DateTime.fromJSDate(post.data.date);
 ---
 
 <article class="py-6">
-  <h3 class="mb-2 font-serif text-2xl leading-normal font-light text-balance md:text-4xl" transition:name={`post-title-${post.id}`}>
+  <h3 class="mb-2 font-serif text-2xl leading-normal font-light text-balance md:text-4xl" transition:name={`post-title-${post.id}`} transition:animate="slide">
     <a
       href={`/posts/${post.id}`}
       class="text-sage-12 transition-colors hover:text-jade-11 dark:text-sagedark-11 dark:hover:text-jadedark-11"
