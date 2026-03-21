@@ -25,10 +25,11 @@ const config: KnipConfig = {
     'remark-mdc',
     'remark-rehype',
     'unist-util-visit',
+    // Used by Cloudflare Pages CI
+    'wrangler',
   ],
   ignore: [
     // Config files consumed by their respective tools, not imported by code
-    'oxlint.config.ts',
     'content.config.ts',
   ],
 };
