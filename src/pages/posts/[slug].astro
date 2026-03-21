@@ -31,6 +31,10 @@ const date = DateTime.fromJSDate(post.data.date);
       />
     )}
 
+    <h1 class="mt-8 mb-6 text-3xl leading-normal font-serif font-light text-balance text-sage-12 sm:text-4xl dark:text-sagedark-12" transition:name={`post-title-${post.id}`}>
+      {post.data.title}
+    </h1>
+
     <div class="not-prose mb-8 flex items-center gap-4 text-sm text-sage-10 dark:text-sagedark-10">
       <time datetime={date.toISODate() ?? undefined}>
         {date.toLocaleString(DateTime.DATE_MED)}
@@ -39,7 +43,7 @@ const date = DateTime.fromJSDate(post.data.date);
       <span>{readingTime} min read</span>
     </div>
 
-    <Content class="[&>p>img]:my-8 [&>p>img]:rounded-lg [&>p>img]:md:-mx-12 [&>p>img]:md:my-12 [&>p>img]:md:max-w-[calc(100%+6rem)]" />
+    <Content class="[&>h1:first-child]:hidden [&>p>img]:my-8 [&>p>img]:rounded-lg [&>p>img]:md:-mx-12 [&>p>img]:md:my-12 [&>p>img]:md:max-w-[calc(100%+6rem)]" />
 
     {post.data.tags.length > 0 && (
       <div class="not-prose mt-12 flex items-center gap-2 text-xs tracking-wide text-sage-10 uppercase dark:text-sagedark-10">
