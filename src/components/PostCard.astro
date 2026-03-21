@@ -1,0 +1,48 @@
+---
+import { DateTime } from 'luxon';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+  readingTime?: number;
+}
+
+const { post, readingTime } = Astro.props;
+const date = DateTime.fromJSDate(post.data.date);
+---
+
+<article class="py-6">
+  <h3 class="mb-2 font-serif text-2xl leading-normal font-light text-balance md:text-4xl">
+    <a
+      href={`/posts/${post.id}`}
+      class="text-sage-12 transition-colors hover:text-jade-11 dark:text-sagedark-11 dark:hover:text-jadedark-11"
+    >
+      {post.data.title}
+    </a>
+  </h3>
+
+  <p class="mb-3 text-lg leading-normal text-pretty text-sage-12 dark:text-sagedark-11">
+    {post.data.description}
+  </p>
+
+  <div class="flex items-center gap-2 text-xs tracking-wide text-sage-10 uppercase dark:text-sagedark-10">
+    <time datetime={date.toISODate() ?? undefined}>
+      {date.toLocaleString(DateTime.DATE_MED)}
+    </time>
+    <span>&middot;</span>
+    <span>{readingTime ?? 1} min read</span>
+    {post.data.tags.length > 0 && (
+      <>
+        <span>&middot;</span>
+        {post.data.tags.map((tag) => (
+          <a
+            href={`/posts/tags/${tag}`}
+            class="transition-colors hover:text-jade-11 dark:hover:text-jadedark-11"
+          >
+            #{tag}
+          </a>
+        ))}
+      </>
+    )}
+  </div>
+</article>

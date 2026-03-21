@@ -1,0 +1,16 @@
+---
+import DarkModeToggle from './DarkModeToggle.vue';
+---
+
+<header class="flex items-center justify-between py-6">
+  <a href="/" class="text-xs font-medium tracking-widest text-jade-12 uppercase dark:text-jadedark-12">
+    Seán O'Grady
+  </a>
+
+  <div class="flex items-center gap-6">
+    <a href="/posts" class="text-xs font-medium tracking-widest text-jade-12 uppercase dark:text-jadedark-12">
+      Posts
+    </a>
+    <DarkModeToggle client:load />
+  </div>
+</header>

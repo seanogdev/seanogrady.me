@@ -1,0 +1,60 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import PostCard from './PostCard.astro';
+
+interface Props {
+  title: string;
+  posts: CollectionEntry<'posts'>[];
+  readingTimes?: Record<string, number>;
+  page?: {
+    currentPage: number;
+    lastPage: number;
+    url: {
+      prev: string | undefined;
+      next: string | undefined;
+    };
+  };
+}
+
+const { title, posts, readingTimes = {}, page } = Astro.props;
+---
+
+<div class="col-span-12 md:col-span-8 md:col-start-3">
+  <h1 class="text-xs font-medium tracking-widest text-balance text-sage-10 uppercase dark:text-sagedark-10">
+    {title}
+  </h1>
+
+  <div class="mt-8 divide-y divide-sage-6 dark:divide-sagedark-6">
+    {posts.map((post) => (
+      <PostCard post={post} readingTime={readingTimes[post.id]} />
+    ))}
+  </div>
+
+  {posts.length === 0 && (
+    <div class="mt-8 text-sage-11 dark:text-sagedark-11">No posts found.</div>
+  )}
+
+  {page && page.lastPage > 1 && (
+    <div class="mt-8 flex justify-center gap-2">
+      {page.url.prev && (
+        <a
+          href={page.url.prev}
+          class="rounded-lg border border-jade-6 bg-jade-1 px-4 py-2 text-sm font-medium text-jade-12 transition-colors hover:bg-jade-3 dark:border-jadedark-6 dark:bg-jadedark-1 dark:text-jadedark-12 dark:hover:bg-jadedark-3"
+        >
+          &larr; Previous
+        </a>
+      )}
+      <span class="flex items-center px-4 py-2 text-sm text-jade-11 dark:text-jadedark-11">
+        Page {page.currentPage} of {page.lastPage}
+      </span>
+      {page.url.next && (
+        <a
+          href={page.url.next}
+          class="rounded-lg border border-jade-6 bg-jade-1 px-4 py-2 text-sm font-medium text-jade-12 transition-colors hover:bg-jade-3 dark:border-jadedark-6 dark:bg-jadedark-1 dark:text-jadedark-12 dark:hover:bg-jadedark-3"
+        >
+          Next &rarr;
+        </a>
+      )}
+    </div>
+  )}
+</div>
