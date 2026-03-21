@@ -40,8 +40,8 @@ const siteDescription = description ?? "Personal website and blog of Seán O'Gra
 
     <script is:inline>
       function applyTheme() {
-        const theme = localStorage.getItem('color-mode') ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        document.documentElement.classList.toggle('dark', theme === 'dark');
+        const isDark = localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.classList.toggle('dark', isDark);
       }
       applyTheme();
       document.addEventListener('astro:after-swap', applyTheme);

@@ -10,7 +10,7 @@ onMounted(() => {
 function toggle() {
   isDark.value = !isDark.value;
   document.documentElement.classList.toggle('dark', isDark.value);
-  localStorage.setItem('color-mode', isDark.value ? 'dark' : 'light');
+  localStorage.theme = isDark.value ? 'dark' : 'light';
 }
 </script>
 
