@@ -39,8 +39,12 @@ const siteDescription = description ?? "Personal website and blog of Seán O'Gra
     <ClientRouter />
 
     <script is:inline>
-      const theme = localStorage.getItem('color-mode') ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      if (theme === 'dark') document.documentElement.classList.add('dark');
+      function applyTheme() {
+        const theme = localStorage.getItem('color-mode') ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+      }
+      applyTheme();
+      document.addEventListener('astro:after-swap', applyTheme);
     </script>
   </head>
   <body>
