@@ -1,19 +1,24 @@
 ---
+import { Icon } from 'astro-icon/components';
+
 const socialLinks = [
   {
     title: 'BlueSky',
     subtitle: '@seanogrady.me',
     url: 'https://bsky.app/profile/seanogrady.me',
+    icon: 'bi:bluesky',
   },
   {
     title: 'GitHub',
     subtitle: 'Open source projects',
     url: 'https://github.com/seanogdev',
+    icon: 'bi:github',
   },
   {
     title: 'LinkedIn',
     subtitle: 'Professional network',
     url: 'https://linkedin.com/in/seanogdev/',
+    icon: 'bi:linkedin',
   },
 ];
 ---
@@ -30,8 +35,9 @@ const socialLinks = [
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`Visit my ${link.title} profile`}
-        class="text-sage-11 transition-colors hover:text-jade-11 focus-visible:ring-2 focus-visible:ring-jade-8 focus-visible:outline-none dark:text-sagedark-11 dark:hover:text-jadedark-11"
+        class="flex items-center gap-2 text-sage-11 transition-colors hover:text-jade-11 focus-visible:ring-2 focus-visible:ring-jade-8 focus-visible:outline-none dark:text-sagedark-11 dark:hover:text-jadedark-11"
       >
+        <Icon name={link.icon} class="size-4" />
         {link.title}
       </a>
     ))}

@@ -37,5 +37,5 @@ pnpm preview    # preview production build
 
 ## Framework Docs
 
-- **Astro**: https://docs.astro.build
+- **Astro**: https://docs.astro.build/llms-full.txt
 - **Vue 3**: https://vuejs.org/llms-full.txt

@@ -21,7 +21,6 @@
     "mdast-util-to-string": "^4.0.0",
     "tailwindcss": "4.2.2",
     "tailwindcss-radix-colors": "^2.1.0",
-    "typescript": "^5.9.3",
     "vue": "^3.5.30",
     "wrangler": "^4.76.0",
     "zod": "^4.3.6"
@@ -36,5 +35,9 @@
       "sharp",
       "workerd"
     ]
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.8",
+    "typescript": "^5.9.3"
   }
 }

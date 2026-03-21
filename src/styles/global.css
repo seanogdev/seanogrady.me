@@ -142,9 +142,12 @@
       @apply font-medium;
     }
 
-    ul,
+    ul {
+      @apply mt-4 mb-4 list-disc pl-6;
+    }
+
     ol {
-      @apply mt-4 mb-4 pl-6;
+      @apply mt-4 mb-4 list-decimal pl-6;
     }
 
     li {
