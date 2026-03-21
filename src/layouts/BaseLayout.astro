@@ -1,0 +1,63 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import '../styles/global.css';
+import AppHeader from '../components/AppHeader.astro';
+import AppFooter from '../components/AppFooter.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+const siteTitle = title ? `${title} - Seán O'Grady` : "Seán O'Grady - Cyber surgeon, Javascript Person";
+const siteDescription = description ?? "Personal website and blog of Seán O'Grady";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>{siteTitle}</title>
+    <meta name="description" content={siteDescription} />
+    <meta name="author" content="Seán O'Grady" />
+    <meta property="og:site_name" content="Seán O'Grady" />
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={siteDescription} />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <ClientRouter />
+
+    <script is:inline>
+      function applyTheme() {
+        const isDark = localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.classList.toggle('dark', isDark);
+      }
+      applyTheme();
+      document.addEventListener('astro:after-swap', applyTheme);
+    </script>
+  </head>
+  <body>
+    <div class="relative grid auto-rows-auto">
+      <div
+        class="pointer-events-none absolute inset-x-0 top-0 h-[80vh] bg-linear-to-b from-jade-3 to-transparent dark:from-jadedark-2 dark:to-transparent"
+        aria-hidden="true"
+      ></div>
+      <div class="relative mx-auto mt-0 mb-0 grid w-full max-w-6xl min-w-0 grid-cols-12 gap-4 px-4 md:gap-8">
+        <AppHeader class="col-span-12 md:col-span-8 md:col-start-3" />
+        <slot />
+      </div>
+      <AppFooter />
+    </div>
+  </body>
+</html>

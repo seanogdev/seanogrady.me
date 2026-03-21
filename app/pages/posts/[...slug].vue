@@ -1,1 +1,0 @@
-<template><PostsSingle /></template>

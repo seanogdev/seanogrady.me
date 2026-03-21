@@ -1,0 +1,43 @@
+---
+import type { GetStaticPathsOptions } from 'astro';
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import PostsList from '../../../../components/PostsList.astro';
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const allPosts = (await getCollection('posts'))
+    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+  const readingTimes: Record<string, number> = {};
+  for (const post of allPosts) {
+    const { remarkPluginFrontmatter } = await render(post);
+    readingTimes[post.id] = (remarkPluginFrontmatter as { readingTime?: number }).readingTime ?? 1;
+  }
+
+  const allTags = [...new Set(allPosts.flatMap((post) => post.data.tags))];
+
+  return allTags.flatMap((tag) => {
+    const tagPosts = allPosts.filter((post) => post.data.tags.includes(tag));
+    return paginate(tagPosts, {
+      params: { tag },
+      pageSize: 10,
+      props: { tag, readingTimes },
+    });
+  });
+}
+
+const { page, tag, readingTimes } = Astro.props;
+---
+
+<BaseLayout title={`Tagged: ${tag}`} description={`Posts tagged with "${tag}".`}>
+  <PostsList
+    title={`Tagged: ${tag}`}
+    posts={page.data}
+    readingTimes={readingTimes}
+    page={{
+      currentPage: page.currentPage,
+      lastPage: page.lastPage,
+      url: { prev: page.url.prev, next: page.url.next },
+    }}
+  />
+</BaseLayout>

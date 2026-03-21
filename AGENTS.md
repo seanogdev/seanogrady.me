@@ -1,40 +1,41 @@
 # seanogrady.me
 
-> Personal website and blog built with Nuxt 4, Vue 3, and Nuxt Content
+> Personal website and blog built with Astro, Vue 3 islands, and Astro Content Collections
 
 ## Stack
 
-- **Nuxt 4** + Vue 3, file-based routing
-- **@nuxt/content** v3 — Markdown blog posts in `content/posts/`
+- **Astro 5** — static site with Vue islands for interactivity
+- **Vue 3** — interactive components (DarkModeToggle, HomeAvatar, AppNowPlaying)
+- **Astro Content Collections** — Markdown blog posts in `src/content/posts/`
 - **Tailwind CSS 4** via Vite plugin (not PostCSS) + Radix Colors (`sage`, `jade`)
-- **Knip** — unused code detection (`pnpm knip`), config in `knip.config.ts`
+- **@astrojs/cloudflare** — adapter for server-rendered API routes
+- **astro-icon** — Iconify-powered, build-time SVG inlining
 
 ## Commands
 
 ```bash
-pnpm dev        # localhost:3000 (assume already running)
-pnpm generate   # static build (deploys to Cloudflare Pages)
-pnpm build      # SSR build
+pnpm dev        # localhost:4321 (assume already running)
+pnpm build      # production build (static + server routes)
 pnpm preview    # preview production build
 ```
 
 ## Key Conventions
 
-- **Components** auto-import from `app/components/` — no imports needed
-- **Dates**: store as ISO strings; format with `DateTime.fromISO().toLocaleString()` (Luxon)
+- **Astro components** (`.astro`) for static content, **Vue components** (`.vue`) for interactivity
+- **Vue islands** use `client:load` (above fold) or `client:visible` (below fold)
+- **Dates**: store as ISO strings in frontmatter; format with Luxon `DateTime`
 - **Blog frontmatter**: use `date` (not `publishedAt`), optional `tags: []`
 - **Styling**: Tailwind classes only — no inline styles or custom CSS
 - **Radix Colors harmonies**: https://www.radix-ui.com/colors/docs/palette-composition/understanding-the-scale
+- **View transitions** via `<ClientRouter />` in BaseLayout
 
 ## Gotchas
 
-- Vite 8 installed directly — some plugins may show unmet peer dep warnings until they update their ranges
-- Last.fm "Now Playing" requires env vars: `NUXT_LASTFM_API_KEY`, `NUXT_LASTFM_USERNAME`
+- Last.fm "Now Playing" requires env vars: `LASTFM_API_KEY`, `LASTFM_USERNAME`
+- The `/api/lastfm` endpoint uses `export const prerender = false` for server-side execution
+- Vue islands need inline SVGs for icons (astro-icon only works in .astro files)
 
 ## Framework Docs
 
-- **Nuxt**: https://nuxt.com/llms-full.txt
-- **Nuxt Content**: https://content.nuxt.com/llms-full.txt
-- **Nuxt Fonts**: https://fonts.nuxt.com/llms.txt
-- **Oxc**: https://oxc.rs/llms-full.txt
+- **Astro**: https://docs.astro.build/llms-full.txt
 - **Vue 3**: https://vuejs.org/llms-full.txt

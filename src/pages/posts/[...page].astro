@@ -1,0 +1,34 @@
+---
+import type { GetStaticPathsOptions } from 'astro';
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostsList from '../../components/PostsList.astro';
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const posts = (await getCollection('posts'))
+    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+  const readingTimes: Record<string, number> = {};
+  for (const post of posts) {
+    const { remarkPluginFrontmatter } = await render(post);
+    readingTimes[post.id] = (remarkPluginFrontmatter as { readingTime?: number }).readingTime ?? 1;
+  }
+
+  return paginate(posts, { pageSize: 10, props: { readingTimes } });
+}
+
+const { page, readingTimes } = Astro.props;
+---
+
+<BaseLayout title="Posts" description="Articles on front-end engineering, Vue, and web development by Seán O'Grady.">
+  <PostsList
+    title="Posts"
+    posts={page.data}
+    readingTimes={readingTimes}
+    page={{
+      currentPage: page.currentPage,
+      lastPage: page.lastPage,
+      url: { prev: page.url.prev, next: page.url.next },
+    }}
+  />
+</BaseLayout>
