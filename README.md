@@ -1,75 +1,47 @@
-# Nuxt Minimal Starter
+# seanogrady.me
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Personal website and blog. Built with Astro, Vue 3 islands and Tailwind CSS 4. Deployed to Cloudflare Pages.
 
-## Setup
+## Stack
 
-Make sure to install dependencies:
+- **Astro 6** for static site generation and routing
+- **Vue 3** for interactive components (dark mode toggle, animated avatar, now playing widget)
+- **Tailwind CSS 4** via Vite plugin with Radix Colours (`sage`, `jade`)
+- **Astro Content Collections** for Markdown blog posts with Zod frontmatter validation
+- **Cloudflare Pages** for hosting, with Workers for the Last.fm API proxy
+
+## Project structure
+
+```
+src/
+├── components/        # Astro and Vue components
+├── content/posts/     # Markdown blog posts
+├── layouts/           # Base page layout
+├── pages/
+│   ├── api/           # Server-side API routes (Cloudflare Workers)
+│   ├── posts/         # Blog post pages, pagination, tag filtering
+│   └── index.astro    # Home page
+├── styles/            # Global CSS and prose styles
+└── utils/             # Remark plugins
+```
+
+## Getting started
 
 ```bash
-# npm
-npm install
-
-# pnpm
 pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
+pnpm dev          # localhost:4321
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+## Building
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+pnpm build        # Static output + server routes
+pnpm preview      # Preview production build locally
 ```
 
-## Production
+## Environment variables
 
-Build the application for production:
+Copy `.env.example` to `.env` and fill in:
 
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- `LASTFM_API_KEY` — Last.fm API key for the now playing widget
+- `LASTFM_USERNAME` — Last.fm username to fetch recent tracks

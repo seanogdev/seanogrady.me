@@ -10,6 +10,9 @@
     "binding": "ASSETS",
     "directory": "./dist/client"
   },
+  "routes": [
+    { "pattern": "seanogrady.me", "custom_domain": true }
+  ],
   "observability": {
     "enabled": true
   }
