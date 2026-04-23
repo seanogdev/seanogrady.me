@@ -8,13 +8,13 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^13.2.1",
-    "@astrojs/vue": "^6.0.1",
+    "@astrojs/cloudflare": "^12.6.13",
+    "@astrojs/vue": "^5.1.4",
     "@iconify-json/bi": "^1.2.7",
     "@tailwindcss/vite": "4.2.4",
     "@types/luxon": "^3.7.1",
     "@types/mdast": "^4.0.4",
-    "astro": "^6.1.9",
+    "astro": "^5.18.1",
     "astro-icon": "^1.1.5",
     "es-toolkit": "^1.46.0",
     "luxon": "^3.7.2",
@@ -38,6 +38,6 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
-    "typescript": "^6.0.3"
+    "typescript": "^5.9.3"
   }
 }
