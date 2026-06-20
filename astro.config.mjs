@@ -1,8 +1,9 @@
-import { defineConfig } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
 import vue from '@astrojs/vue';
 import tailwindcss from '@tailwindcss/vite';
 import icon from 'astro-icon';
+import { defineConfig } from 'astro/config';
+
 import { remarkReadingTime } from './src/utils/remark-reading-time.ts';
 
 export default defineConfig({
@@ -13,6 +14,9 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()],
+    resolve: {
+      tsconfigPaths: true,
+    },
     optimizeDeps: {
       include: ['debug'],
     },
