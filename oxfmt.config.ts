@@ -1,18 +1,6 @@
 import { defineConfig } from 'oxfmt';
 
 export default defineConfig({
-  singleQuote: true,
-  jsxSingleQuote: true,
-  printWidth: 120,
-  htmlWhitespaceSensitivity: 'ignore',
-  sortPackageJson: true,
-  experimentalTailwindcss: {
-    stylesheet: './app/style.css',
-    attributes: ['class', 'className'],
-    functions: ['clsx', 'cn', 'tv'],
-    preserveDuplicates: false,
-    preserveWhitespace: false,
-  },
   experimentalSortImports: {
     groups: [
       ['side_effect'],
@@ -24,4 +12,17 @@ export default defineConfig({
       ['index', 'type-index'],
     ],
   },
+  experimentalTailwindcss: {
+    attributes: ['class', 'className'],
+    functions: ['clsx', 'cn', 'tv'],
+    preserveDuplicates: false,
+    preserveWhitespace: false,
+    stylesheet: './src/styles/global.css',
+  },
+  htmlWhitespaceSensitivity: 'ignore',
+  ignorePatterns: ['.claude/'],
+  jsxSingleQuote: true,
+  printWidth: 120,
+  singleQuote: true,
+  sortPackageJson: true,
 });
