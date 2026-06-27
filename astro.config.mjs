@@ -13,12 +13,12 @@ export default defineConfig({
     remarkPlugins: [remarkReadingTime],
   },
   vite: {
+    optimizeDeps: {
+      include: ['debug'],
+    },
     plugins: [tailwindcss()],
     resolve: {
       tsconfigPaths: true,
-    },
-    optimizeDeps: {
-      include: ['debug'],
     },
   },
 });

@@ -2,18 +2,13 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "seanogrady-me",
   "compatibility_date": "2026-03-17",
-  "compatibility_flags": [
-    "nodejs_compat",
-    "global_fetch_strictly_public"
-  ],
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": {
     "binding": "ASSETS",
-    "directory": "./dist/client"
+    "directory": "./dist/client",
   },
-  "routes": [
-    { "pattern": "seanogrady.me", "custom_domain": true }
-  ],
+  "routes": [{ "pattern": "seanogrady.me", "custom_domain": true }],
   "observability": {
-    "enabled": true
-  }
+    "enabled": true,
+  },
 }

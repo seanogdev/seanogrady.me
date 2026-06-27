@@ -1,15 +1,15 @@
-import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
+import { defineCollection } from 'astro:content';
 
 const posts = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/posts' }),
+  loader: glob({ base: './src/content/posts', pattern: '**/*.md' }),
   schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    date: z.coerce.date(),
-    tags: z.array(z.string()).default([]),
     coverImage: z.string().optional(),
+    date: z.coerce.date(),
+    description: z.string(),
+    tags: z.array(z.string()).default([]),
+    title: z.string(),
   }),
 });
 

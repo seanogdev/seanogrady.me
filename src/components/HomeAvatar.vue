@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
 import { randomInt, sample } from 'es-toolkit';
+import { onMounted, ref } from 'vue';
 
 const circleCount = 5;
 const backgroundOptions = ['bg-amber-9', 'bg-blue-9', 'bg-red-9', 'bg-crimson-9', 'bg-mint-9', 'bg-sky-9', 'bg-iris-9'];
@@ -13,10 +13,10 @@ onMounted(() => {
     .map(() => ({
       class: [sample(backgroundOptions)!],
       style: {
-        '--animation-duration': randomInt(8, 15) + 's',
-        '--animation-delay': -randomInt(0, 10) + 's',
-        '--rotation-speed': randomInt(20, 40) + 's',
+        '--animation-delay': `${-randomInt(0, 10)  }s`,
+        '--animation-duration': `${randomInt(8, 15)  }s`,
         '--rotation-direction': randomInt(0, 1) ? 'normal' : 'reverse',
+        '--rotation-speed': `${randomInt(20, 40)  }s`,
       },
     }));
 });

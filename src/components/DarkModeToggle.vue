@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 
 const isDark = ref(false);
 
@@ -15,12 +15,7 @@ function toggle() {
 </script>
 
 <template>
-  <button
-    type="button"
-    aria-label="Toggle Dark Mode"
-    class="text-jade-12 dark:text-jadedark-12"
-    @click="toggle"
-  >
+  <button type="button" aria-label="Toggle Dark Mode" class="text-jade-12 dark:text-jadedark-12" @click="toggle">
     <slot name="light-icon" />
     <slot name="dark-icon" />
   </button>

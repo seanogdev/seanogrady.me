@@ -1,21 +1,21 @@
-import { defineConfig } from "oxlint";
+import { defineConfig } from 'oxlint';
 
 export default defineConfig({
-  plugins: ["typescript", "unicorn", "vue"],
+  categories: {
+    correctness: 'error',
+    pedantic: 'warn',
+    perf: 'warn',
+    restriction: 'warn',
+    style: 'warn',
+    suspicious: 'warn',
+  },
   env: {
     browser: true,
     es2022: true,
   },
-  categories: {
-    correctness: "error",
-    suspicious: "warn",
-    pedantic: "warn",
-    perf: "warn",
-    style: "warn",
-    restriction: "warn",
-  },
+  plugins: ['typescript', 'unicorn', 'vue'],
   rules: {
-    "no-console": "warn",
-    "unicorn/filename-case": ["warn", { cases: { kebabCase: true, pascalCase: true } }],
+    'no-console': 'warn',
+    'unicorn/filename-case': ['warn', { cases: { kebabCase: true, pascalCase: true } }],
   },
 });

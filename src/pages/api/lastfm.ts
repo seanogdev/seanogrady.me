@@ -1,44 +1,45 @@
 import type { APIRoute } from 'astro';
 import { z } from 'zod';
+
 import type { TrackData } from '../../types';
 
 const lastfmApiResponseSchema = z.object({
   recenttracks: z.object({
     track: z.array(
       z.object({
-        name: z.string(),
-        artist: z.object({
-          '#text': z.string(),
-        }),
-        album: z.object({
-          '#text': z.string(),
-        }),
-        image: z.array(
-          z.object({
-            size: z.string(),
-            '#text': z.string(),
-          }),
-        ),
-        date: z
-          .object({
-            uts: z.string(),
-          })
-          .optional(),
         '@attr': z
           .object({
             nowplaying: z.string(),
           })
           .optional(),
+        album: z.object({
+          '#text': z.string(),
+        }),
+        artist: z.object({
+          '#text': z.string(),
+        }),
+        date: z
+          .object({
+            uts: z.string(),
+          })
+          .optional(),
+        image: z.array(
+          z.object({
+            '#text': z.string(),
+            size: z.string(),
+          }),
+        ),
+        name: z.string(),
       }),
     ),
   }),
 });
 
 const trackDataSchema = z.object({
-  name: z.string(),
-  artist: z.string(),
   album: z.string(),
   albumArt: z.string(),
+  artist: z.string(),
+  name: z.string(),
   nowPlaying: z.boolean(),
   timestamp: z.number(),
 }) satisfies z.ZodType<TrackData>;
@@ -55,8 +56,8 @@ export const GET: APIRoute = async ({ request }) => {
 
   if (!apiKey || !username) {
     return new Response(JSON.stringify({ error: 'Last.fm API credentials not configured' }), {
-      status: 500,
       headers: { 'Content-Type': 'application/json' },
+      status: 500,
     });
   }
 
@@ -84,13 +85,13 @@ export const GET: APIRoute = async ({ request }) => {
 
     const largeImage = track.image.find((img) => img.size === 'large');
     const isNowPlaying = track['@attr']?.nowplaying === 'true';
-    const timestamp = isNowPlaying ? Date.now() : track.date ? parseInt(track.date.uts) * 1000 : Date.now();
+    const timestamp = isNowPlaying ? Date.now() : (track.date ? parseInt(track.date.uts) * 1000 : Date.now());
 
     const trackData = trackDataSchema.parse({
-      name: track.name,
-      artist: track.artist['#text'],
       album: track.album['#text'],
       albumArt: largeImage?.['#text'] || '',
+      artist: track.artist['#text'],
+      name: track.name,
       nowPlaying: isNowPlaying,
       timestamp,
     });
@@ -100,24 +101,24 @@ export const GET: APIRoute = async ({ request }) => {
 
     if (request.headers.get('If-None-Match') === etag) {
       return new Response(null, {
+        headers: { 'Cache-Control': cacheControl, ETag: etag },
         status: 304,
-        headers: { 'ETag': etag, 'Cache-Control': cacheControl },
       });
     }
 
     return new Response(JSON.stringify(trackData), {
-      status: 200,
       headers: {
-        'Content-Type': 'application/json',
         'Cache-Control': cacheControl,
-        'ETag': etag,
+        'Content-Type': 'application/json',
+        ETag: etag,
       },
+      status: 200,
     });
   } catch (error) {
     console.error('Last.fm API error:', error);
     return new Response(JSON.stringify({ error: 'Failed to fetch Last.fm data' }), {
-      status: 503,
       headers: { 'Content-Type': 'application/json' },
+      status: 503,
     });
   }
 };
