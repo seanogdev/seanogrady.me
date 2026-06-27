@@ -1,0 +1,27 @@
+import { defineConfig } from 'oxfmt';
+
+export default defineConfig({
+  singleQuote: true,
+  jsxSingleQuote: true,
+  printWidth: 120,
+  htmlWhitespaceSensitivity: 'ignore',
+  sortPackageJson: true,
+  experimentalTailwindcss: {
+    stylesheet: './app/style.css',
+    attributes: ['class', 'className'],
+    functions: ['clsx', 'cn', 'tv'],
+    preserveDuplicates: false,
+    preserveWhitespace: false,
+  },
+  experimentalSortImports: {
+    groups: [
+      ['side_effect'],
+      ['builtin'],
+      ['external', 'type-external'],
+      ['internal', 'type-internal'],
+      ['parent', 'type-parent'],
+      ['sibling', 'type-sibling'],
+      ['index', 'type-index'],
+    ],
+  },
+});
