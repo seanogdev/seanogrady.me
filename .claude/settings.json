@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=$(jq -r '.tool_input.file_path // empty' 2>/dev/null); [ -z \"$f\" ] && exit 0; pnpm exec oxlint --fix \"$f\" 2>/dev/null || true; pnpm exec oxfmt --write \"$f\" 2>/dev/null || true",
+            "statusMessage": "Linting & formatting..."
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -40,7 +40,7 @@
   },
   "nano-staged": {
     "*.{js,ts,vue,astro}": "oxlint --fix",
-    "*.{js,ts,vue,astro,json,jsonc,css,md}": "oxfmt --write"
+    "*.{js,ts,vue,astro,css,md}": "oxfmt --write"
   },
   "engines": {
     "node": ">=24.0.0"
