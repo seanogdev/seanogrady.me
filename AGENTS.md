@@ -4,7 +4,7 @@
 
 ## Stack
 
-- **Astro 5** — static site with Vue islands for interactivity
+- **Astro 7** — static site with Vue islands for interactivity
 - **Vue 3** — interactive components (DarkModeToggle, HomeAvatar, AppNowPlaying)
 - **Astro Content Collections** — Markdown blog posts in `src/content/posts/`
 - **Tailwind CSS 4** via Vite plugin (not PostCSS) + Radix Colors (`sage`, `jade`)

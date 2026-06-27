@@ -45,7 +45,11 @@ const trackDataSchema = z.object({
 
 export const prerender = false;
 
-export const GET: APIRoute = async () => {
+function buildETag(artist: string, name: string, nowPlaying: boolean): string {
+  return `"${btoa(encodeURIComponent(`${nowPlaying}:${artist}:${name}`))}"`;
+}
+
+export const GET: APIRoute = async ({ request }) => {
   const apiKey = import.meta.env.LASTFM_API_KEY;
   const username = import.meta.env.LASTFM_USERNAME;
 
@@ -91,11 +95,22 @@ export const GET: APIRoute = async () => {
       timestamp,
     });
 
+    const etag = buildETag(trackData.artist, trackData.name, trackData.nowPlaying);
+    const cacheControl = 'public, s-maxage=30, stale-while-revalidate=60';
+
+    if (request.headers.get('If-None-Match') === etag) {
+      return new Response(null, {
+        status: 304,
+        headers: { 'ETag': etag, 'Cache-Control': cacheControl },
+      });
+    }
+
     return new Response(JSON.stringify(trackData), {
       status: 200,
       headers: {
         'Content-Type': 'application/json',
-        'Cache-Control': 'public, max-age=30',
+        'Cache-Control': cacheControl,
+        'ETag': etag,
       },
     });
   } catch (error) {
