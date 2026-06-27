@@ -4,7 +4,7 @@ import { computed, onMounted, ref } from 'vue';
 
 import type { TrackData } from '../types';
 
-const trackData = ref<TrackData | null>(null);
+const trackData = ref<TrackData | undefined>();
 
 onMounted(async () => {
   try {
@@ -17,7 +17,7 @@ onMounted(async () => {
   }
 });
 
-const timestamp = computed(() => (trackData.value ? DateTime.fromMillis(trackData.value.timestamp) : null));
+const timestamp = computed(() => (trackData.value ? DateTime.fromMillis(trackData.value.timestamp) : undefined));
 
 const isRecentlyPlayed = computed(() => {
   if (!timestamp.value) {

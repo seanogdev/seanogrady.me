@@ -2,8 +2,9 @@
 import { getCollection } from 'astro:content';
 import PostCard from './PostCard.astro';
 
-const posts = (await getCollection('posts'))
-  .toSorted((a, b) => b.data.date.getTime() - a.data.date.getTime())
+const collection = await getCollection('posts');
+const posts = collection
+  .toSorted((postA, postB) => postB.data.date.getTime() - postA.data.date.getTime())
   .slice(0, 5);
 ---
 

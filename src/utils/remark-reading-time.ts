@@ -8,8 +8,8 @@ export function remarkReadingTime() {
     const text = toString(tree);
     const words = text
       .trim()
-      .split(/\s+/)
-      .filter((word) => word.length > 0);
+      .split(/\s+/u)
+      .filter((word) => word.length);
     const readingTime = Math.max(1, Math.ceil(words.length / WORDS_PER_MINUTE));
     file.data.astro.frontmatter.readingTime = readingTime;
   };

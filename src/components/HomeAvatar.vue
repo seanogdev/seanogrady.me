@@ -8,17 +8,15 @@ const backgroundOptions = ['bg-amber-9', 'bg-blue-9', 'bg-red-9', 'bg-crimson-9'
 const squircles = ref<{ class: string[]; style: Record<string, string> }[]>([]);
 
 onMounted(() => {
-  squircles.value = Array(circleCount)
-    .fill(0)
-    .map(() => ({
-      class: [sample(backgroundOptions)!],
-      style: {
-        '--animation-delay': `${-randomInt(0, 10)  }s`,
-        '--animation-duration': `${randomInt(8, 15)  }s`,
-        '--rotation-direction': randomInt(0, 1) ? 'normal' : 'reverse',
-        '--rotation-speed': `${randomInt(20, 40)  }s`,
-      },
-    }));
+  squircles.value = Array.from({ length: circleCount }).map(() => ({
+    class: [sample(backgroundOptions)],
+    style: {
+      '--animation-delay': `${-randomInt(0, 10)}s`,
+      '--animation-duration': `${randomInt(8, 15)}s`,
+      '--rotation-direction': randomInt(0, 1) ? 'normal' : 'reverse',
+      '--rotation-speed': `${randomInt(20, 40)}s`,
+    },
+  }));
 });
 </script>
 
