@@ -38,10 +38,7 @@ const relativeTime = computed(() => {
 
 <template>
   <div>
-    <section
-      v-if="trackData"
-      class="flex size-full flex-col gap-4"
-    >
+    <section v-if="trackData" class="flex size-full flex-col gap-4">
       <div class="mb-4 flex items-center justify-between">
         <h2 class="text-sm font-medium tracking-widest text-balance text-sage-10 uppercase dark:text-sagedark-10">
           {{ shouldShowNowPlaying ? 'Now playing' : 'Last played' }}
@@ -53,33 +50,9 @@ const relativeTime = computed(() => {
             xmlns="http://www.w3.org/2000/svg"
             class="equalizer size-4 text-sage-10 dark:text-sagedark-10"
           >
-            <rect
-              x="4"
-              y="8"
-              width="3"
-              height="8"
-              rx="1.5"
-              fill="currentColor"
-              class="bar bar-1"
-            />
-            <rect
-              x="10.5"
-              y="4"
-              width="3"
-              height="16"
-              rx="1.5"
-              fill="currentColor"
-              class="bar bar-2"
-            />
-            <rect
-              x="17"
-              y="6"
-              width="3"
-              height="12"
-              rx="1.5"
-              fill="currentColor"
-              class="bar bar-3"
-            />
+            <rect x="4" y="8" width="3" height="8" rx="1.5" fill="currentColor" class="bar bar-1" />
+            <rect x="10.5" y="4" width="3" height="16" rx="1.5" fill="currentColor" class="bar bar-2" />
+            <rect x="17" y="6" width="3" height="12" rx="1.5" fill="currentColor" class="bar bar-3" />
           </svg>
           <span class="text-xs text-sage-10 dark:text-sagedark-10">{{ relativeTime }}</span>
         </div>
@@ -92,7 +65,7 @@ const relativeTime = computed(() => {
             :src="trackData.albumArt"
             :alt="`${trackData.album} album art`"
             class="size-32 rounded-md"
-          >
+          />
           <svg
             v-else
             viewBox="0 0 24 24"
@@ -104,16 +77,8 @@ const relativeTime = computed(() => {
             class="size-32 text-sage-10 dark:text-sagedark-10"
           >
             <path d="M9 18V5l12-2v13" />
-            <circle
-              cx="6"
-              cy="18"
-              r="3"
-            />
-            <circle
-              cx="18"
-              cy="16"
-              r="3"
-            />
+            <circle cx="6" cy="18" r="3" />
+            <circle cx="18" cy="16" r="3" />
           </svg>
         </div>
 
@@ -124,10 +89,7 @@ const relativeTime = computed(() => {
           <div class="mt-1 truncate text-lg text-sage-12 dark:text-sagedark-11">
             {{ trackData.artist }}
           </div>
-          <div
-            v-if="trackData.album"
-            class="mt-1 truncate text-base text-sage-11 dark:text-sagedark-11"
-          >
+          <div v-if="trackData.album" class="mt-1 truncate text-base text-sage-11 dark:text-sagedark-11">
             {{ trackData.album }}
           </div>
         </div>

@@ -1,51 +1,62 @@
-import tsParser from '@typescript-eslint/parser';
+import eslintPluginJs from '@eslint/js';
 import * as eslintParserAstro from 'astro-eslint-parser';
+import type { Linter } from 'eslint';
 import eslintPluginBetterTailwindcss from 'eslint-plugin-better-tailwindcss';
 import eslintPluginVue from 'eslint-plugin-vue';
+import { defineConfig } from 'eslint/config';
+import * as eslintPluginTypescript from 'typescript-eslint';
 import eslintParserVue from 'vue-eslint-parser';
 
-const tailwindSettings = {
-  'better-tailwindcss': {
-    entryPoint: 'src/styles/global.css',
+const eslintPluginBetterTailwindCssOverrideConfig: Linter.Config = {
+  rules: {
+    'better-tailwindcss/enforce-consistent-line-wrapping': 'off',
+    'better-tailwindcss/no-unknown-classes': [
+      'error',
+      {
+        ignore: ['bar', 'bar-1', 'bar-2', 'bar-3', 'equalizer', 'not-prose', 'prose', 'squircle'],
+      },
+    ] as Linter.RuleEntry<[{ ignore: string[] }]>,
+  },
+  settings: {
+    'better-tailwindcss': {
+      entryPoint: 'src/styles/global.css',
+    },
   },
 };
 
-const betterTailwindRules = {
-  ...eslintPluginBetterTailwindcss.configs.recommended.rules,
-  'better-tailwindcss/enforce-consistent-line-wrapping': 'off',
-  'better-tailwindcss/no-unknown-classes': [
-    'error',
-    {
-      ignore: ['bar', 'bar-1', 'bar-2', 'bar-3', 'equalizer', 'not-prose', 'prose', 'squircle'],
-    },
-  ],
-};
-
-export default [
-  ...eslintPluginVue.configs['flat/recommended'],
+export default defineConfig(
+  { ignores: ['node_modules', 'dist', 'public', '.astro/**', '.output/**'] },
   {
-    ...eslintPluginBetterTailwindcss.configs.recommended,
+    extends: [eslintPluginJs.configs.recommended, eslintPluginTypescript.configs.recommended],
+    files: ['**/*.{js,ts}'],
+  },
+  {
+    extends: [
+      eslintPluginVue.configs['flat/recommended'],
+      eslintPluginBetterTailwindcss.configs.recommended,
+      eslintPluginBetterTailwindCssOverrideConfig,
+    ],
     files: ['**/*.vue'],
     languageOptions: {
       parser: eslintParserVue,
       parserOptions: {
-        parser: tsParser,
+        parser: eslintPluginTypescript.parser,
       },
     },
-    rules: betterTailwindRules,
-    settings: tailwindSettings,
+    rules: {
+      'vue/html-self-closing': 'off',
+      'vue/max-attributes-per-line': 'off',
+    },
   },
   {
-    ...eslintPluginBetterTailwindcss.configs.recommended,
+    extends: [eslintPluginBetterTailwindcss.configs.recommended, eslintPluginBetterTailwindCssOverrideConfig],
     files: ['**/*.astro'],
     languageOptions: {
       parser: eslintParserAstro,
       parserOptions: {
         extraFileExtensions: ['.astro'],
-        parser: tsParser,
+        parser: eslintPluginTypescript.parser,
       },
     },
-    rules: betterTailwindRules,
-    settings: tailwindSettings,
   },
-];
+);
