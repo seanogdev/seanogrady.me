@@ -15,8 +15,8 @@ const { class: className, ...rest } = Astro.props;
       Posts
     </a>
     <DarkModeToggle client:load>
-      <Icon name="bi:moon" class="size-5 block dark:hidden" slot="light-icon" />
-      <Icon name="bi:moon-fill" class="size-5 hidden dark:block" slot="dark-icon" />
+      <Icon name="bi:moon" class="block size-5 dark:hidden" slot="light-icon" />
+      <Icon name="bi:moon-fill" class="hidden size-5 dark:block" slot="dark-icon" />
     </DarkModeToggle>
   </div>
 </header>

@@ -7,39 +7,43 @@
     "build": "astro build",
     "preview": "astro preview",
     "lint": "oxlint",
-    "fmt": "oxfmt"
+    "lint:eslint": "eslint",
+    "format": "oxfmt"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.9",
     "@astrojs/cloudflare": "^14.0.1",
     "@astrojs/vue": "^7.0.0",
     "@iconify-json/bi": "^1.2.7",
     "@tailwindcss/vite": "4.3.1",
     "@types/luxon": "^3.7.2",
     "@types/mdast": "^4.0.4",
+    "@typescript-eslint/parser": "^8.62.0",
     "astro": "^7.0.3",
+    "astro-eslint-parser": "^2.1.0",
     "astro-icon": "^1.1.5",
     "es-toolkit": "^1.49.0",
+    "eslint": "^10.6.0",
+    "eslint-plugin-better-tailwindcss": "^4.6.0",
+    "eslint-plugin-vue": "^10.9.2",
     "luxon": "^3.7.2",
     "mdast-util-to-string": "^4.0.0",
-    "tailwindcss": "4.3.1",
-    "tailwindcss-radix-colors": "^2.1.0",
-    "vue": "^3.5.39",
-    "wrangler": "^4.105.0",
-    "zod": "^4.4.3"
-  },
-  "devDependencies": {
-    "@astrojs/check": "^0.9.9",
     "nano-staged": "^1.0.2",
     "oxfmt": "^0.56.0",
     "oxlint": "^1.71.0",
-    "simple-git-hooks": "^2.13.1",
-    "typescript": "^6.0.3"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "pnpm exec nano-staged"
+    "tailwindcss": "4.3.1",
+    "tailwindcss-radix-colors": "^2.1.0",
+    "typescript": "^6.0.3",
+    "vue": "^3.5.39",
+    "vue-eslint-parser": "^10.4.1",
+    "wrangler": "^4.105.0",
+    "zod": "^4.4.3"
   },
   "nano-staged": {
-    "*.{js,ts,vue,astro}": "oxlint --fix",
+    "*.{js,ts,vue,astro}": [
+      "eslint --fix",
+      "oxlint --fix"
+    ],
     "*.{js,ts,vue,astro,css,md}": "oxfmt --write"
   },
   "engines": {
