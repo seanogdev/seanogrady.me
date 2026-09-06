@@ -43,8 +43,8 @@
   },
   "nano-staged": {
     "*.{js,ts,vue,astro}": [
-      "eslint --fix",
-      "oxlint --fix"
+      "oxlint --fix",
+      "eslint --fix"
     ],
     "*.{js,ts,vue,astro,css,md}": "oxfmt --write"
   },
