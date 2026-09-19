@@ -1,4 +1,4 @@
-import type { APIRoute } from 'astro';
+import type { APIContext } from 'astro';
 import { z } from 'zod';
 
 import { trackDataSchema, type TrackData } from '../../types';
@@ -119,7 +119,7 @@ function buildCachedResponse(request: Request, trackData: TrackData): Response {
   });
 }
 
-export const GET: APIRoute = async ({ request }) => {
+export async function GET({ request }: APIContext): Promise<Response> {
   const apiKey = import.meta.env.LASTFM_API_KEY;
   const username = import.meta.env.LASTFM_USERNAME;
 
@@ -139,4 +139,4 @@ export const GET: APIRoute = async ({ request }) => {
       },
     );
   }
-};
+}
