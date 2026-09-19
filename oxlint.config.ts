@@ -16,7 +16,7 @@ export default defineConfig({
   plugins: ['typescript', 'unicorn', 'vue'],
   rules: {
     'func-names': 'off',
-    'func-style': ['warn', 'declaration', { allowArrowFunctions: true }],
+    'func-style': ['warn', 'declaration'],
     'no-console': 'warn',
     'no-implicit-globals': 'off',
     'no-magic-numbers': 'off',
