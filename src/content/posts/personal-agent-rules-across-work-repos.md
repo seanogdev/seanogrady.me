@@ -50,6 +50,7 @@ The first line bails out unless the session is under the work folder, so my pers
 ```md
 - Open pull requests as ready for review, not as drafts.
 - Do not wait for the type check. Report it only if it fails.
+- Before you drive the app in a browser, read ~/projects/work/browser.md.
 
 @~/projects/work/work.md
 ```
@@ -82,6 +83,18 @@ After you edit one of these files, set `updatedAt` and `updatedBy` if the file h
 So when I say "from now on, do X", Claude writes the rule into the right file, stamps `updatedBy` with the model that made the change and pushes the gist.
 
 A new machine is a few `gh gist view` calls. Any repo that doesn't already ignore `AGENTS.local.md` gets one line in `.git/info/exclude`, which is a lot easier to live with than a folder of generated docs.
+
+## Every repo learns the lesson at once
+
+The biggest win is that a fix written down in one repo reaches all of them. When I tell Claude how something should be done, the next session in any work repo starts with it.
+
+Browser testing is the clearest example. Claude drives our app with agent-browser, and the notes on how to do that live in one file next to the work rules. They're the things Claude would otherwise have to rediscover each time: wait for text that shows the page is ready rather than a set time, take a fresh snapshot once a menu or dialog opens because the old refs go stale and treat dev data as disposable so a test can create and delete what it needs.
+
+The parent file only points at those notes, so they load when Claude is about to open the app and stay out of the way otherwise. Every repo that runs the app gets the same approach, whichever one I start in.
+
+Smaller habits travel the same way. PR labels sit in one table, so Claude picks the right one for whichever repo it's in, and the type check and ready-for-review rules apply everywhere without me repeating them. Rules that really are local still have a home. One API repo's `AGENTS.local.md` tells Claude to watch CI in the background because its checks are slow, and that never leaks into the others.
+
+None of it touches a team file either. I can change how I work without opening a PR or debating whether my preferences belong in the repo.
 
 ## How it's held up
 
