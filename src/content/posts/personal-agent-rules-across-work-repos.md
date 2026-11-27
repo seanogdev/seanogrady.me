@@ -5,23 +5,31 @@ description: 'Agent config has a scope for your machine, your team and your copy
 tags: ['developer-tooling', 'ai']
 ---
 
-Agent config comes in three scopes. There's a global file for everything on your machine, a repo `AGENTS.md` the team shares and an `AGENTS.local.md` for your own copy of one repo.
+Agent config gives you three places to put rules: a global file for everything on your machine, the `AGENTS.md` your team checks into a repo and an `AGENTS.local.md` for your own copy of that one repo.
 
-There's no scope for sharing your own rules across repos. That's exactly where most of mine sit. Open pull requests as ready, not draft. Don't sit waiting on the type check. Use the right PR label for each repo.
+What it doesn't give you is somewhere to keep your own rules and share them across repos. That's where most of mine ended up: open pull requests as ready rather than draft, don't sit waiting on the type check, pick the right PR label for whichever repo I'm in.
 
-They're not the team's, so the repo file is out. They're work-only, so the global file from my [dotfiles](/posts/managing-ai-config-with-dotfiles) is out too. That one's public, and it loads in my side projects. I needed the missing fourth scope, so I built it.
+None of that belongs to the team. It doesn't belong in my [dotfiles](/posts/managing-ai-config-with-dotfiles) either, since that global file is public and loads in my side projects too.
+
+## It started with someone else's skills
+
+I didn't set out to build a new config scope. I wanted to use [Matt Pocock's skills](https://github.com/mattpocock/skills) at work, and they come with a setup step that configures each repo for them. It asks where your issues live and how you label them. Then it writes the answers into the repo, as a `docs/agents/issue-tracker.md` file and an "Agent skills" section in `AGENTS.md`.
+
+That's a sensible default for a solo project, but it didn't fit a team repo. How I track my own work isn't something the rest of the team needs in their `AGENTS.md`, and stuffing a docs folder into an exclude file just to keep it out of Git felt arbitrary.
+
+I also wanted the same setup in every work repo, not just the one I happened to run it in. So I skipped the setup step and went looking for a file the team would never see.
 
 ## The closest scope stops at the repo
 
-`AGENTS.local.md` gets nearest. Drop it in a repo, keep it out of Git and Claude loads it next to the team's `AGENTS.md`. But it's one repo at a time. Five repos means five copies, and they drift the first time I change one.
+`AGENTS.local.md` was the obvious candidate. Claude loads it alongside the team's `AGENTS.md`, it's personal by design and plenty of repos already ignore it. The catch is that it only covers the repo it sits in, so five repos means five copies that drift apart the first time I change one.
 
-Put it in the parent folder instead, `~/projects/work/AGENTS.local.md`, and Claude ignores it. The folder that holds my work repos is the one place the tools don't look.
+The natural fix is to move it up a level, to `~/projects/work/AGENTS.local.md` in the folder that holds all my work repos. Claude doesn't look there. The folder that matches the scope I needed is the one place the tools skip.
 
-I use the `AGENTS.md` names to stay on the open standard. If you only use Claude, `CLAUDE.md` and `CLAUDE.local.md` behave the same for everything here. Just don't mix them: a `CLAUDE.local.md` in a repo that uses `AGENTS.md` stops Claude loading the team's file.
+A quick note on naming: I use the `AGENTS.md` names to stay on the open standard, but if you only use Claude, `CLAUDE.md` and `CLAUDE.local.md` work the same for everything here. Just don't mix them, because a `CLAUDE.local.md` in a repo that uses `AGENTS.md` stops Claude loading the team's file.
 
 ## A hook loads it instead
 
-A [SessionStart hook](https://docs.claude.com/en/docs/claude-code/hooks) runs a command when a session starts, and whatever it prints lands in the context. That's all it takes.
+Claude Code won't load the file, but a [SessionStart hook](https://docs.claude.com/en/docs/claude-code/hooks) can. Whatever the hook prints when a session starts lands in the context, so a short script that prints the file does the job.
 
 ```bash
 case "$PWD/" in "$HOME/projects/work/"*) ;; *) exit 0 ;; esac
@@ -37,7 +45,7 @@ while IFS= read -r l || [ -n "$l" ]; do
 done < "$f"
 ```
 
-The first line bails unless I'm under the work folder. The loop handles `@path` imports, which Claude resolves in a memory file but not in hook output. So the script inlines them itself, and the parent file stays a short list that pulls in the bigger files:
+The first line bails out unless the session is under the work folder, so my personal projects never see these rules. The loop is there because Claude resolves `@path` imports in a memory file but not in hook output, so the script inlines them itself. That lets the parent file stay a short list that pulls in the bigger files:
 
 ```md
 - Open pull requests as ready for review, not as drafts.
@@ -46,9 +54,9 @@ The first line bails unless I'm under the work folder. The loop handles `@path` 
 @~/projects/work/work.md
 ```
 
-`work.md` is where the cross-repo rules pay off. PR labels are a single table with a row per repo. No repo-level file could hold that.
+`work.md` is where the skills config ended up, and it opens by saying it replaces the setup step from Matt's skills. It's also where having one file starts to pay off. PR labels, for example, are a single table with a row per repo, which no repo-level file could ever hold.
 
-Register the script in `~/.claude/settings.json` and it's done:
+Registering the script is one entry in `~/.claude/settings.json`:
 
 ```json
 {
@@ -60,9 +68,7 @@ Register the script in `~/.claude/settings.json` and it's done:
 
 ## Claude keeps the gist in sync
 
-The files live in a private gist so they follow me between machines. Gists are flat, so repo files go in as `<repo>.AGENTS.local.md`.
-
-I never run the sync. The last section of `work.md` tells Claude to do it:
+The files live in a private gist so they follow me between machines. Gists are flat, so each repo's file is stored as `<repo>.AGENTS.local.md`. I never run the sync myself. The last section of `work.md` tells Claude to do it whenever it edits one of the files:
 
 ```md
 ## Sync
@@ -73,12 +79,16 @@ After you edit one of these files, set `updatedAt` and `updatedBy` if the file h
     gh gist edit <gist-id> -f work.md ~/projects/work/work.md
 ```
 
-So "from now on, do X" turns into a rule in the right file, a stamped `updatedBy` and a pushed gist. On a new machine, it's a few `gh gist view` calls. If a repo doesn't already ignore `AGENTS.local.md`, add it to `.git/info/exclude` so the team's `.gitignore` stays untouched.
+So when I say "from now on, do X", Claude writes the rule into the right file, stamps `updatedBy` with the model that made the change and pushes the gist.
+
+A new machine is a few `gh gist view` calls. Any repo that doesn't already ignore `AGENTS.local.md` gets one line in `.git/info/exclude`, which is a lot easier to live with than a folder of generated docs.
 
 ## How it's held up
 
-Claude Code only keeps about a month of session logs, so this is a recent snapshot of an older setup. The gist has 30 revisions. In the last five days, the hook loaded my rules into 94 sessions, and ten of them synced the gist without me asking. I couldn't find a single session where I had to correct Claude on one of these rules. Most were written before the mistake happened, though, so that proves less than I'd like.
+Claude Code only keeps about a month of session logs, so this is a recent snapshot of a setup that's been running for longer. In the last five days the hook loaded my rules into 94 sessions. Ten of those synced the gist without me asking, and the gist is up to 30 revisions.
 
-The sync only pushes, which is the weak spot. My laptop is behind the gist right now, missing a few rules another machine added. And a session in a temp worktree outside the work folder gets none of this.
+I couldn't find a session where I had to correct Claude on one of these rules. Most of them went in before the mistake ever happened, though, so that proves less than I'd like.
 
-Pulling is next on the list. But really, this is a scope the tools should ship. Load an `AGENTS.local.md` from a parent folder and most of this post goes away. I'd happily delete the lot.
+The weak spot is that the sync only pushes. My laptop is behind the gist right now, missing a few rules another machine added, and a session in a temp worktree outside the work folder gets none of this.
+
+Pulling is next on my list, but really this is a scope the tools should ship. If Claude Code loaded an `AGENTS.local.md` from a parent folder, most of this post would go away. I'd happily delete the lot.
