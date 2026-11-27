@@ -7,7 +7,7 @@ tags: ['developer-tooling', 'ai']
 
 Agent config gives you two places to put rules: a global file for everything on your machine and the `AGENTS.md` your team checks into a repo.
 
-What it doesn't give you is somewhere to keep your own rules and share them across repos. I have a handful of rules that need exactly that: open pull requests as ready rather than draft, don't sit waiting on the type check, pick the right PR label for whichever repo I'm in.
+What it doesn't give you is somewhere to keep your own rules and share them across repos. I have a handful of rules that need exactly that: open pull requests as ready rather than draft, keep branch names free of prefixes, pick the right PR label for whichever repo I'm in.
 
 None of that belongs to the team. It doesn't belong in my [dotfiles](/posts/managing-ai-config-with-dotfiles) either, since that global file is public and loads in my side projects too.
 
@@ -49,7 +49,7 @@ The first line bails out unless the session is under the work folder, so my pers
 
 ```md
 - Open pull requests as ready for review, not as drafts.
-- Do not wait for the type check. Report it only if it fails.
+- Give a branch a name with no prefix and no slash.
 - Before you drive the app in a browser, read ~/projects/work/browser.md.
 
 @~/projects/work/work.md
@@ -92,7 +92,7 @@ Browser testing is the clearest example. Claude drives our app with agent-browse
 
 The parent file only points at those notes, so they load when Claude is about to open the app and stay out of the way otherwise. Every repo that runs the app gets the same approach, whichever one I start in.
 
-Smaller habits travel the same way. PR labels sit in one table, so Claude picks the right one for whichever repo it's in, and the type check and ready-for-review rules apply everywhere without me repeating them.
+Smaller habits travel the same way. PR labels sit in one table, so Claude picks the right one for whichever repo it's in, and the branch naming and ready-for-review rules apply everywhere without me repeating them.
 
 None of it touches a team file either. I can change how I work without opening a PR or debating whether my preferences belong in the repo.
 
