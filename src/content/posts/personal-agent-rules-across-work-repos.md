@@ -89,6 +89,6 @@ Claude Code only keeps about a month of session logs, so this is a recent snapsh
 
 I couldn't find a session where I had to correct Claude on one of these rules. Most of them went in before the mistake ever happened, though, so that proves less than I'd like.
 
-The weak spot is that the sync only pushes. My laptop is behind the gist right now, missing a few rules another machine added, and a session in a temp worktree outside the work folder gets none of this.
+The weak spot is that the sync only pushes. A rule added on one machine doesn't reach the others until I pull it down myself, and a session in a temp worktree outside the work folder gets none of this.
 
 Pulling is next on my list, but really this is a scope the tools should ship. If Claude Code loaded an `AGENTS.local.md` from a parent folder, most of this post would go away. I'd happily delete the lot.
