@@ -1,13 +1,13 @@
 ---
-title: 'The Missing Scope: Personal Agent Rules Across a Group of Repos'
+title: 'The Missing Scope: Sharing Agent Rules Across Repos'
 date: 2026-11-27
-description: 'Agent config has a scope for your machine, your team and your copy of one repo, but not for your own rules across a group of repos. Here is how I filled that gap with a SessionStart hook and a private gist.'
+description: 'Agent config has a scope for your machine, your team and your copy of one repo, but not for sharing your own rules across repos. Here is how I filled that gap with a SessionStart hook and a private gist.'
 tags: ['developer-tooling', 'ai']
 ---
 
 Agent config comes in three scopes. There's a global file for everything on your machine, a repo `AGENTS.md` the team shares and an `AGENTS.local.md` for your own copy of one repo.
 
-There's no scope for your rules across a group of repos. That's exactly where most of mine sit. Open pull requests as ready, not draft. Don't sit waiting on the type check. Use the right PR label for each repo.
+There's no scope for sharing your own rules across repos. That's exactly where most of mine sit. Open pull requests as ready, not draft. Don't sit waiting on the type check. Use the right PR label for each repo.
 
 They're not the team's, so the repo file is out. They're work-only, so the global file from my [dotfiles](/posts/managing-ai-config-with-dotfiles) is out too. That one's public, and it loads in my side projects. I needed the missing fourth scope, so I built it.
 
@@ -15,7 +15,7 @@ They're not the team's, so the repo file is out. They're work-only, so the globa
 
 `AGENTS.local.md` gets nearest. Drop it in a repo, keep it out of Git and Claude loads it next to the team's `AGENTS.md`. But it's one repo at a time. Five repos means five copies, and they drift the first time I change one.
 
-Put it in the parent folder instead, `~/projects/work/AGENTS.local.md`, and Claude ignores it. The folder that groups my work repos is the one place the tools don't look.
+Put it in the parent folder instead, `~/projects/work/AGENTS.local.md`, and Claude ignores it. The folder that holds my work repos is the one place the tools don't look.
 
 I use the `AGENTS.md` names to stay on the open standard. If you only use Claude, `CLAUDE.md` and `CLAUDE.local.md` behave the same for everything here. Just don't mix them: a `CLAUDE.local.md` in a repo that uses `AGENTS.md` stops Claude loading the team's file.
 
