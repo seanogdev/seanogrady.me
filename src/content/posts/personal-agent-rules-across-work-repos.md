@@ -1,11 +1,11 @@
 ---
 title: 'The Missing Scope: Sharing Agent Rules Across Repos'
 date: 2026-11-27
-description: 'Agent config has a scope for your machine, your team and your copy of one repo, but not for sharing your own rules across repos. Here is how I filled that gap with a SessionStart hook and a private gist.'
+description: 'The AGENTS.md world has a scope for your machine and your team, but not for sharing your own rules across repos. Here is how I filled that gap with a SessionStart hook and a private gist.'
 tags: ['developer-tooling', 'ai']
 ---
 
-Agent config gives you three places to put rules: a global file for everything on your machine, the `AGENTS.md` your team checks into a repo and an `AGENTS.local.md` for your own copy of that one repo.
+Agent config gives you two places to put rules: a global file for everything on your machine and the `AGENTS.md` your team checks into a repo.
 
 What it doesn't give you is somewhere to keep your own rules and share them across repos. That's where most of mine ended up: open pull requests as ready rather than draft, don't sit waiting on the type check, pick the right PR label for whichever repo I'm in.
 
@@ -19,13 +19,13 @@ That's a sensible default for a solo project, but it didn't fit a team repo. How
 
 I also wanted the same setup in every work repo, not just the one I happened to run it in. So I skipped the setup step and went looking for a file the team would never see.
 
-## The closest scope stops at the repo
+## Claude Code doesn't read AGENTS.local.md
 
-`AGENTS.local.md` was the obvious candidate. Claude loads it alongside the team's `AGENTS.md`, it's personal by design and plenty of repos already ignore it. The catch is that it only covers the repo it sits in, so five repos means five copies that drift apart the first time I change one.
+`AGENTS.local.md` was the obvious candidate. The name says it's yours, and plenty of repos already ignore it. What I wanted was one at `~/projects/work/AGENTS.local.md`, in the folder that holds all my work repos, loading in every one of them.
 
-The natural fix is to move it up a level, to `~/projects/work/AGENTS.local.md` in the folder that holds all my work repos. Claude doesn't look there. The folder that matches the scope I needed is the one place the tools skip.
+Claude Code doesn't read it, not in a parent folder and not even at a repo root. It reads `AGENTS.md` and stops there. And a repo-level file would only cover one repo anyway, so five repos would mean five copies that drift apart the first time I change one.
 
-A quick note on naming: I use the `AGENTS.md` names to stay on the open standard, but if you only use Claude, `CLAUDE.md` and `CLAUDE.local.md` work the same for everything here. Just don't mix them, because a `CLAUDE.local.md` in a repo that uses `AGENTS.md` stops Claude loading the team's file.
+Claude's own names do have this scope. It loads `CLAUDE.local.md` from every folder above the repo, so if you only use Claude, a parent `CLAUDE.local.md` gets you most of the way with no hook. I'd rather stay on the `AGENTS.md` standard, though. A `CLAUDE.local.md` anywhere above a repo also stops Claude reading that repo's `AGENTS.md` unless you change the Project instructions setting in `/config`.
 
 ## A hook loads it instead
 
@@ -45,7 +45,7 @@ while IFS= read -r l || [ -n "$l" ]; do
 done < "$f"
 ```
 
-The first line bails out unless the session is under the work folder, so my personal projects never see these rules. The loop is there because Claude resolves `@path` imports in a memory file but not in hook output, so the script inlines them itself. That lets the parent file stay a short list that pulls in the bigger files:
+The first line bails out unless the session is under the work folder, so my personal projects never see these rules. The loop handles `@path` imports. Hook output is just text, so the script inlines each imported file itself. That lets the parent file stay a short list that pulls in the bigger files:
 
 ```md
 - Open pull requests as ready for review, not as drafts.
@@ -92,7 +92,7 @@ Browser testing is the clearest example. Claude drives our app with agent-browse
 
 The parent file only points at those notes, so they load when Claude is about to open the app and stay out of the way otherwise. Every repo that runs the app gets the same approach, whichever one I start in.
 
-Smaller habits travel the same way. PR labels sit in one table, so Claude picks the right one for whichever repo it's in, and the type check and ready-for-review rules apply everywhere without me repeating them. Rules that really are local still have a home. One API repo's `AGENTS.local.md` tells Claude to watch CI in the background because its checks are slow, and that never leaks into the others.
+Smaller habits travel the same way. PR labels sit in one table, so Claude picks the right one for whichever repo it's in, and the type check and ready-for-review rules apply everywhere without me repeating them.
 
 None of it touches a team file either. I can change how I work without opening a PR or debating whether my preferences belong in the repo.
 
@@ -104,4 +104,4 @@ I couldn't find a session where I had to correct Claude on one of these rules. M
 
 The one real limit is the path match in the hook. A session in a temp worktree outside the work folder gets none of these rules.
 
-Still, this is a scope the tools should ship. If Claude Code loaded an `AGENTS.local.md` from a parent folder, most of this post would go away. I'd happily delete the lot.
+Still, this is a gap the tools should close. If Claude Code read `AGENTS.local.md` the way it reads `CLAUDE.local.md`, most of this post would go away. I'd happily delete the lot.
