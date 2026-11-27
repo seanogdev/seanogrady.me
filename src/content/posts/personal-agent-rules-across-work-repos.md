@@ -7,7 +7,7 @@ tags: ['developer-tooling', 'ai']
 
 Agent config gives you two places to put rules: a global file for everything on your machine and the `AGENTS.md` your team checks into a repo.
 
-What it doesn't give you is somewhere to keep your own rules and share them across repos. That's where most of mine ended up: open pull requests as ready rather than draft, don't sit waiting on the type check, pick the right PR label for whichever repo I'm in.
+What it doesn't give you is somewhere to keep your own rules and share them across repos. I have a handful of rules that need exactly that: open pull requests as ready rather than draft, don't sit waiting on the type check, pick the right PR label for whichever repo I'm in.
 
 None of that belongs to the team. It doesn't belong in my [dotfiles](/posts/managing-ai-config-with-dotfiles) either, since that global file is public and loads in my side projects too.
 
