@@ -1,21 +1,21 @@
 ---
-title: 'Bring Your Own Rules: Personal Agent Config Across Work Repos'
+title: 'The Missing Scope: Personal Agent Rules Across a Group of Repos'
 date: 2026-11-27
-description: 'One set of personal Claude Code rules for every work repo, using a parent AGENTS.local.md, a SessionStart hook and a private gist the agent keeps in sync itself.'
+description: 'Agent config has a scope for your machine, your team and your copy of one repo, but not for your own rules across a group of repos. Here is how I filled that gap with a SessionStart hook and a private gist.'
 tags: ['developer-tooling', 'ai']
 ---
 
-My work rules had nowhere to live.
+Agent config comes in three scopes. There's a global file for everything on your machine, a repo `AGENTS.md` the team shares and an `AGENTS.local.md` for your own copy of one repo.
 
-Open pull requests as ready, not draft. Don't sit waiting on the type check. Use the right PR label for each repo. They're mine, not the team's, so they don't go in a repo's `AGENTS.md`. They're work-only, so they don't go in the global one from my [dotfiles](/posts/managing-ai-config-with-dotfiles) either. That one's public, and it loads in my side projects too.
+There's no scope for your rules across a group of repos. That's exactly where most of mine sit. Open pull requests as ready, not draft. Don't sit waiting on the type check. Use the right PR label for each repo.
 
-What I wanted was one file that follows me into every work repo and nowhere else. Claude Code won't load that file. So I made it.
+They're not the team's, so the repo file is out. They're work-only, so the global file from my [dotfiles](/posts/managing-ai-config-with-dotfiles) is out too. That one's public, and it loads in my side projects. I needed the missing fourth scope, so I built it.
 
-## The file Claude skips
+## The closest scope stops at the repo
 
-`AGENTS.local.md` is the obvious home. Drop it in a repo, keep it out of Git and Claude loads it next to the team's `AGENTS.md`. But it's one repo at a time. Five repos means five copies, and they drift the first time I change one.
+`AGENTS.local.md` gets nearest. Drop it in a repo, keep it out of Git and Claude loads it next to the team's `AGENTS.md`. But it's one repo at a time. Five repos means five copies, and they drift the first time I change one.
 
-Put it in the parent folder instead, `~/projects/work/AGENTS.local.md`, and Claude ignores it.
+Put it in the parent folder instead, `~/projects/work/AGENTS.local.md`, and Claude ignores it. The folder that groups my work repos is the one place the tools don't look.
 
 I use the `AGENTS.md` names to stay on the open standard. If you only use Claude, `CLAUDE.md` and `CLAUDE.local.md` behave the same for everything here. Just don't mix them: a `CLAUDE.local.md` in a repo that uses `AGENTS.md` stops Claude loading the team's file.
 
@@ -81,4 +81,4 @@ Claude Code only keeps about a month of session logs, so this is a recent snapsh
 
 The sync only pushes, which is the weak spot. My laptop is behind the gist right now, missing a few rules another machine added. And a session in a temp worktree outside the work folder gets none of this.
 
-Pulling is next on the list. If Claude Code ever loads a parent `AGENTS.local.md` on its own, I'll happily delete the lot.
+Pulling is next on the list. But really, this is a scope the tools should ship. Load an `AGENTS.local.md` from a parent folder and most of this post goes away. I'd happily delete the lot.
