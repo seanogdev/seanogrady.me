@@ -2,32 +2,15 @@
 
 > Personal website and blog built with Astro, Vue 3 islands, and Astro Content Collections
 
-## Stack
-
-- **Astro 7** — static site with Vue islands for interactivity
-- **Vue 3** — interactive components (DarkModeToggle, HomeAvatar, AppNowPlaying)
-- **Astro Content Collections** — Markdown blog posts in `src/content/posts/`
-- **Tailwind CSS 4** via Vite plugin (not PostCSS) + Radix Colors (`sage`, `jade`)
-- **@astrojs/cloudflare** — adapter for server-rendered API routes
-- **astro-icon** — Iconify-powered, build-time SVG inlining
-
-## Commands
-
-```bash
-pnpm dev        # localhost:4321 (assume already running)
-pnpm build      # production build (static + server routes)
-pnpm preview    # preview production build
-```
-
 ## Key Conventions
 
+- Dev server is assumed to be running on localhost:4321
 - **Astro components** (`.astro`) for static content, **Vue components** (`.vue`) for interactivity
 - **Vue islands** use `client:load` (above fold) or `client:visible` (below fold)
 - **Dates**: store as ISO strings in frontmatter; format with Luxon `DateTime`
 - **Blog frontmatter**: use `date` (not `publishedAt`), optional `tags: []`
 - **Styling**: Tailwind classes only — no inline styles or custom CSS
 - **Radix Colors harmonies**: https://www.radix-ui.com/colors/docs/palette-composition/understanding-the-scale
-- **View transitions** via `<ClientRouter />` in BaseLayout
 
 ## Gotchas
 
