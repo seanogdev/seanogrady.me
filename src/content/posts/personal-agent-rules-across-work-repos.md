@@ -88,7 +88,7 @@ A new machine is a few `gh gist view` calls. Any repo that doesn't already ignor
 
 The biggest win is that a fix written down in one repo reaches all of them. When I tell Claude how something should be done, the next session in any work repo starts with it.
 
-Browser testing is the clearest example. Claude drives our app with agent-browser, and the notes on how to do that live in one file next to the work rules. They're the things Claude would otherwise have to rediscover each time: wait for text that shows the page is ready rather than a set time, take a fresh snapshot once a menu or dialog opens because the old refs go stale and treat dev data as disposable so a test can create and delete what it needs.
+Browser testing is the clearest example. Claude drives the app with agent-browser, and the notes on how to do that live in one file next to the work rules. They're the things Claude would otherwise have to rediscover each time: wait for text that shows the page is ready rather than a set time, take a fresh snapshot once a menu or dialog opens because the old refs go stale and treat dev data as disposable so a test can create and delete what it needs.
 
 The parent file only points at those notes, so they load when Claude is about to open the app and stay out of the way otherwise. Every repo that runs the app gets the same approach, whichever one I start in.
 
