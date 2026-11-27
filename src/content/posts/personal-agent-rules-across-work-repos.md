@@ -15,11 +15,13 @@ So I had rules that were too personal for the team file and too specific for the
 
 Claude Code already has a slot for personal rules: `AGENTS.local.md`. Put it in the repo root, keep it out of Git and Claude loads it next to the team's `AGENTS.md`. That's where my rules started.
 
+I use the `AGENTS.md` names to stick to the open standard, so the same files work in other tools. If you only use Claude, `CLAUDE.md` and `CLAUDE.local.md` work exactly the same way for everything in this post.
+
 It works well for rules that belong to one repo. One of my API repos has a rule to watch CI only in the background, because the checks take ages. That's a good fit for a repo-level file.
 
 But most of my rules aren't like that. Copying the same block into five repos means five copies that drift the first time I edit one. The obvious fix is an `AGENTS.local.md` in the parent folder, `~/projects/work/`. Claude Code doesn't load it.
 
-`CLAUDE.local.md` looks like an option, but it's a trap: when it exists, Claude stops loading the repo's `AGENTS.md`, so I'd lose the team's rules to get mine. Don't use it.
+One warning about those names: don't mix the two. A `CLAUDE.local.md` in a repo that uses `AGENTS.md` stops Claude loading the `AGENTS.md`, so I'd lose the team's rules to get mine.
 
 ## A SessionStart hook loads the parent file
 
